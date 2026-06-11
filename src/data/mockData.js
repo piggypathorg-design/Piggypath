@@ -1,11 +1,14 @@
 export const mockUserData = {
-  username: "New User",
+  username: "Player",
   userId: "PX-000001",
+  joinedDate: "Jun 2026",
+  followers: 0,
+  following: 0,
   level: 1,
-  levelTitle: "Beginner",
+  levelTitle: "Seedling",
   xp: {
     current: 0,
-    max: 500
+    max: 100
   },
   coins: 0,
   streaks: {

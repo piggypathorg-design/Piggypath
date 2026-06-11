@@ -1,59 +1,112 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Flame, Check } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
 
-const StreaksPanel = ({ currentStreak }) => {
+const useMidnightCountdown = () => {
+  const getSecondsLeft = () => {
+    const now = new Date();
+    const midnight = new Date();
+    midnight.setHours(24, 0, 0, 0);
+    return Math.floor((midnight - now) / 1000);
+  };
+  const [secs, setSecs] = useState(getSecondsLeft);
+  useEffect(() => { const t = setInterval(() => setSecs(getSecondsLeft()), 1000); return () => clearInterval(t); }, []);
+  const h = String(Math.floor(secs / 3600)).padStart(2, '0');
+  const m = String(Math.floor((secs % 3600) / 60)).padStart(2, '0');
+  const s = String(secs % 60).padStart(2, '0');
+  return `${h}:${m}:${s}`;
+};
+
+const Cursor = () => {
+  const [v, setV] = useState(true);
+  useEffect(() => { const t = setInterval(() => setV(x => !x), 500); return () => clearInterval(t); }, []);
+  return <span style={{ opacity: v ? 1 : 0 }}>_</span>;
+};
+
+const PixelFlame = ({ size = 1 }) => {
+  const [frame, setFrame] = useState(0);
+  const frames = [
+    'polygon(50% 0%, 80% 40%, 70% 60%, 90% 70%, 60% 100%, 40% 100%, 10% 70%, 30% 60%, 20% 40%)',
+    'polygon(50% 5%, 78% 38%, 68% 58%, 88% 68%, 58% 100%, 42% 100%, 12% 68%, 32% 58%, 22% 38%)',
+  ];
+  useEffect(() => { const t = setInterval(() => setFrame(f => 1 - f), 280); return () => clearInterval(t); }, []);
   return (
-    <motion.div 
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4 }}
-      className="card-duo p-6 flex flex-col shrink-0"
+    <div style={{
+      width: 32 * size, height: 42 * size,
+      background: 'linear-gradient(to top, #F97316, #FFCD75)',
+      clipPath: frames[frame],
+      imageRendering: 'pixelated', flexShrink: 0,
+    }} />
+  );
+};
+
+const ClockIcon = ({ size = 14, color = 'currentColor' }) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth={2.5} width={size} height={size} style={{ display: 'inline-block', verticalAlign: 'middle' }}>
+    <circle cx="12" cy="12" r="10" />
+    <polyline points="12 6 12 12 16 14" />
+  </svg>
+);
+
+const DAYS   = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+
+const StreaksPanel = ({ currentStreak = 0 }) => {
+  // For brand new user: all days inactive
+  const ACTIVE = Array(7).fill(false);
+
+  return (
+    <div
+      className="rounded-xl overflow-hidden"
+      style={{
+        background: 'rgba(18,10,45,0.75)',
+        border: '2px solid rgba(249,115,22,0.3)',
+        backdropFilter: 'blur(10px)',
+      }}
     >
-      <div className="w-full flex justify-between items-center mb-6">
-        <h3 className="text-[14px] font-extrabold text-[#c48cf5] tracking-widest uppercase">Your Streak</h3>
-        <div className="px-3 py-1.5 rounded-xl bg-[#0a0014] border-2 border-[#3d0080] shadow-[0_2px_0_#0f001a]">
-          <span className="text-[12px] text-[#c48cf5] font-bold">Best: 7 days</span>
+      {/* Header: streak count */}
+      <div className="flex items-center justify-center pt-5 pb-3">
+        <div className="flex items-center gap-3">
+          <PixelFlame />
+          <div>
+            <div className="font-black" style={{ fontSize: 52, color: '#F97316', lineHeight: 1, fontFamily: 'Inter, sans-serif', textShadow: '3px 3px 0 rgba(122,56,0,0.6)' }}>
+              {currentStreak}
+            </div>
+            <div className="text-xs font-semibold" style={{ color: '#94B0C2' }}>day streak</div>
+          </div>
         </div>
       </div>
-      
-      <div className="flex flex-col items-center justify-center w-full mb-8 relative">
-        <div className="w-24 h-24 bg-[#0a0014] rounded-full flex items-center justify-center mb-5 border-4 border-[#3d0080] shadow-[0_6px_0_#0f001a,0_0_30px_rgba(107,33,168,0.4)]">
-          <Flame size={48} className="text-[#39ff14] fill-[#39ff14] drop-shadow-[0_0_15px_rgba(57,255,20,0.8)]" />
-        </div>
-        <span className="text-6xl font-extrabold text-white leading-none mb-3 drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">{currentStreak}</span>
-        <span className="text-[14px] text-[#39ff14] font-extrabold tracking-wide drop-shadow-[0_0_5px_rgba(57,255,20,0.4)]">Keep it burning!</span>
-      </div>
-      
-      {/* 7 Day Tracker */}
-      <div className="w-full mb-8">
-        <div className="flex justify-between items-center w-full px-1">
-          {['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((d, i) => {
-            const isDone = i < 2;
-            const isCurrent = i === 2;
-            
-            return (
-              <div key={i} className="flex flex-col items-center gap-3">
-                <span className={`text-[12px] font-extrabold ${isDone || isCurrent ? 'text-white' : 'text-[#8b7eab]'}`}>{d}</span>
-                <div 
-                  className={`w-10 h-10 rounded-full flex items-center justify-center transition-all
-                    ${isDone ? 'bg-[#39ff14] text-[#052600] border-2 border-[#188000] shadow-[0_3px_0_#188000,0_0_15px_rgba(57,255,20,0.4)]' : ''}
-                    ${isCurrent ? 'border-2 border-[#39ff14] bg-[#0a0014] text-[#39ff14] shadow-[0_3px_0_#188000,0_0_10px_rgba(57,255,20,0.2)]' : ''}
-                    ${!isDone && !isCurrent ? 'bg-[#0a0014] border-2 border-[#3d0080] shadow-[0_2px_0_#0f001a]' : ''}
-                  `}
-                >
-                  {isDone && <Check size={18} strokeWidth={4} />}
-                </div>
-              </div>
-            );
-          })}
+
+      {/* Day tiles */}
+      <div className="px-5 mb-4">
+        <div className="flex justify-between items-center px-3 py-3 rounded-lg"
+          style={{ background: 'rgba(10,4,28,0.5)', border: '1px solid rgba(255,255,255,0.05)' }}>
+          {DAYS.map((day, i) => (
+            <div key={i} className="flex flex-col items-center gap-1.5">
+              <span className="text-[10px] font-bold" style={{ color: '#566C86' }}>{day}</span>
+              <div style={{
+                width: 20, height: 20,
+                border: `2px solid ${ACTIVE[i] ? '#F97316' : 'rgba(255,255,255,0.1)'}`,
+                background: ACTIVE[i] ? 'rgba(249,115,22,0.25)' : 'transparent',
+                imageRendering: 'pixelated',
+                borderRadius: 2,
+              }} />
+            </div>
+          ))}
         </div>
       </div>
-      
-      <button className="btn-duo-green w-full py-4 mt-auto text-[15px] flex justify-center items-center gap-2 shadow-[0_5px_0_#188000,0_0_20px_rgba(57,255,20,0.3)]">
-        Keep the flame alive <Flame size={18} className="fill-current" />
-      </button>
-    </motion.div>
+
+      {/* CTA */}
+      <div className="px-5 pb-5">
+        <button
+          className="w-full py-3 font-pixel text-[10px] rounded-lg pixel-btn uppercase"
+          style={{
+            background: '#F97316',
+            color: '#0A0A1A',
+            border: '2px solid #7A3800',
+            boxShadow: '4px 4px 0 #7A3800',
+          }}
+        >
+          &gt; START <Cursor />
+        </button>
+      </div>
+    </div>
   );
 };
 
