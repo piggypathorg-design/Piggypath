@@ -2,10 +2,10 @@ import React from 'react';
 import { Check, Lock } from 'lucide-react';
 
 const chests = [
-  { id: 1, title: 'WISDOM PACK', subtitle: '500', status: 'collected' },
-  { id: 2, title: 'RISK BUNDLE', subtitle: 'Risk Aware', status: 'collected' },
-  { id: 3, title: 'GOAL CRATE', subtitle: '+150 XP', status: 'collected' },
-  { id: 4, title: 'WEALTH LOCKER', subtitle: '1,200', status: 'ready', badge: 'OPEN' },
+  { id: 1, title: 'WISDOM PACK', subtitle: '500', status: 'ready', badge: 'OPEN' },
+  { id: 2, title: 'RISK BUNDLE', subtitle: 'Risk Aware', status: 'locked' },
+  { id: 3, title: 'GOAL CRATE', subtitle: '+150 XP', status: 'locked' },
+  { id: 4, title: 'WEALTH LOCKER', subtitle: '1,200', status: 'locked' },
   { id: 5, title: 'LEGEND VAULT', subtitle: 'Diamond Frame', status: 'locked' },
 ];
 
@@ -17,8 +17,8 @@ const MilestoneChestsCard = () => {
       <div className="flex flex-col md:flex-row md:items-center gap-4 mb-6">
         <h3 className="font-black text-xl tracking-tight text-[#18181B] dark:text-[#F4F4F5]">MILESTONE CHESTS</h3>
         <div className="flex items-center gap-2 font-['Space_Mono',monospace] text-xs font-bold">
-          <span className="bg-[#00E599] text-[#18181B] px-2 py-1">8 COLLECTED</span>
-          <span className="bg-[#F4F4F5] dark:bg-[#27272A] text-[#18181B] dark:text-[#F4F4F5] border border-gray-200 dark:border-gray-600 px-2 py-1 transition-colors">2 LEFT</span>
+          <span className="bg-[#00E599] text-[#18181B] px-2 py-1">0 COLLECTED</span>
+          <span className="bg-[#F4F4F5] dark:bg-[#27272A] text-[#18181B] dark:text-[#F4F4F5] border border-gray-200 dark:border-gray-600 px-2 py-1 transition-colors">10 LEFT</span>
         </div>
       </div>
 

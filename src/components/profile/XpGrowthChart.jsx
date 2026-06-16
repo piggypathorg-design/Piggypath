@@ -2,20 +2,20 @@ import React from 'react';
 import { TrendingUp } from 'lucide-react';
 
 const data = [
-  { date: 'Jun 04', xp: 1250 },
-  { date: 'Jun 05', xp: 1280 },
-  { date: 'Jun 06', xp: 1350 },
-  { date: 'Jun 07', xp: 1420 },
-  { date: 'Jun 08', xp: 1490 },
-  { date: 'Jun 09', xp: 1520 },
-  { date: 'Jun 10', xp: 1600 },
-  { date: 'Jun 11', xp: 1650 },
-  { date: 'Jun 12', xp: 1750 },
-  { date: 'Jun 13', xp: 1780 },
-  { date: 'Jun 14', xp: 1810 },
-  { date: 'Jun 15', xp: 1850 },
-  { date: 'Jun 16', xp: 1980 },
-  { date: 'Jun 17', xp: 2050 },
+  { date: 'Jun 04', xp: 0 },
+  { date: 'Jun 05', xp: 0 },
+  { date: 'Jun 06', xp: 0 },
+  { date: 'Jun 07', xp: 0 },
+  { date: 'Jun 08', xp: 0 },
+  { date: 'Jun 09', xp: 0 },
+  { date: 'Jun 10', xp: 0 },
+  { date: 'Jun 11', xp: 0 },
+  { date: 'Jun 12', xp: 0 },
+  { date: 'Jun 13', xp: 0 },
+  { date: 'Jun 14', xp: 0 },
+  { date: 'Jun 15', xp: 0 },
+  { date: 'Jun 16', xp: 0 },
+  { date: 'Jun 17', xp: 0 },
 ];
 
 const XpGrowthChart = () => {
@@ -45,7 +45,7 @@ const XpGrowthChart = () => {
           <h3 className="font-black text-sm tracking-widest uppercase">XP Growth • 14 Days</h3>
         </div>
         <span className="bg-[#00E599] text-[#18181B] font-['Space_Mono',monospace] font-bold text-[10px] px-2 py-1 tracking-widest">
-          +1138 XP
+          +0 XP
         </span>
       </div>
 

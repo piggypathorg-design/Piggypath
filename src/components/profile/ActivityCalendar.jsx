@@ -15,13 +15,8 @@ const ActivityCalendar = () => {
     for (let row = 0; row < 5; row++) { // 5 weeks (columns)
       const week = [];
       for (let day = 0; day < 7; day++) { // 7 days (rows)
-        // Weight toward 0 and 1
-        const r = Math.random();
-        let level = 0;
-        if (r > 0.4) level = 1;
-        if (r > 0.7) level = 2;
-        if (r > 0.85) level = 3;
-        if (r > 0.95) level = 4;
+        // Reset to 0
+        const level = 0;
         week.push(shades[level]);
       }
       grid.push(week);

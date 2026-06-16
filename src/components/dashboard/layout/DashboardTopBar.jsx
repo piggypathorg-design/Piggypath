@@ -3,14 +3,14 @@ import { MessageSquare, Mail, Trophy, Gem, Sun, Moon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const DashboardTopBar = ({ 
-  username = "Aria Quinn", 
-  handle = "ariaq", 
-  level = 12, 
-  xp = 2470, 
-  maxXp = 3000, 
-  messages = 3, 
-  mail = 2, 
-  gems = 14 
+  username = "New User", 
+  handle = "newuser", 
+  level = 1, 
+  xp = 0, 
+  maxXp = 100, 
+  messages = 1, 
+  mail = 0, 
+  gems = 0 
 }) => {
   const [isDark, setIsDark] = useState(false);
 

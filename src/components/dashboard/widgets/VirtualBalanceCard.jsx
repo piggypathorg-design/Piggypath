@@ -1,14 +1,14 @@
 import React from 'react';
 
 const VirtualBalanceCard = ({ 
-  balance = 12470, 
+  balance = 0, 
   currencySymbol = '₹', 
-  level = 12, 
-  title = "Budget Master", 
-  memberSince = "Feb 2026",
-  xpToNext = 530,
-  nextLevel = 13,
-  progressPercent = 75
+  level = 1, 
+  title = "Novice", 
+  memberSince = "Today",
+  xpToNext = 100,
+  nextLevel = 2,
+  progressPercent = 0
 }) => {
   return (
     <div className="w-full bg-[#18181B] border-[3px] border-transparent dark:border-[#F4F4F5] p-8 relative mb-6 shadow-[8px_8px_0_#00E599] transition-colors">

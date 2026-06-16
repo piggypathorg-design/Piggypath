@@ -2,10 +2,7 @@ import React from 'react';
 import { Mail } from 'lucide-react';
 
 const messages = [
-  { id: 1, name: 'Alex Rivera', text: 'Check out the new chest I unlocked!', time: '10M', isNew: true, color: '#8B5CF6' },
-  { id: 2, name: 'Sarah Chen', text: 'Want to race to level 15?', time: '1H', isNew: true, color: '#00E599' },
-  { id: 3, name: 'Ryan Park', text: 'That investing lesson was wild', time: '3H', isNew: true, color: '#8B5CF6' },
-  { id: 4, name: 'Mia Patel', text: 'Thanks for the streak revive!', time: '1D', isNew: false, color: '#8B5CF6' },
+  { id: 1, name: 'PiggyPath Team', text: 'Welcome to PiggyPath!', time: '1M', isNew: true, color: '#00E599' },
 ];
 
 const MessagesPanel = () => {
@@ -19,7 +16,7 @@ const MessagesPanel = () => {
           <h3 className="font-black text-lg tracking-tight uppercase">Messages</h3>
         </div>
         <span className="bg-[#EF4444] text-white font-black text-[10px] px-2 py-1 tracking-widest uppercase border-2 border-transparent dark:border-[#18181B]">
-          3 NEW
+          1 NEW
         </span>
       </div>
 

@@ -2,8 +2,8 @@ import React from 'react';
 import { Zap } from 'lucide-react';
 
 const journeys = [
-  { id: 1, number: '01', title: 'Money Basics', status: 'DONE' },
-  { id: 2, number: '02', title: 'Budgeting Essentials', status: 'DONE' },
+  { id: 1, number: '01', title: 'Money Basics', status: 'READY' },
+  { id: 2, number: '02', title: 'Budgeting Essentials', status: 'LOCKED' },
   { id: 7, number: '07', title: 'Wealth Building', status: 'LOCKED' },
 ];
 
@@ -33,6 +33,10 @@ const JourneyCollection = () => {
             {journey.status === 'DONE' ? (
               <span className="bg-[#00E599] text-[#18181B] border-2 border-[#18181B] dark:border-white font-black text-[10px] px-2 py-1 tracking-widest transition-colors">
                 DONE
+              </span>
+            ) : journey.status === 'READY' ? (
+              <span className="bg-[#FFC107] text-[#18181B] border-2 border-[#18181B] dark:border-white font-black text-[10px] px-2 py-1 tracking-widest transition-colors">
+                READY
               </span>
             ) : (
               <span className="bg-[#18181B] dark:bg-[#F4F4F5] text-white dark:text-[#18181B] border-2 border-[#18181B] dark:border-transparent font-black text-[10px] px-2 py-1 tracking-widest transition-colors">

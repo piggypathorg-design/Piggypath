@@ -1,12 +1,12 @@
 import React from 'react';
 
 const stats = [
-  { name: 'Budgeting', value: 82, angle: -90 },
-  { name: 'Saving', value: 74, angle: -30 },
-  { name: 'Investing', value: 56, angle: 30 },
-  { name: 'Credit', value: 48, angle: 90 },
-  { name: 'Risk Mgmt', value: 61, angle: 150 },
-  { name: 'Wealth', value: 70, angle: 210 },
+  { name: 'Budgeting', value: 10, angle: -90 },
+  { name: 'Saving', value: 10, angle: -30 },
+  { name: 'Investing', value: 10, angle: 30 },
+  { name: 'Credit', value: 10, angle: 90 },
+  { name: 'Risk Mgmt', value: 10, angle: 150 },
+  { name: 'Wealth', value: 10, angle: 210 },
 ];
 
 const FinancialSkillRadar = () => {
@@ -33,7 +33,7 @@ const FinancialSkillRadar = () => {
       <div className="flex justify-between items-center mb-8">
         <h3 className="font-black text-lg tracking-tight text-[#18181B] dark:text-[#F4F4F5] uppercase">Financial Skill Radar</h3>
         <span className="bg-[#00E599] text-[#18181B] font-black text-[10px] px-2 py-1 tracking-widest border-2 border-transparent dark:border-[#18181B]">
-          68% LITERACY
+          10% LITERACY
         </span>
       </div>
 

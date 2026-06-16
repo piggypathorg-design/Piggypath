@@ -5,30 +5,30 @@ const badgeCategories = [
   {
     title: 'LEARNING',
     badges: [
-      { id: 'b1', letter: 'B', color: '#FFC107', label: 'Budget Master', locked: false },
-      { id: 'b2', letter: 'S', color: '#8B5CF6', label: 'Saver', locked: false },
+      { id: 'b1', letter: 'B', color: '#FFC107', label: 'Budget Master', locked: true },
+      { id: 'b2', letter: 'S', color: '#8B5CF6', label: 'Saver', locked: true },
       { id: 'b3', letter: '', color: '#F4F4F5', label: 'Credit Wise', locked: true },
     ]
   },
   {
     title: 'ACHIEVEMENT',
     badges: [
-      { id: 'a1', letter: 'F', color: '#00E599', label: 'First Investor', locked: false, hasCrown: true },
-      { id: 'a2', letter: 'R', color: '#18181B', label: 'Risk Aware', locked: false, isDark: true },
-      { id: 'a3', letter: 'Q', color: '#FFC107', label: 'Quiz Champion', locked: false },
+      { id: 'a1', letter: 'F', color: '#00E599', label: 'First Investor', locked: true, hasCrown: false },
+      { id: 'a2', letter: 'R', color: '#18181B', label: 'Risk Aware', locked: true, isDark: true },
+      { id: 'a3', letter: 'Q', color: '#FFC107', label: 'Quiz Champion', locked: true },
       { id: 'a4', letter: '', color: '#F4F4F5', label: 'Stock Pro', locked: true },
     ]
   },
   {
     title: 'SPECIAL',
     badges: [
-      { id: 's1', letter: 'N', color: '#8B5CF6', label: 'New Year Speci...', locked: false },
+      { id: 's1', letter: 'N', color: '#8B5CF6', label: 'New Year Speci...', locked: true },
     ]
   },
   {
     title: 'MILESTONE',
     badges: [
-      { id: 'm1', letter: '7', color: '#EF4444', label: '7-Day Streak', locked: false },
+      { id: 'm1', letter: '7', color: '#EF4444', label: '7-Day Streak', locked: true },
       { id: 'm2', letter: '', color: '#F4F4F5', label: 'Wealth Builder', locked: true },
     ]
   }

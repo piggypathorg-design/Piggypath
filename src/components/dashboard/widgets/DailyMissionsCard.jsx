@@ -2,8 +2,8 @@ import React from 'react';
 import { Play, Check, Flame } from 'lucide-react';
 
 const missions = [
-  { id: 1, title: 'Complete a Lesson', reward: '+50 XP', icon: Play, iconColor: '#00E599', completed: true },
-  { id: 2, title: 'Save ₹500 Today', reward: '+100 XP', icon: Check, iconColor: '#8B5CF6', completed: false },
+  { id: 1, title: 'Complete a Lesson', reward: '+50 XP', icon: Play, iconColor: '#00E599', completed: false },
+  { id: 2, title: 'Save ₹1500 Today', reward: '+100 XP', icon: Check, iconColor: '#8B5CF6', completed: false },
   { id: 3, title: 'Maintain 3-Day Streak', reward: '+150 XP', icon: Flame, iconColor: '#EF4444', completed: false },
 ];
 

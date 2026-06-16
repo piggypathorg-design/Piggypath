@@ -1,16 +1,16 @@
 import React from 'react';
 
 const ProfileIdentityCard = ({ 
-  name = "Aria Quinn", 
-  handle = "ariaq", 
+  name = "New User", 
+  handle = "newuser", 
   id = "PP104583",
-  title = "BUDGET MASTER",
-  level = 12,
-  xp = 2470,
-  balance = 12470,
-  streak = 14,
-  longestStreak = 21,
-  friendsCount = 7
+  title = "NOVICE",
+  level = 1,
+  xp = 0,
+  balance = 0,
+  streak = 0,
+  longestStreak = 0,
+  friendsCount = 0
 }) => {
   return (
     <div className="w-full bg-[#8B5CF6] border-[3px] border-[#18181B] dark:border-white shadow-[8px_8px_0_#18181B] dark:shadow-[8px_8px_0_#F4F4F5] p-8 flex flex-col items-center relative mb-6 transition-colors">
