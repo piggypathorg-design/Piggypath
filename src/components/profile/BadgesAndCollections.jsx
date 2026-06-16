@@ -3,7 +3,7 @@ import {
   Lock, Crown, Flame, BookOpen, PiggyBank, Sun, Moon, Users, Target,
   Zap, Activity, Star, Trophy, Medal, Rocket, Shield, Heart,
   Book, Library, GraduationCap, Scroll, Lightbulb, Glasses, Microscope, PenTool, Award,
-  Coins, Banknote, Wallet, CreditCard, Vault, Safe, Landmark, Gem, Diamond,
+  Coins, Banknote, Wallet, CreditCard, Vault, ShieldCheck, Landmark, Gem, Diamond,
   Sunrise, Sunset, CloudSun, CloudMoon, CalendarDays, CalendarCheck, Clock, Hourglass,
   User, UserPlus, UserCheck, MessageCircle, Share2, Globe, Radio, Megaphone, Smartphone,
   Crosshair, CheckCircle, CheckSquare, Brain, Puzzle, Swords, Flag, Compass, Map
@@ -55,7 +55,7 @@ const badgeCategories = [
       { id: 'sa4', label: 'Nest Egg (₹20K)', locked: true, specificIcon: Wallet },
       { id: 'sa5', label: 'Safety Net (₹30K)', locked: true, specificIcon: CreditCard },
       { id: 'sa6', label: 'Big Goals (₹50K)', locked: true, specificIcon: Vault },
-      { id: 'sa7', label: 'Wealth Builder (₹100K)', locked: true, specificIcon: Safe },
+      { id: 'sa7', label: 'Wealth Builder (₹100K)', locked: true, specificIcon: ShieldCheck },
       { id: 'sa8', label: 'Half Mil (₹500K)', locked: true, specificIcon: Landmark },
       { id: 'sa9', label: 'Millionaire (₹1M)', locked: true, specificIcon: Gem },
       { id: 'sa10', label: 'Financial Freedom', locked: true, specificIcon: Diamond },
