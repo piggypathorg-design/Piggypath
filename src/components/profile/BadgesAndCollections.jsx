@@ -145,25 +145,28 @@ const BadgesAndCollections = () => {
                       {/* Badge Box */}
                       <div 
                         className={`
-                          w-16 h-16 border-[3px] flex items-center justify-center mb-2 transition-colors relative
-                          ${badge.locked ? 'border-gray-300 dark:border-gray-600 shadow-none' : 'border-[#18181B] dark:border-white shadow-[2px_2px_0_#18181B] dark:shadow-[2px_2px_0_#F4F4F5]'}
+                          w-16 h-16 rounded-full border-[3px] border-[#18181B] dark:border-[#F4F4F5] flex items-center justify-center mb-2 transition-colors relative overflow-hidden
+                          shadow-[3px_4px_0_#18181B] dark:shadow-[3px_4px_0_#F4F4F5] shrink-0
                         `}
                         style={{ 
-                          backgroundColor: badge.locked ? `${category.color}20` : category.color // 20 hex adds transparency to the category color
+                          backgroundColor: category.color 
                         }}
                       >
+                        {/* 3D Highlight */}
+                        <div className="absolute top-0 left-0 w-full h-1/2 bg-white opacity-25 rounded-t-full pointer-events-none"></div>
+
                         {/* Illustration */}
                         <Icon 
                           size={28} 
-                          color={badge.locked ? category.color : "#18181B"} 
-                          strokeWidth={badge.locked ? 2 : 2.5} 
-                          style={{ opacity: badge.locked ? 0.7 : 1 }}
+                          color="#18181B" 
+                          strokeWidth={2.5} 
+                          className="drop-shadow-sm z-10"
                         />
 
                         {/* Lock Overlay */}
                         {badge.locked && (
-                          <div className="absolute -bottom-1 -right-1 bg-white dark:bg-[#18181B] rounded-full p-0.5 border-[2px] border-gray-300 dark:border-gray-600">
-                            <Lock size={12} color="#A1A1AA" strokeWidth={3} />
+                          <div className="absolute inset-0 bg-black/30 flex items-center justify-center z-20 backdrop-blur-[0.5px]">
+                            <Lock size={20} color="#FFF" strokeWidth={3} className="drop-shadow-md" />
                           </div>
                         )}
                       </div>
