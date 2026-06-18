@@ -4,13 +4,13 @@ import { Flame } from 'lucide-react';
 const ActivityCalendar = () => {
   const daysOfWeek = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
   
-  // Mock data for a standard month (e.g., June 2026)
   const emptySlots = 1; // Starts on Monday
   const daysInMonth = 30;
   const today = 18; 
+  const accountCreatedDate = 15;
   
-  // New user state: only "today" is marked as active to simulate their first lesson
-  const activeDays = [18];
+  // New user state: active on 16th and 18th
+  const activeDays = [16, 18];
 
   return (
     <div className="w-full bg-white dark:bg-[#18181B] border-[3px] border-[#18181B] dark:border-white shadow-[6px_6px_0_#18181B] dark:shadow-[6px_6px_0_#F4F4F5] p-6 mb-6 transition-colors">
@@ -42,6 +42,9 @@ const ActivityCalendar = () => {
            const date = i + 1;
            const isToday = date === today;
            const isActive = activeDays.includes(date);
+           const isFuture = date > today;
+           const isBeforeAccount = date < accountCreatedDate;
+           const isMissed = !isFuture && !isActive && !isBeforeAccount && !isToday;
 
            return (
              <div 
@@ -49,10 +52,14 @@ const ActivityCalendar = () => {
                className={`
                  aspect-square flex flex-col items-center justify-center border-[2.5px] transition-colors relative rounded-md
                  ${isActive 
-                   ? 'bg-[#EF4444] border-[#18181B] dark:border-[#F4F4F5] text-white shadow-[2px_2px_0_#18181B] dark:shadow-[2px_2px_0_#F4F4F5]' 
-                   : isToday 
-                     ? 'bg-[#FFC107] border-[#18181B] dark:border-[#F4F4F5] text-[#18181B] shadow-[2px_2px_0_#18181B] dark:shadow-[2px_2px_0_#F4F4F5]' 
-                     : 'bg-[#F4F4F5] dark:bg-[#27272A] border-transparent text-[#A1A1AA]'}
+                   ? 'bg-[#FF9800] border-[#18181B] dark:border-[#F4F4F5] text-white shadow-[2px_2px_0_#18181B] dark:shadow-[2px_2px_0_#F4F4F5]' 
+                   : isMissed
+                     ? 'bg-transparent border-[#EF4444] text-[#EF4444]'
+                     : isToday 
+                       ? 'bg-[#FFC107] border-[#18181B] dark:border-[#F4F4F5] text-[#18181B] shadow-[2px_2px_0_#18181B] dark:shadow-[2px_2px_0_#F4F4F5]' 
+                       : isFuture
+                         ? 'bg-[#F4F4F5] dark:bg-[#27272A] border-transparent text-[#A1A1AA] opacity-50'
+                         : 'bg-white dark:bg-[#18181B] border-transparent text-[#A1A1AA]'}
                `}
              >
                <span className="font-black text-sm z-10">{date}</span>
@@ -67,7 +74,7 @@ const ActivityCalendar = () => {
                {/* Tiny flame indicator for active days */}
                {isActive && (
                  <div className="absolute -top-1.5 -right-1.5 bg-white dark:bg-[#18181B] rounded-full border-[1.5px] border-[#18181B] dark:border-white p-0.5 shadow-[1px_1px_0_#18181B] dark:shadow-[1px_1px_0_#F4F4F5]">
-                   <Flame size={10} color="#EF4444" fill="#EF4444" />
+                   <Flame size={10} color="#FF9800" fill="#FF9800" />
                  </div>
                )}
              </div>

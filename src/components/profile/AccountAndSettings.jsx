@@ -33,10 +33,10 @@ const AccountAndSettings = () => {
           return (
             <button 
               key={btn.id}
-              className="bg-[#F4F4F5] dark:bg-[#27272A] border-[3px] border-[#18181B] dark:border-white p-3 flex items-center gap-3 hover:bg-[#E4E4E7] dark:hover:bg-[#3F3F46] transition-colors shadow-[2px_2px_0_#18181B] dark:shadow-[2px_2px_0_#F4F4F5] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none text-[#18181B] dark:text-[#F4F4F5]"
+              className="bg-[#F4F4F5] dark:bg-[#27272A] border-[3px] border-[#18181B] dark:border-white p-4 flex items-center gap-3 hover:bg-[#E4E4E7] dark:hover:bg-[#3F3F46] transition-colors shadow-[2px_2px_0_#18181B] dark:shadow-[2px_2px_0_#F4F4F5] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none text-[#18181B] dark:text-[#F4F4F5]"
             >
-              <Icon size={16} strokeWidth={2.5} />
-              <span className="font-['Space_Mono',monospace] font-bold text-[10px]">
+              <Icon size={20} strokeWidth={2.5} />
+              <span className="font-['Space_Mono',monospace] font-bold text-xs">
                 {btn.label}
               </span>
             </button>
