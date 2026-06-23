@@ -8,6 +8,7 @@ import AvatarSetupPage from './pages/AvatarSetupPage';
 import LandingPage from './pages/landing/LandingPage';
 import SignInPage from './pages/SignInPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import TermsOfServicePage from './pages/TermsOfServicePage';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         {/* Landing Page */}
         <Route path="/" element={<LandingPage />} />
         <Route path="/privacy" element={<PrivacyPolicyPage />} />
+        <Route path="/terms" element={<TermsOfServicePage />} />
 
         {/* Auth */}
         <Route path="/signin" element={<SignInPage />} />

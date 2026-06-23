@@ -170,7 +170,7 @@ const ConversionSection = () => {
                 <li><a href="#" className="hover:text-[#00E599] hover:underline">About</a></li>
                 <li><a href="#" className="hover:text-[#00E599] hover:underline">Contact</a></li>
                 <li><Link to="/privacy" className="hover:text-[#00E599] hover:underline">Privacy Policy</Link></li>
-                <li><a href="#" className="hover:text-[#00E599] hover:underline">Terms of Service</a></li>
+                <li><Link to="/terms" className="hover:text-[#00E599] hover:underline">Terms of Service</Link></li>
               </ul>
             </div>
             <div>
