@@ -63,8 +63,8 @@ const HeroSection = () => {
             <span className="text-[#8B5CF6]">✦</span> PRE-LAUNCH <span className="mx-1">•</span> NOW BOARDING
           </div>
 
-          <h1 className="text-6xl md:text-8xl font-black leading-[1.1] tracking-tight">
-            Gamify <span className="text-[#00E599]">your way to </span> <br /> financial freedom.
+          <h1 className="text-5xl md:text-6xl lg:text-[76px] font-black leading-[1.1] tracking-tight">
+            Gamify <span className="text-[#00E599] whitespace-nowrap">your way to </span> <br /> financial freedom.
           </h1>
 
           <p className="text-xl md:text-2xl font-medium text-[#3F3F46] dark:text-[#A1A1AA] leading-relaxed max-w-xl">

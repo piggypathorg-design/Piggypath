@@ -49,7 +49,7 @@ const ConversionSection = () => {
       {/* 12. WHY PIGGYPATH? */}
       <section className="py-24 max-w-7xl mx-auto px-6 border-b-[3px] border-[#18181B]">
         <div className="text-center mb-16">
-          <h2 className="text-5xl font-black mb-4">Why We're Different</h2>
+          <h2 className="text-5xl font-black mb-4">Why We are Different</h2>
         </div>
         <div className="max-w-4xl mx-auto bg-white dark:bg-[#27272A] border-[4px] border-[#18181B] dark:border-white rounded-3xl shadow-[#18181B] dark:shadow-[#FFFFFF] overflow-hidden">
            <div className="grid grid-cols-2 border-b-[4px] border-[#18181B]">
@@ -112,9 +112,7 @@ const ConversionSection = () => {
               </button>
             </form>
 
-            <div className="inline-block bg-[#00E599] text-[#18181B] text-[10px] font-black uppercase px-2 py-0.5">
-               No spam. Unsubscribe anytime.
-            </div>
+
           </div>
         </div>
       </section>
