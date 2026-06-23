@@ -67,7 +67,7 @@ const HeroSection = () => {
           </h1>
 
           <p className="text-xl md:text-2xl font-medium text-[#3F3F46] dark:text-[#A1A1AA] leading-relaxed max-w-xl">
-            PiggyPath turns financial education into an interactive journey where you learn budgeting, investing, wealth building, and personal finance through gamified experiences—not boring videos or textbooks.
+            PiggyPath turns financial education into an interactive journey where you learn budgeting, investing, wealth building and personal finance through gamified experiences, not boring videos or textbooks.
           </p>
 
           <div className="flex flex-wrap gap-4 pt-4">
