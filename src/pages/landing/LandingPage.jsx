@@ -43,12 +43,9 @@ const NavBar = () => {
             {isDark ? <Moon size={20} /> : <Sun size={20} className="text-yellow-500" />}
           </button>
           <div className="hidden md:flex items-center gap-4">
-            <Link to="/signin" className="font-bold px-5 py-2.5 rounded-xl transition-transform hover:-translate-y-1 bg-white dark:bg-[#27272A] text-[#18181B] dark:text-white border-[3px] border-[#18181B] dark:border-white shadow-[4px_4px_0_#18181B] dark:shadow-[#FFFFFF]">
-              Sign in
-            </Link>
-            <Link to="/signup" className="flex items-center justify-center font-black px-6 py-2.5 rounded-xl transition-transform hover:-translate-y-1 bg-[#00E599] text-[#18181B] border-[3px] border-[#18181B] shadow-[4px_4px_0_#18181B] dark:shadow-[#FFFFFF]">
-              Sign up
-            </Link>
+            <button onClick={() => scrollTo('waitlist')} className="flex items-center justify-center font-black px-6 py-2.5 rounded-xl transition-transform hover:-translate-y-1 bg-[#00E599] text-[#18181B] border-[3px] border-[#18181B] shadow-[4px_4px_0_#18181B] dark:shadow-[#FFFFFF]">
+              Join Waitlist
+            </button>
           </div>
         </div>
       </div>
