@@ -234,11 +234,11 @@ const HeroSection = () => {
             className="flex flex-col gap-6 h-full"
           >
             <div className="inline-block px-4 py-1 border-[3px] border-[#18181B] dark:border-white rounded-lg bg-[#FF4444] text-white font-black uppercase text-sm w-max shadow-[#18181B] dark:shadow-[#FFFFFF]">The Problem</div>
-            <h2 className="text-4xl md:text-5xl font-black leading-tight">
+            <h2 className="text-4xl md:text-5xl font-black leading-tight lg:min-h-[110px]">
               Why Financial Education Is <span className="underline decoration-[#FF4444] decoration-4 underline-offset-4">Broken</span>
             </h2>
             <p className="text-lg font-medium text-[#3F3F46] dark:text-[#A1A1AA] leading-relaxed">
-              Most people learn finance too late. Schools rarely teach practical money skills, and most financial content is delivered through long videos, complicated jargon, or overwhelming textbooks.
+              Most people learn finance too late. Schools rarely teach practical money skills and most financial content is delivered through long videos, complicated jargon or overwhelming textbooks.
             </p>
             <div className="bg-white dark:bg-[#27272A] border-[3px] border-[#18181B] dark:border-white rounded-2xl p-6 shadow-[8px_8px_0_#18181B] dark:shadow-[#FFFFFF] flex flex-col gap-4 mt-auto">
                <div className="flex items-center gap-4 font-bold text-[#18181B] dark:text-[#F4F4F5]">
@@ -265,7 +265,7 @@ const HeroSection = () => {
             className="flex flex-col gap-6 h-full"
           >
             <div className="inline-block px-4 py-1 border-[3px] border-[#18181B] dark:border-white rounded-lg bg-[#00E599] text-[#18181B] dark:text-[#F4F4F5] font-black uppercase text-sm w-max shadow-[#18181B] dark:shadow-[#FFFFFF]">The Solution</div>
-            <h2 className="text-4xl md:text-5xl font-black leading-tight">
+            <h2 className="text-4xl md:text-5xl font-black leading-tight lg:min-h-[110px]">
               Meet <span className="bg-[#00E599] px-2 py-1 rounded-lg">PiggyPath</span>
             </h2>
             <p className="text-lg font-medium text-[#3F3F46] dark:text-[#A1A1AA] leading-relaxed">
