@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -63,7 +64,7 @@ const HeroSection = () => {
           </div>
 
           <h1 className="text-6xl md:text-8xl font-black leading-[1.1] tracking-tight">
-            The <span className="text-[#00E599]">Duolingo</span> <br /> for Finance.
+            Gamify <span className="text-[#00E599]">your way to </span> <br /> financial freedom.
           </h1>
 
           <p className="text-xl md:text-2xl font-medium text-[#3F3F46] dark:text-[#A1A1AA] leading-relaxed max-w-xl">

@@ -89,7 +89,7 @@ const FeaturesSection = () => {
                 bgHover: 'hover:bg-[#8B5CF6] dark:hover:bg-[#8B5CF6]', textHover: 'group-hover:text-white', descHover: 'group-hover:text-white/90' 
               },
               { 
-                icon: <Map size={36} />, title: 'Financial Freedom Journeys', desc: 'Progress through milestones tailored to your goals.', 
+                icon: <Map size={36} />, title: 'Financial Journeys', desc: 'Progress through milestones tailored to your goals.', 
                 bgHover: 'hover:bg-[#00E599] dark:hover:bg-[#00E599]', textHover: 'group-hover:text-[#18181B]', descHover: 'group-hover:text-[#18181B]/80' 
               },
               { 

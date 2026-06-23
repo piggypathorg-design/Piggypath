@@ -17,7 +17,7 @@ const JourneyPreviewSection = () => {
               Your Journey To <br/> <span className="text-[#8B5CF6]">Financial Freedom</span>
             </h2>
             <p className="text-xl font-medium text-[#3F3F46] dark:text-[#A1A1AA] max-w-2xl">
-              Every journey is broken into milestones and levels — designed to be completed in just a few minutes.
+              Every journey is broken into milestones and levels, designed to be completed in just a few minutes.
             </p>
           </div>
 
@@ -92,14 +92,14 @@ const JourneyPreviewSection = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="group bg-gray-100 dark:bg-[#27272A] border-[3px] border-[#18181B] dark:border-white rounded-3xl p-6 shadow-[#000] dark:shadow-[#FFFFFF] flex gap-6 items-center hover:bg-[#3F3F46] transition-colors"
+                className="group bg-gray-100 dark:bg-[#27272A] border-[3px] border-[#18181B] dark:border-white rounded-3xl p-6 shadow-[#000] dark:shadow-[#FFFFFF] flex gap-6 items-center hover:bg-gray-200 dark:hover:bg-[#3F3F46] transition-colors"
               >
                  <div className="w-20 h-20 shrink-0 rounded-2xl border-[3px] border-[#18181B] dark:border-white shadow-[#000] dark:shadow-[#FFFFFF] flex items-center justify-center text-4xl" style={{ background: game.color }}>
                    {game.icon}
                  </div>
                  <div>
-                   <h3 className="text-2xl font-black mb-2 group-hover:text-white transition-colors">{game.title}</h3>
-                   <p className="font-medium text-[#3F3F46] dark:text-[#A1A1AA] group-hover:text-gray-300 transition-colors">{game.desc}</p>
+                   <h3 className="text-2xl font-black mb-2 transition-colors">{game.title}</h3>
+                   <p className="font-medium text-[#3F3F46] dark:text-[#A1A1AA] transition-colors">{game.desc}</p>
                  </div>
               </motion.div>
             ))}
