@@ -39,7 +39,7 @@ const ConversionSection = () => {
               className="border-[3px] border-[#18181B] dark:border-white rounded-2xl p-6 shadow-[#18181B] dark:shadow-[#FFFFFF] hover:-translate-y-2 transition-transform"
               style={{ backgroundColor: c.bg, color: c.textWhite ? 'white' : '#18181B' }}
             >
-              <h3 className="text-2xl font-black mb-2">{c.title}</h3>
+              <h3 className="text-xl md:text-2xl lg:text-[20px] xl:text-2xl font-black mb-2 tracking-tight whitespace-nowrap">{c.title}</h3>
               <p className="font-bold">{c.desc}</p>
             </motion.div>
           ))}
