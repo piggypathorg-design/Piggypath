@@ -168,7 +168,7 @@ const JourneyPreviewSection = () => {
 
         {/* 10. REWARDS & PROGRESSION */}
         <div className="text-center">
-          <h2 className="text-5xl font-black mb-6 text-[#FFCD75]">Progress That Feels Rewarding</h2>
+          <h2 className="text-5xl font-black mb-6 text-[#FCD34D]">Progress That Feels Rewarding</h2>
           <p className="text-xl font-medium text-[#3F3F46] dark:text-[#A1A1AA] max-w-2xl mx-auto mb-16">
             Every lesson, challenge and game moves you closer to new rewards and milestones.
           </p>
