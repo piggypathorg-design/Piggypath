@@ -3,6 +3,7 @@ import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import AppShell from './components/layout/AppShell';
 import DashboardPage from './pages/DashboardPage';
 import ProfilePage from './pages/ProfilePage';
+import PathPage from './pages/PathPage';
 import AvatarSetupPage from './pages/AvatarSetupPage';
 import LandingPage from './pages/landing/LandingPage';
 import SignInPage from './pages/SignInPage';
@@ -25,7 +26,7 @@ function App() {
           <Route index element={<DashboardPage />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="games" element={<div className="text-center mt-20 text-xl font-bold text-gray-400">Games Module Coming Soon</div>} />
-          <Route path="path" element={<div className="text-center mt-20 text-xl font-bold text-gray-400">Path Tracker Coming Soon</div>} />
+          <Route path="path" element={<PathPage />} />
           <Route path="stocks" element={<div className="text-center mt-20 text-xl font-bold text-gray-400">Stocks Module Coming Soon</div>} />
         </Route>
         
