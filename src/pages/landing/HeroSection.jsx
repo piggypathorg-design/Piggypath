@@ -105,8 +105,8 @@ const HeroSection = () => {
         >
           {/* Header */}
           <div className="flex justify-between items-start mb-8">
-            <div className="flex items-center gap-4">
-              <div className="w-20 h-20 rounded-2xl bg-[#8B5CF6] border-[3px] border-[#18181B] dark:border-white flex items-center justify-center font-black text-3xl text-white shadow-[#18181B] dark:shadow-[#FFFFFF]">
+            <div className="flex items-stretch gap-4">
+              <div className="aspect-square rounded-2xl bg-[#8B5CF6] border-[3px] border-[#18181B] dark:border-white flex items-center justify-center font-black text-3xl text-white shadow-[#18181B] dark:shadow-[#FFFFFF]">
                 PP
               </div>
               <div>
@@ -116,7 +116,7 @@ const HeroSection = () => {
             </div>
             
             <div className="flex flex-col items-end gap-3">
-               <div className="w-12 h-12 rounded-full bg-[#00E599] border-[3px] border-[#18181B] dark:border-white flex items-center justify-center shadow-[#18181B] dark:shadow-[#FFFFFF] relative -top-4 -right-4 font-black text-xl hover:scale-110 transition-transform cursor-pointer mb-4">
+               <div className="w-12 h-12 rounded-full bg-[#00E599] border-[3px] border-[#18181B] dark:border-white flex items-center justify-center shadow-[#18181B] dark:shadow-[#FFFFFF] relative top-2 right-2 font-black text-xl hover:scale-110 transition-transform cursor-pointer mb-4">
                  $
                </div>
                <div className="px-4 py-2 rounded-xl bg-white dark:bg-[#27272A] border-[3px] border-[#18181B] dark:border-white shadow-[#18181B] dark:shadow-[#FFFFFF] font-bold text-xs flex items-center gap-2">
