@@ -14,7 +14,7 @@ const FeaturesSection = () => {
         {/* HOW IT WORKS */}
         <div className="mb-32">
           <div className="text-center mb-16">
-            <h2 className="text-5xl md:text-6xl font-black mb-4">Learn → Play → Apply</h2>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-4">Learn → Play → Apply</h2>
             <p className="text-xl font-medium text-[#3F3F46] dark:text-[#A1A1AA] max-w-2xl mx-auto">
               A proven loop to build real financial confidence.
             </p>
@@ -79,7 +79,7 @@ const FeaturesSection = () => {
         {/* CORE FEATURES */}
         <div>
           <div className="text-center mb-16">
-            <h2 className="text-5xl font-black mb-4">Everything You Need To Build<br/> Financial Confidence</h2>
+            <h2 className="text-4xl md:text-5xl font-black mb-4">Everything You Need To Build<br/> Financial Confidence</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

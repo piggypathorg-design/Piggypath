@@ -42,7 +42,7 @@ const HeroSection = () => {
       {/* Background dot pattern */}
       <div className="absolute inset-0 z-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#18181B 2px, transparent 2px)', backgroundSize: '24px 24px' }} />
       
-      <div className="max-w-7xl mx-auto px-6 pt-24 pb-20 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:items-start items-center">
+      <div className="max-w-7xl mx-auto px-6 pt-16 md:pt-24 pb-12 md:pb-20 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 lg:items-start items-center">
         
         {/* Decorative Abstract Star Illustration */}
         <motion.svg 
@@ -63,11 +63,11 @@ const HeroSection = () => {
             <span className="text-[#8B5CF6]">✦</span> PRE-LAUNCH <span className="mx-1">•</span> NOW BOARDING
           </div>
 
-          <h1 className="text-5xl md:text-6xl lg:text-[76px] font-black leading-[1.1] tracking-tight">
+          <h1 className="text-4xl md:text-6xl lg:text-[76px] font-black leading-[1.1] tracking-tight">
             Gamify <span className="text-[#00E599] whitespace-nowrap">your way to </span> <br /> financial freedom.
           </h1>
 
-          <p className="text-xl md:text-2xl font-medium text-[#3F3F46] dark:text-[#A1A1AA] leading-relaxed max-w-xl">
+          <p className="text-lg md:text-2xl font-medium text-[#3F3F46] dark:text-[#A1A1AA] leading-relaxed max-w-xl">
             PiggyPath turns financial education into an interactive journey where you learn budgeting, investing, wealth building and personal finance through gamified experiences, not boring videos or textbooks.
           </p>
 
@@ -216,8 +216,8 @@ const HeroSection = () => {
       </div>
 
       {/* ────────────────────── PROBLEM & SOLUTION SECTION ────────────────────── */}
-      <div className="max-w-7xl mx-auto px-6 py-24 border-t-[3px] border-[#18181B] mt-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+      <div className="max-w-7xl mx-auto px-6 py-16 md:py-24 border-t-[3px] border-[#18181B] mt-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
           
           {/* PROBLEM */}
           <motion.div 
@@ -227,7 +227,7 @@ const HeroSection = () => {
             className="flex flex-col gap-6 h-full"
           >
             <div className="inline-block px-4 py-1 border-[3px] border-[#18181B] dark:border-white rounded-lg bg-[#FF4444] text-white font-black uppercase text-sm w-max shadow-[#18181B] dark:shadow-[#FFFFFF]">The Problem</div>
-            <h2 className="text-4xl md:text-5xl font-black leading-tight lg:min-h-[110px]">
+            <h2 className="text-3xl md:text-5xl font-black leading-tight lg:min-h-[110px]">
               Why Financial Education Is <span className="underline decoration-[#FF4444] decoration-4 underline-offset-4">Broken</span>
             </h2>
             <p className="text-lg font-medium text-[#3F3F46] dark:text-[#A1A1AA] leading-relaxed">
@@ -258,7 +258,7 @@ const HeroSection = () => {
             className="flex flex-col gap-6 h-full"
           >
             <div className="inline-block px-4 py-1 border-[3px] border-[#18181B] dark:border-white rounded-lg bg-[#00E599] text-[#18181B] dark:text-[#F4F4F5] font-black uppercase text-sm w-max shadow-[#18181B] dark:shadow-[#FFFFFF]">The Solution</div>
-            <h2 className="text-4xl md:text-5xl font-black leading-tight lg:min-h-[110px]">
+            <h2 className="text-3xl md:text-5xl font-black leading-tight lg:min-h-[110px]">
               Meet <span className="bg-[#00E599] px-2 py-1 rounded-lg">PiggyPath</span>
             </h2>
             <p className="text-lg font-medium text-[#3F3F46] dark:text-[#A1A1AA] leading-relaxed">

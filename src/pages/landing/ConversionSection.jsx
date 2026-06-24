@@ -44,7 +44,7 @@ const ConversionSection = () => {
       {/* 11. WHO IS IT FOR? */}
       <section className="py-24 max-w-7xl mx-auto px-6 border-b-[3px] border-[#18181B]">
         <div className="text-center mb-16">
-          <h2 className="text-5xl font-black mb-4">Built For The Next Generation</h2>
+          <h2 className="text-4xl md:text-5xl font-black mb-4">Built For The Next Generation</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
@@ -72,12 +72,12 @@ const ConversionSection = () => {
       {/* 12. WHY PIGGYPATH? */}
       <section className="py-24 max-w-7xl mx-auto px-6 border-b-[3px] border-[#18181B]">
         <div className="text-center mb-16">
-          <h2 className="text-5xl font-black mb-4">Why We are Different</h2>
+          <h2 className="text-4xl md:text-5xl font-black mb-4">Why We are Different</h2>
         </div>
         <div className="max-w-4xl mx-auto bg-white dark:bg-[#27272A] border-[4px] border-[#18181B] dark:border-white rounded-3xl shadow-[#18181B] dark:shadow-[#FFFFFF] overflow-hidden">
            <div className="grid grid-cols-2 border-b-[4px] border-[#18181B]">
-              <div className="p-6 bg-[#A1A1AA] text-white font-black text-2xl text-center border-r-[4px] border-[#18181B]">Traditional Courses</div>
-              <div className="p-6 bg-[#00E599] text-[#18181B] dark:text-[#F4F4F5] font-black text-2xl text-center">PiggyPath</div>
+              <div className="p-4 md:p-6 bg-[#A1A1AA] text-white font-black text-xl md:text-2xl text-center border-r-[4px] border-[#18181B]">Traditional Courses</div>
+              <div className="p-4 md:p-6 bg-[#00E599] text-[#18181B] dark:text-[#F4F4F5] font-black text-xl md:text-2xl text-center">PiggyPath</div>
            </div>
            {[
              { t: 'Long Videos', p: 'Interactive Experiences' },
@@ -87,11 +87,11 @@ const ConversionSection = () => {
              { t: 'One-Time Consumption', p: 'Continuous Progress' },
            ].map((row, i) => (
              <div key={i} className={`grid grid-cols-2 ${i !== 4 ? 'border-b-[3px] border-[#18181B]' : ''}`}>
-                <div className="p-4 text-center font-bold text-[#71717A] border-r-[3px] border-[#18181B] flex items-center justify-center gap-3">
-                   <div className="bg-[#FF4444] p-1 border-[2px] border-[#18181B] shadow-[2px_2px_0_#18181B] rounded-md"><X size={14} color="#FFF" strokeWidth={4} /></div> {row.t}
+                <div className="p-3 md:p-4 text-center font-bold text-[#71717A] border-r-[3px] border-[#18181B] flex items-center justify-center gap-2 md:gap-3 text-sm md:text-base">
+                   <div className="bg-[#FF4444] p-1 border-[2px] border-[#18181B] shadow-[2px_2px_0_#18181B] rounded-md hidden sm:block"><X size={14} color="#FFF" strokeWidth={4} /></div> {row.t}
                 </div>
-                <div className="p-4 text-center font-black flex items-center justify-center gap-3">
-                   <div className="bg-[#00E599] p-1 border-[2px] border-[#18181B] shadow-[2px_2px_0_#18181B] rounded-md"><Check size={14} color="#18181B" strokeWidth={4} /></div> {row.p}
+                <div className="p-3 md:p-4 text-center font-black flex items-center justify-center gap-2 md:gap-3 text-sm md:text-base">
+                   <div className="bg-[#00E599] p-1 border-[2px] border-[#18181B] shadow-[2px_2px_0_#18181B] rounded-md hidden sm:block"><Check size={14} color="#18181B" strokeWidth={4} /></div> {row.p}
                 </div>
              </div>
            ))}
@@ -100,7 +100,7 @@ const ConversionSection = () => {
 
       {/* 13. WAITLIST */}
       <section id="waitlist" className="py-32 bg-white dark:bg-[#18181B] border-b-[3px] border-[#18181B] dark:border-white relative flex justify-center items-center px-6">
-        <div className="relative w-full max-w-4xl bg-white dark:bg-[#27272A] border-[4px] border-[#18181B] dark:border-white rounded-2xl shadow-[8px_8px_0_#18181B] dark:shadow-[#FFFFFF] overflow-hidden p-10 md:p-16 text-center">
+        <div className="relative w-full max-w-4xl bg-white dark:bg-[#27272A] border-[4px] border-[#18181B] dark:border-white rounded-2xl shadow-[8px_8px_0_#18181B] dark:shadow-[#FFFFFF] overflow-hidden p-6 md:p-16 text-center">
           
           {/* Decorative Circles */}
           <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#8B5CF6] border-[4px] border-[#18181B] dark:border-white rounded-full"></div>
@@ -111,7 +111,7 @@ const ConversionSection = () => {
               LIMITED EARLY ACCESS
             </div>
             
-            <h2 className="text-4xl md:text-5xl lg:text-[52px] font-black mb-6 leading-[1.3] uppercase text-[#18181B] dark:text-[#F4F4F5] max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-5xl lg:text-[52px] font-black mb-6 leading-[1.3] uppercase text-[#18181B] dark:text-[#F4F4F5] max-w-3xl mx-auto">
               Be Among The First To <br className="hidden md:block" /> Experience <span className="bg-[#00E599] text-[#18181B] px-3 py-1 inline-block mt-2 md:mt-0">PIGGYPATH.</span>
             </h2>
             
@@ -148,7 +148,7 @@ const ConversionSection = () => {
       {/* 15. FAQ SECTION */}
       <section id="faq" className="py-24 max-w-4xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-5xl font-black mb-4">Frequently Asked Questions</h2>
+          <h2 className="text-4xl md:text-5xl font-black mb-4">Frequently Asked Questions</h2>
         </div>
         <div className="flex flex-col gap-4">
           {faqs.map((faq, i) => (

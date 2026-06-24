@@ -13,8 +13,8 @@ const JourneyPreviewSection = () => {
             <div className="inline-block px-4 py-1.5 border-[3px] border-[#18181B] dark:border-white rounded-full bg-white dark:bg-[#27272A] text-[#18181B] dark:text-[#F4F4F5] font-black uppercase text-xs mb-6 shadow-[#18181B] dark:shadow-[#FFFFFF]">
               Your Roadmap
             </div>
-            <h2 className="text-5xl md:text-6xl font-black mb-6 leading-tight uppercase">
-              Your Journey To <br/> <span className="text-[#8B5CF6]">Financial Freedom</span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight uppercase">
+              Your Journey To <br className="hidden md:block" /> <span className="text-[#8B5CF6]">Financial Freedom</span>
             </h2>
             <p className="text-xl font-medium text-[#3F3F46] dark:text-[#A1A1AA] max-w-2xl">
               Every journey is broken into milestones and levels,
@@ -79,7 +79,7 @@ const JourneyPreviewSection = () => {
         {/* 8. GAMES & SIMULATIONS */}
         <div>
           <div className="text-center mb-16">
-            <h2 className="text-5xl font-black mb-4">Learn Through Play</h2>
+            <h2 className="text-4xl md:text-5xl font-black mb-4">Learn Through Play</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
@@ -154,7 +154,7 @@ const JourneyPreviewSection = () => {
              </motion.div>
           </div>
           <div className="order-1 lg:order-2">
-            <h2 className="text-5xl font-black mb-6">Practice Before You Invest</h2>
+            <h2 className="text-4xl md:text-5xl font-black mb-6">Practice Before You Invest</h2>
             <p className="text-xl font-medium text-[#3F3F46] dark:text-[#A1A1AA] mb-8">
               Apply everything you have learned in a risk-free virtual market. Trade stocks, build portfolios, and test strategies.
             </p>
@@ -168,7 +168,7 @@ const JourneyPreviewSection = () => {
 
         {/* 10. REWARDS & PROGRESSION */}
         <div className="text-center">
-          <h2 className="text-5xl font-black mb-6"><span className="bg-[#00E599] text-[#18181B] px-3 py-1 inline-block">Progress That Feels Rewarding</span></h2>
+          <h2 className="text-3xl md:text-5xl font-black mb-6"><span className="bg-[#00E599] text-[#18181B] px-3 py-1 inline-block">Progress That Feels Rewarding</span></h2>
           <p className="text-xl font-medium text-[#3F3F46] dark:text-[#A1A1AA] max-w-2xl mx-auto mb-16">
             Every lesson, challenge and game moves you closer to new rewards and milestones.
           </p>
