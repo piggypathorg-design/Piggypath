@@ -64,7 +64,7 @@ const HeroSection = () => {
           </div>
 
           <h1 className="text-4xl md:text-6xl lg:text-[60px] xl:text-[64px] font-black leading-[1.1] tracking-tight">
-            Gamify <span className="text-[#00E599] whitespace-nowrap">your way to </span> <br /> financial freedom.
+            Gamify <span className="text-[#00E599]">your way to </span> <br className="hidden md:block" /> financial freedom.
           </h1>
 
           <p className="text-lg md:text-2xl font-medium text-[#3F3F46] dark:text-[#A1A1AA] leading-relaxed max-w-xl">
@@ -134,29 +134,29 @@ const HeroSection = () => {
           </div>
 
           {/* Stats Cards */}
-          <div className="grid grid-cols-3 gap-4 mb-8">
-            <div className="bg-[#00E599] border-[3px] border-[#18181B] dark:border-white rounded-2xl p-4 shadow-[#18181B] dark:shadow-[#FFFFFF] hover:-translate-y-1 transition-transform">
-               <div className="flex justify-between items-start mb-2">
-                 <Coins size={20} strokeWidth={2.5} color="#18181B" />
-                 <span className="text-[10px] font-black tracking-widest text-[#18181B] dark:text-[#F4F4F5]/70">COINS</span>
+          <div className="grid grid-cols-3 gap-2 md:gap-4 mb-8">
+            <div className="bg-[#00E599] border-[3px] border-[#18181B] dark:border-white rounded-2xl p-2 md:p-4 shadow-[#18181B] dark:shadow-[#FFFFFF] hover:-translate-y-1 transition-transform">
+               <div className="flex flex-col sm:flex-row justify-between items-start mb-2">
+                 <Coins size={16} className="md:w-5 md:h-5" strokeWidth={2.5} color="#18181B" />
+                 <span className="text-[8px] md:text-[10px] font-black tracking-widest text-[#18181B] dark:text-[#F4F4F5]/70 mt-1 sm:mt-0">COINS</span>
                </div>
-               <div className="text-2xl font-black">2,480</div>
+               <div className="text-lg md:text-2xl font-black">2,480</div>
             </div>
-            <div className="bg-[#8B5CF6] text-white border-[3px] border-[#18181B] dark:border-white rounded-2xl p-4 shadow-[#18181B] dark:shadow-[#FFFFFF] hover:-translate-y-1 transition-transform">
-               <div className="flex justify-between items-start mb-2">
-                 <Award size={20} strokeWidth={2.5} color="#FFF" />
-                 <span className="text-[10px] font-black tracking-widest text-white/70">BADGES</span>
+            <div className="bg-[#8B5CF6] text-white border-[3px] border-[#18181B] dark:border-white rounded-2xl p-2 md:p-4 shadow-[#18181B] dark:shadow-[#FFFFFF] hover:-translate-y-1 transition-transform">
+               <div className="flex flex-col sm:flex-row justify-between items-start mb-2">
+                 <Award size={16} className="md:w-5 md:h-5" strokeWidth={2.5} color="#FFF" />
+                 <span className="text-[8px] md:text-[10px] font-black tracking-widest text-white/70 mt-1 sm:mt-0">BADGES</span>
                </div>
-               <div className="text-2xl font-black">14</div>
+               <div className="text-lg md:text-2xl font-black">14</div>
             </div>
-            <div className="bg-white dark:bg-[#27272A] border-[3px] border-[#18181B] dark:border-white rounded-2xl p-4 shadow-[#18181B] dark:shadow-[#FFFFFF] hover:-translate-y-1 transition-transform">
-               <div className="flex justify-between items-start mb-2">
-                 <svg viewBox="0 0 24 24" fill="#EF4444" stroke="#18181B" strokeWidth={2.5} width={20} height={20}>
+            <div className="bg-white dark:bg-[#27272A] border-[3px] border-[#18181B] dark:border-white rounded-2xl p-2 md:p-4 shadow-[#18181B] dark:shadow-[#FFFFFF] hover:-translate-y-1 transition-transform">
+               <div className="flex flex-col sm:flex-row justify-between items-start mb-2">
+                 <svg viewBox="0 0 24 24" fill="#EF4444" stroke="#18181B" strokeWidth={2.5} className="w-4 h-4 md:w-5 md:h-5">
                     <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                  </svg>
-                 <span className="text-[10px] font-black tracking-widest text-[#18181B] dark:text-[#F4F4F5]/50">HEARTS</span>
+                 <span className="text-[8px] md:text-[10px] font-black tracking-widest text-[#18181B] dark:text-[#F4F4F5]/50 mt-1 sm:mt-0">HEARTS</span>
                </div>
-               <div className="text-2xl font-black">5</div>
+               <div className="text-lg md:text-2xl font-black">5</div>
             </div>
           </div>
 
@@ -179,14 +179,14 @@ const HeroSection = () => {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 1 }}
-            className="absolute -bottom-10 left-8 right-8 bg-[#F4F4F5] dark:bg-[#18181B] border-[3px] border-[#18181B] dark:border-white p-4 rounded-xl shadow-[#18181B] dark:shadow-[#FFFFFF] flex items-center justify-between z-10"
+            className="absolute -bottom-6 md:-bottom-10 left-4 right-4 md:left-8 md:right-8 bg-[#F4F4F5] dark:bg-[#18181B] border-[3px] border-[#18181B] dark:border-white p-3 md:p-4 rounded-xl shadow-[#18181B] dark:shadow-[#FFFFFF] flex items-center justify-between z-10"
           >
             <div>
-              <div className="font-black text-sm">Continue Lesson</div>
-              <div className="font-bold text-xs text-[#71717A]">Accounting • 3 min left</div>
+              <div className="font-black text-xs md:text-sm">Continue Lesson</div>
+              <div className="font-bold text-[10px] md:text-xs text-[#71717A]">Accounting • 3 min left</div>
             </div>
-            <div className="w-10 h-10 bg-[#00E599] border-2 border-[#18181B] dark:border-white rounded-lg shadow-[#18181B] dark:shadow-[#FFFFFF] flex items-center justify-center cursor-pointer hover:bg-white dark:bg-[#27272A] transition-colors">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#18181B" strokeWidth={3} width={18} height={18}>
+            <div className="w-8 h-8 md:w-10 md:h-10 bg-[#00E599] border-2 border-[#18181B] dark:border-white rounded-lg shadow-[#18181B] dark:shadow-[#FFFFFF] flex items-center justify-center cursor-pointer hover:bg-white dark:bg-[#27272A] transition-colors">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#18181B" strokeWidth={3} className="w-4 h-4 md:w-5 md:h-5">
                  <line x1="5" y1="12" x2="19" y2="12" />
                  <polyline points="12 5 19 12 12 19" />
               </svg>
@@ -198,10 +198,10 @@ const HeroSection = () => {
              initial={{ y: 50, opacity: 0, rotate: 10 }}
              animate={{ y: 0, opacity: 1, rotate: -5 }}
              transition={{ delay: 2, type: 'spring', bounce: 0.5 }}
-             className="absolute -bottom-20 -right-8 bg-white dark:bg-[#27272A] border-[3px] border-[#18181B] dark:border-white px-6 py-3 rounded-xl shadow-[#18181B] dark:shadow-[#FFFFFF] flex items-center gap-3 z-20"
+             className="absolute -bottom-20 right-0 md:-right-8 bg-white dark:bg-[#27272A] border-[3px] border-[#18181B] dark:border-white px-4 md:px-6 py-2 md:py-3 rounded-xl shadow-[#18181B] dark:shadow-[#FFFFFF] flex items-center gap-2 md:gap-3 z-20 scale-90 md:scale-100 origin-bottom-right"
           >
-             <TrophyIcon size={24} color="#8B5CF6" />
-             <span className="font-black text-sm">Achievement Unlocked</span>
+             <TrophyIcon className="w-5 h-5 md:w-6 md:h-6" color="#8B5CF6" />
+             <span className="font-black text-xs md:text-sm whitespace-nowrap">Achievement Unlocked</span>
           </motion.div>
         </motion.div>
         </div>
