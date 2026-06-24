@@ -93,7 +93,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, x: 100, rotate: 5 }}
             animate={{ opacity: 1, x: 0, rotate: 0 }}
             transition={{ duration: 0.8, type: 'spring' }}
-            className="relative w-full aspect-square md:aspect-[4/3] rounded-3xl bg-white dark:bg-[#27272A] border-[4px] border-[#18181B] dark:border-white shadow-[12px_12px_0_#18181B] dark:shadow-[#FFFFFF] p-6 md:p-8 lg:p-10"
+            className="relative w-full h-auto md:aspect-[4/3] rounded-3xl bg-white dark:bg-[#27272A] border-[4px] border-[#18181B] dark:border-white shadow-[12px_12px_0_#18181B] dark:shadow-[#FFFFFF] p-6 md:p-8 lg:p-10"
           >
           {/* Header */}
           <div className="flex justify-between items-start mb-8">
@@ -167,8 +167,8 @@ const HeroSection = () => {
                <div className="absolute top-1/2 left-0 w-full h-[3px] bg-[#E4E4E7] -z-10 -translate-y-1/2"></div>
                <div className="absolute top-1/2 left-0 w-2/3 h-[3px] bg-[#00E599] -z-10 -translate-y-1/2"></div>
                {[1,2,3,4,5].map(step => (
-                 <div key={step} className={`w-10 h-10 rounded-full border-[3px] border-[#18181B] dark:border-white flex items-center justify-center font-black text-sm shadow-[#18181B] dark:shadow-[#FFFFFF] ${step <= 3 ? 'bg-[#00E599]' : step === 4 ? 'bg-[#8B5CF6] text-white scale-125' : 'bg-white dark:bg-[#27272A] text-[#A1A1AA] border-[#A1A1AA] shadow-none'}`}>
-                   {step <= 3 ? <svg viewBox="0 0 24 24" fill="none" stroke="#18181B" strokeWidth={3} width={16} height={16}><polyline points="20 6 9 17 4 12"/></svg> : step}
+                 <div key={step} className={`shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-full border-[3px] border-[#18181B] dark:border-white flex items-center justify-center font-black text-xs md:text-sm shadow-[#18181B] dark:shadow-[#FFFFFF] ${step <= 3 ? 'bg-[#00E599]' : step === 4 ? 'bg-[#8B5CF6] text-white scale-110 md:scale-125' : 'bg-white dark:bg-[#27272A] text-[#A1A1AA] border-[#A1A1AA] shadow-none'}`}>
+                   {step <= 3 ? <svg viewBox="0 0 24 24" fill="none" stroke="#18181B" strokeWidth={3} className="w-3 h-3 md:w-4 md:h-4"><polyline points="20 6 9 17 4 12"/></svg> : step}
                  </div>
                ))}
             </div>

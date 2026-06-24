@@ -76,8 +76,8 @@ const ConversionSection = () => {
         </div>
         <div className="max-w-4xl mx-auto bg-white dark:bg-[#27272A] border-[4px] border-[#18181B] dark:border-white rounded-3xl shadow-[#18181B] dark:shadow-[#FFFFFF] overflow-hidden">
            <div className="grid grid-cols-2 border-b-[4px] border-[#18181B]">
-              <div className="p-4 md:p-6 bg-[#A1A1AA] text-white font-black text-xl md:text-2xl text-center border-r-[4px] border-[#18181B]">Traditional Courses</div>
-              <div className="p-4 md:p-6 bg-[#00E599] text-[#18181B] dark:text-[#F4F4F5] font-black text-xl md:text-2xl text-center">PiggyPath</div>
+              <div className="p-3 md:p-6 bg-[#A1A1AA] text-white font-black text-lg md:text-2xl text-center border-r-[4px] border-[#18181B]">Traditional Courses</div>
+              <div className="p-3 md:p-6 bg-[#00E599] text-[#18181B] dark:text-[#F4F4F5] font-black text-lg md:text-2xl text-center">PiggyPath</div>
            </div>
            {[
              { t: 'Long Videos', p: 'Interactive Experiences' },
@@ -86,14 +86,14 @@ const ConversionSection = () => {
              { t: 'Boring Content', p: 'Gamified Content' },
              { t: 'One-Time Consumption', p: 'Continuous Progress' },
            ].map((row, i) => (
-             <div key={i} className={`grid grid-cols-2 ${i !== 4 ? 'border-b-[3px] border-[#18181B]' : ''}`}>
-                <div className="p-3 md:p-4 text-center font-bold text-[#71717A] border-r-[3px] border-[#18181B] flex items-center justify-center gap-2 md:gap-3 text-sm md:text-base">
-                   <div className="bg-[#FF4444] p-1 border-[2px] border-[#18181B] shadow-[2px_2px_0_#18181B] rounded-md hidden sm:block"><X size={14} color="#FFF" strokeWidth={4} /></div> {row.t}
-                </div>
-                <div className="p-3 md:p-4 text-center font-black flex items-center justify-center gap-2 md:gap-3 text-sm md:text-base">
-                   <div className="bg-[#00E599] p-1 border-[2px] border-[#18181B] shadow-[2px_2px_0_#18181B] rounded-md hidden sm:block"><Check size={14} color="#18181B" strokeWidth={4} /></div> {row.p}
-                </div>
-             </div>
+              <div key={i} className={`grid grid-cols-2 ${i !== 4 ? 'border-b-[3px] border-[#18181B]' : ''}`}>
+                 <div className="p-2 md:p-4 text-center font-bold text-[#71717A] border-r-[3px] border-[#18181B] flex items-center justify-center gap-1.5 md:gap-3 text-xs md:text-base">
+                    <div className="bg-[#FF4444] p-0.5 md:p-1 border-[2px] border-[#18181B] shadow-[2px_2px_0_#18181B] rounded-md hidden sm:block"><X className="w-3 h-3 md:w-4 md:h-4" color="#FFF" strokeWidth={4} /></div> {row.t}
+                 </div>
+                 <div className="p-2 md:p-4 text-center font-black flex items-center justify-center gap-1.5 md:gap-3 text-xs md:text-base">
+                    <div className="bg-[#00E599] p-0.5 md:p-1 border-[2px] border-[#18181B] shadow-[2px_2px_0_#18181B] rounded-md hidden sm:block"><Check className="w-3 h-3 md:w-4 md:h-4" color="#18181B" strokeWidth={4} /></div> {row.p}
+                 </div>
+              </div>
            ))}
         </div>
       </section>
