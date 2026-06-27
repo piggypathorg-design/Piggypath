@@ -1,10 +1,15 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
+// 1. Change the import at the top
+import { HashRouter as Router, Routes, Route } from 'react-router-dom'; 
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
+function App() {
+  return (
+    // 2. Change <BrowserRouter> to <Router> (or <HashRouter>)
+    <Router>
+      <Routes>
+        <Route path="/" element={<Dashboard />} /> {/* structural example */}
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
