@@ -2,29 +2,30 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import CustomAvatar from './CustomAvatar';
 import { Check } from 'lucide-react';
-import MaleTops from './clothes/MaleTops';
-import FemaleTops from './clothes/FemaleTops';
-import MaleBottoms from './clothes/MaleBottoms';
-import FemaleBottoms from './clothes/FemaleBottoms';
-import MaleAccessories from './clothes/MaleAccessories';
-import FemaleAccessories from './clothes/FemaleAccessories';
 
 const SKIN_TONES = [
   '#fdf6e3', '#fae7d0', '#ffdbac', '#f1c27d', '#e8b796', 
   '#e0ac69', '#d29972', '#c68642', '#b27652', '#a05f35', 
   '#8d5524', '#714019', '#5c3311', '#47260c', '#291404'
 ];
+
+const MALE_HAIR = ['none', 'buzz_cut', 'spiky', 'undercut', 'curly_afro', 'combed_over'];
+const FEMALE_HAIR = ['none', 'long_straight', 'bob_cut', 'curly_locks', 'side_part', 'ponytail'];
+
 const MALE_TOPS = ['none', 'tshirt', 'hoodie', 'void_tee', 'varsity_jacket', 'street_ls', 'track_jacket', 'tank_top', 'polo', 'button_up', 'sweater', 'puffer', 'turtleneck', 'overcoat', 'graphic_tee', 'denim_jacket'];
 const FEMALE_TOPS = ['none', 'croptop', 'blouse', 'pink_star', 'plaid_halter', 'blue_dream', 'butterfly_top', 'white_cardigan', 'tube_top', 'sweater_dress', 'oversized_hoodie', 'off_shoulder', 'corset', 'leather_jacket', 'kimono', 'sports_bra'];
+
 const MALE_BOTTOMS = ['none', 'shorts', 'jeans', 'cargo_pants', 'baggy_chain', 'track_pants', 'wide_denim', 'sweatpants', 'chinos', 'ripped_jeans', 'cargo_shorts', 'dress_pants', 'camo_pants', 'board_shorts', 'corduroy', 'leather_pants'];
 const FEMALE_BOTTOMS = ['none', 'skirt', 'leggings', 'pink_cargo', 'plaid_skirt', 'star_cargo', 'purple_pleated', 'khaki_mini', 'flared_jeans', 'sweatpants', 'biker_shorts', 'ripped_jeans', 'denim_skirt', 'leather_pants', 'wide_trousers', 'maxi_skirt'];
-const MALE_ACC = ['none', 'glasses', 'sunglasses', 'cap', 'beanie', 'cross_earring', 'chain', 'mask', 'headband', 'cyber_goggles', 'bandana', 'choker', 'scarf', 'nose_ring', 'headset'];
-const FEMALE_ACC = ['none', 'glasses', 'bear_buns', 'star_clips', 'backwards_cap', 'purple_tie', 'butterfly_clip', 'choker', 'hoop_earrings', 'ribbon_bow', 'cat_ears', 'sunglasses', 'beanie', 'scarf', 'beret'];
 
-const STEPS = ['gender', 'skinTone', 'top', 'bottom', 'accessory'];
+const MALE_ACC = ['none', 'glasses', 'sunglasses', 'cap', 'beanie', 'cross_earring', 'chain', 'mask', 'headband', 'cyber_goggles', 'bandana', 'choker', 'scarf', 'nose_ring', 'headset'];
+const FEMALE_ACC = ['none', 'glasses', 'bear_buns', 'star_clips', 'backwards_cap', 'purple_tie', 'butterfly_clip', 'choker', 'hoop_earrings', 'ribbon_bow', 'cat_ears', 'sunglasses', 'beanie', 'scarf', 'beret', 'watch', 'hair_band', 'earrings', 'baseball_cap'];
+
+const STEPS = ['gender', 'skinTone', 'hair', 'top', 'bottom', 'accessory'];
 const STEP_LABELS = {
   gender: 'Select Gender',
   skinTone: 'Choose Skin Tone',
+  hair: 'Pick Hair Style',
   top: 'Pick a Top',
   bottom: 'Pick a Bottom',
   accessory: 'Add Accessories'
@@ -34,6 +35,7 @@ const AvatarBuilder = ({ initialConfig, onSave }) => {
   const [config, setConfig] = useState(initialConfig || {
     gender: 'male',
     skinTone: '#fdf6e3',
+    hair: 'none',
     top: 'none',
     bottom: 'none',
     accessory: 'none',
@@ -42,12 +44,18 @@ const AvatarBuilder = ({ initialConfig, onSave }) => {
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
   const currentStep = STEPS[currentStepIndex];
 
-  // Track previous gender to reset clothes only when it actually changes
+  // Reset options only when gender changes
   const prevGender = useRef(config.gender);
   useEffect(() => {
     if (prevGender.current !== config.gender) {
       prevGender.current = config.gender;
-      setConfig(prev => ({ ...prev, top: 'none', bottom: 'none', accessory: 'none' }));
+      setConfig(prev => ({
+        ...prev,
+        hair: 'none',
+        top: 'none',
+        bottom: 'none',
+        accessory: 'none'
+      }));
     }
   }, [config.gender]);
 
@@ -67,6 +75,7 @@ const AvatarBuilder = ({ initialConfig, onSave }) => {
     switch (currentStep) {
       case 'gender': return ['male', 'female'];
       case 'skinTone': return SKIN_TONES;
+      case 'hair': return config.gender === 'female' ? FEMALE_HAIR : MALE_HAIR;
       case 'top': return config.gender === 'female' ? FEMALE_TOPS : MALE_TOPS;
       case 'bottom': return config.gender === 'female' ? FEMALE_BOTTOMS : MALE_BOTTOMS;
       case 'accessory': return config.gender === 'female' ? FEMALE_ACC : MALE_ACC;
@@ -74,67 +83,35 @@ const AvatarBuilder = ({ initialConfig, onSave }) => {
     }
   };
 
+  // Render option previews dynamically using the CustomAvatar component in gray mannequin mode
   const renderClothingPreview = (option, step) => {
     if (option === 'none') {
-      return <span className="text-sm font-bold text-gray-400 capitalize">None</span>;
+      return <span className="text-[10px] sm:text-xs font-black text-gray-400 uppercase">None</span>;
     }
-    
-    let viewBox = "0 0 200 300";
-    let component = null;
 
-    if (step === 'top') {
-      viewBox = "35 120 130 110";
-      component = config.gender === 'male' ? <MaleTops top={option} /> : <FemaleTops top={option} />;
+    const mannequinSkin = "#e2e8f0";
+    let zoomClass = "scale-[1.2] translate-y-2";
+
+    if (step === 'hair' || step === 'accessory') {
+      zoomClass = "scale-[1.9] translate-y-[38px]";
+    } else if (step === 'top') {
+      zoomClass = "scale-[1.6] translate-y-[10px]";
     } else if (step === 'bottom') {
-      viewBox = "30 180 140 110";
-      component = config.gender === 'male' ? <MaleBottoms bottom={option} /> : <FemaleBottoms bottom={option} />;
-    } else if (step === 'accessory') {
-      viewBox = "30 30 140 130";
-      component = config.gender === 'male' ? <MaleAccessories accessory={option} /> : <FemaleAccessories accessory={option} />;
+      zoomClass = "scale-[1.7] translate-y-[-35px]";
     }
-
-    const mannequinSkin = "#e2e8f0"; // light grey mannequin
 
     return (
-      <svg viewBox={viewBox} className="w-[80%] h-[80%]" xmlns="http://www.w3.org/2000/svg">
-        <g stroke="rgba(0,0,0,0.1)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.5">
-           {/* Mannequin Base Body */}
-           {step === 'top' && (
-             <g fill={mannequinSkin}>
-                {/* Torso */}
-                <path d="M 75 155 L 125 155 L 125 210 L 75 210 Z" />
-                {/* Neck */}
-                <rect x="93" y="145" width="14" height="15" />
-                {/* Left Arm */}
-                <path d="M 75 155 L 55 210 L 67 210 L 82 165 Z" />
-                {/* Right Arm */}
-                <path d="M 125 155 L 145 210 L 133 210 L 118 165 Z" />
-             </g>
-           )}
-           {step === 'bottom' && (
-             <g fill={mannequinSkin}>
-                {/* Torso base */}
-                <path d="M 75 155 L 125 155 L 125 210 L 75 210 Z" />
-                {/* Legs */}
-                <rect x="80" y="210" width="14" height="40" />
-                <rect x="106" y="210" width="14" height="40" />
-             </g>
-           )}
-           {step === 'accessory' && (
-             <g fill={mannequinSkin}>
-                {/* Head Base */}
-                <ellipse cx="100" cy="100" rx="55" ry="50" />
-                <ellipse cx="50" cy="115" rx="14" ry="18" />
-                <ellipse cx="150" cy="115" rx="14" ry="18" />
-                {/* Neck */}
-                <rect x="93" y="145" width="14" height="15" />
-             </g>
-           )}
-        </g>
-        <g stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-          {component}
-        </g>
-      </svg>
+      <div className="w-full h-full overflow-hidden rounded-neo bg-slate-50 flex items-center justify-center">
+        <CustomAvatar
+          gender={config.gender}
+          skinTone={mannequinSkin}
+          hair={step === 'hair' ? option : 'none'}
+          top={step === 'top' ? option : 'none'}
+          bottom={step === 'bottom' ? option : 'none'}
+          accessory={step === 'accessory' ? option : 'none'}
+          className={`w-full h-full pointer-events-none transition-transform duration-200 ${zoomClass}`}
+        />
+      </div>
     );
   };
 
@@ -158,6 +135,7 @@ const AvatarBuilder = ({ initialConfig, onSave }) => {
             <CustomAvatar 
               gender={config.gender} 
               skinTone={config.skinTone}
+              hair={config.hair}
               top={config.top}
               bottom={config.bottom}
               accessory={config.accessory}

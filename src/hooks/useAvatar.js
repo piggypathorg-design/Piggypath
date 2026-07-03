@@ -4,6 +4,7 @@ import { supabase } from '../lib/supabase';
 const DEFAULT_AVATAR = {
   gender: 'male',
   skinTone: '#fae7d0',
+  hair: 'none',
   top: 'none',
   bottom: 'none',
   accessory: 'none',
@@ -22,7 +23,10 @@ export const useAvatar = () => {
       const saved = localStorage.getItem(LOCAL_KEY);
       if (saved) {
         const parsed = JSON.parse(saved);
-        if (parsed?.gender) return parsed;
+        if (parsed?.gender) {
+          // Backward compatibility: fill in hair if missing
+          return { ...DEFAULT_AVATAR, ...parsed };
+        }
       }
     } catch (_) {}
     return DEFAULT_AVATAR;
@@ -42,8 +46,9 @@ export const useAvatar = () => {
       if (!error && data?.avatar_config && !cancelled) {
         const remote = data.avatar_config;
         if (remote?.gender) {
-          setConfig(remote);
-          localStorage.setItem(LOCAL_KEY, JSON.stringify(remote));
+          const merged = { ...DEFAULT_AVATAR, ...remote };
+          setConfig(merged);
+          localStorage.setItem(LOCAL_KEY, JSON.stringify(merged));
         }
       }
     });
@@ -57,7 +62,7 @@ export const useAvatar = () => {
         const saved = localStorage.getItem(LOCAL_KEY);
         if (saved) {
           const parsed = JSON.parse(saved);
-          if (parsed?.gender) setConfig(parsed);
+          if (parsed?.gender) setConfig({ ...DEFAULT_AVATAR, ...parsed });
         }
       } catch (_) {}
     };
@@ -66,19 +71,19 @@ export const useAvatar = () => {
   }, []);
 
   const saveConfig = async (newConfig) => {
-    // 1. Update local state immediately
-    setConfig(newConfig);
-    localStorage.setItem(LOCAL_KEY, JSON.stringify(newConfig));
+    const fullConfig = { ...DEFAULT_AVATAR, ...newConfig };
+    setConfig(fullConfig);
+    localStorage.setItem(LOCAL_KEY, JSON.stringify(fullConfig));
     window.dispatchEvent(new Event('avatarUpdated'));
 
-    // 2. Persist to Supabase if logged in
+    // Persist to Supabase if logged in
     try {
       const { data: { session } } = await supabase.auth.getSession();
       if (session?.user) {
         await supabase
           .from('profiles')
           .upsert(
-            { id: session.user.id, avatar_config: newConfig, updated_at: new Date().toISOString() },
+            { id: session.user.id, avatar_config: fullConfig, updated_at: new Date().toISOString() },
             { onConflict: 'id' }
           );
       }

@@ -4,13 +4,13 @@ const FemaleAccessories = ({ accessory }) => {
   if (accessory === 'none') return null;
 
   // Hair Accessories
-  if (accessory === 'bear_buns' || accessory === 'star_clips' || accessory === 'butterfly_clip' || accessory === 'cat_ears' || accessory === 'ribbon_bow') {
+  if (accessory === 'bear_buns' || accessory === 'star_clips' || accessory === 'butterfly_clip' || accessory === 'cat_ears' || accessory === 'ribbon_bow' || accessory === 'hair_band') {
     return (
       <g>
         {accessory === 'bear_buns' && (
           <g fill="#3b2f2f">
-            <circle cx="50" cy="50" r="25" />
-            <circle cx="150" cy="50" r="25" />
+            <circle cx="50" cy="50" r="22" />
+            <circle cx="150" cy="50" r="22" />
           </g>
         )}
         {accessory === 'star_clips' && (
@@ -35,12 +35,16 @@ const FemaleAccessories = ({ accessory }) => {
             <circle cx="100" cy="50" r="5" />
           </g>
         )}
+        {accessory === 'hair_band' && (
+          /* Curved band arching over the head exactly like requested */
+          <path d="M 48 90 C 48 50 152 50 152 90" fill="none" stroke="#e33030" strokeWidth="6" />
+        )}
       </g>
     );
   }
 
   // Headwear
-  if (accessory === 'backwards_cap' || accessory === 'beanie' || accessory === 'beret') {
+  if (accessory === 'backwards_cap' || accessory === 'beanie' || accessory === 'beret' || accessory === 'baseball_cap') {
     return (
       <g>
         {accessory === 'backwards_cap' && (
@@ -61,6 +65,13 @@ const FemaleAccessories = ({ accessory }) => {
             <circle cx="100" cy="35" r="3" />
           </g>
         )}
+        {accessory === 'baseball_cap' && (
+          /* Standard forward-facing baseball cap */
+          <g fill="#e33030">
+            <path d="M 45 75 C 45 40 155 40 155 75 Z" />
+            <path d="M 155 75 L 182 75 C 182 68 165 65 155 65 Z" fill="#111" />
+          </g>
+        )}
       </g>
     );
   }
@@ -78,8 +89,8 @@ const FemaleAccessories = ({ accessory }) => {
     );
   }
 
-  // Neck/Jewelry
-  if (accessory === 'purple_tie' || accessory === 'choker' || accessory === 'hoop_earrings' || accessory === 'scarf') {
+  // Neck/Wrist/Earrings/Jewelry
+  if (accessory === 'purple_tie' || accessory === 'choker' || accessory === 'hoop_earrings' || accessory === 'scarf' || accessory === 'watch' || accessory === 'earrings') {
     return (
       <g>
         {accessory === 'purple_tie' && (
@@ -97,10 +108,29 @@ const FemaleAccessories = ({ accessory }) => {
             <circle cx="155" cy="130" r="10" />
           </g>
         )}
+        {accessory === 'earrings' && (
+          /* Stud & drop star earrings (Reference 1 style) */
+          <g fill="#fce74c" stroke="#111" strokeWidth="1">
+            <circle cx="40" cy="126" r="3" />
+            <path d="M 40 126 L 40 134 L 37 137 L 43 137 Z" />
+            <circle cx="160" cy="126" r="3" />
+            <path d="M 160 126 L 160 134 L 157 137 L 163 137 Z" />
+          </g>
+        )}
         {accessory === 'scarf' && (
           <g fill="#e33030">
-            <rect x="85" y="140" width="30" height="15" rx="5" />
-            <path d="M 85 145 L 75 175 L 85 175 Z" />
+            {/* Wrap around neck */}
+            <rect x="82" y="138" width="36" height="15" rx="5" />
+            {/* Hanging tails */}
+            <path d="M 85 148 L 76 190 L 90 190 Z" />
+            <path d="M 100 148 L 109 182 L 99 182 Z" />
+          </g>
+        )}
+        {accessory === 'watch' && (
+          /* Golden watch on left wrist */
+          <g>
+            <rect x="67" y="196" width="10" height="4" fill="#ffcc00" />
+            <circle cx="72" cy="198" r="4" fill="#fff" stroke="#111" strokeWidth="1" />
           </g>
         )}
       </g>
