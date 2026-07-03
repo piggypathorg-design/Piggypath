@@ -273,12 +273,17 @@ const CustomAvatar = ({
             {isFemale && (
               <>
                 {hair === 'long_straight' && (
-                  /* Parted in the middle with symmetric swoops down (Reference 1) */
+                  /* Parted in the middle with symmetric sweeps down (Reference 1) */
                   <g>
-                    <path d="M 100 72 Q 78 74 65 90 Q 56 110 52 130 C 60 120 68 105 100 72 Z" />
-                    <path d="M 100 72 Q 122 74 135 90 Q 144 110 148 130 C 140 120 132 105 100 72 Z" />
-                    {/* Top skull base cap */}
-                    <path d="M 52 100 C 52 56 148 56 148 100 Q 148 72 100 72 Q 52 72 52 100 Z" />
+                    {/* Top skull base cap covering the top of head completely */}
+                    <path d="M 52 100 C 52 50 148 50 148 100 Q 148 75 100 75 Q 52 75 52 100 Z" />
+                    
+                    {/* Left and Right hair sweeps */}
+                    <path d="M 100 75 C 84 74 66 84 56 100 C 50 110 50 120 50 134 C 64 122 82 108 100 75 Z" />
+                    <path d="M 100 75 C 116 74 134 84 144 100 C 150 110 150 120 150 134 C 136 122 118 108 100 75 Z" />
+                    
+                    {/* Center Parting Line */}
+                    <line x1="100" y1="50" x2="100" y2="75" stroke="#1a1a1a" strokeWidth="3" />
                   </g>
                 )}
                 {hair === 'bob_cut' && (

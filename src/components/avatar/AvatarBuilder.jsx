@@ -148,7 +148,7 @@ const AvatarBuilder = ({ initialConfig, onSave }) => {
               top={config.top}
               bottom={config.bottom}
               accessory={config.accessory}
-              className="w-full h-full scale-[1.1] translate-y-2" 
+              className="w-full h-full scale-[1.3] translate-y-5" 
             />
           </motion.div>
           
