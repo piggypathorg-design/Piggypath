@@ -1,32 +1,26 @@
-import React, { useMemo } from 'react';
-import { createAvatar } from '@dicebear/core';
-import { avataaars } from '@dicebear/collection';
+import React from 'react';
+import CustomAvatar from './CustomAvatar';
 
 const AvatarDisplay = ({ config, className = '' }) => {
-  const avatarSvg = useMemo(() => {
-    try {
-      // Create the avatar using DiceBear Avataaars style
-      const avatar = createAvatar(avataaars, {
-        seed: config.seed || 'default',
-        skinColor: [config.skinColor || 'f8d25c'],
-        hairColor: [config.hairColor || '2c1b18'],
-        accessories: config.accessories !== 'Blank' ? [config.accessories] : [],
-        clothing: [config.clothing || 'blazerAndShirt'],
-        clothingColor: [config.clothingColor || '3c4f5c'],
-        eyes: [config.eyes || 'default'],
-        top: [config.top || 'shortHairShortFlat'],
-        backgroundColor: ['b6e3f4', 'c0aede', 'd1d4f9', 'ffd5dc', 'ffdfbf'],
-        radius: 50,
-      });
-      return avatar.toDataUriSync();
-    } catch (err) {
-      console.error('Failed to generate avatar:', err);
-      return '';
-    }
-  }, [config]);
+  const safeConfig = config || {
+    gender: 'male',
+    skinTone: '#fae7d0',
+    top: 'none',
+    bottom: 'none',
+    accessory: 'none',
+  };
 
   return (
-    <img src={avatarSvg} alt="Avatar" className={`object-contain ${className}`} />
+    <div className={`overflow-hidden bg-[#FBCFE8] rounded-full flex items-center justify-center ${className}`}>
+      <CustomAvatar
+        gender={safeConfig.gender}
+        skinTone={safeConfig.skinTone}
+        top={safeConfig.top}
+        bottom={safeConfig.bottom}
+        accessory={safeConfig.accessory}
+        className="w-full h-full scale-[1.4] translate-y-3"
+      />
+    </div>
   );
 };
 

@@ -4,6 +4,7 @@ import HeroSection from '../components/dashboard/HeroSection';
 import StreaksPanel from '../components/dashboard/StreaksPanel';
 import DailyQuestPanel from '../components/dashboard/DailyQuestPanel';
 import ShopPreview from '../components/dashboard/ShopPreview';
+import { useAuth } from '../hooks/useAuth';
 
 const fade = (delay = 0) => ({
   initial: { opacity: 0, y: 16 },
@@ -12,6 +13,9 @@ const fade = (delay = 0) => ({
 });
 
 const DashboardPage = () => {
+  const { user } = useAuth();
+  const username = user?.email?.split('@')[0] ?? 'Player';
+
   return (
     <div className="w-full mx-auto px-4 md:px-8 pt-8 pb-24" style={{ maxWidth: 1200 }}>
       <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 items-start">
@@ -19,7 +23,7 @@ const DashboardPage = () => {
         {/* Main / Left column */}
         <div className="flex-1 flex flex-col gap-6 min-w-0">
           <motion.div {...fade(0.05)}>
-            <HeroSection username="Player" level={1} xp={0} maxXp={100} />
+            <HeroSection username={username} level={1} xp={0} maxXp={100} />
           </motion.div>
 
           {/* Mobile: sidebar content stacks below hero */}

@@ -3,26 +3,9 @@ import { motion } from 'framer-motion';
 import { Play, Lock, Star, Zap, Target, TrendingUp, Wallet, Coins, Shield, Trophy } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-const B    = '3px solid #000';
-const B_THICK = '4px solid #000';
-const SH   = '5px 5px 0 #000';
-const SH_LG = '8px 8px 0 #000';
-
-const PALETTE = {
-  bg:     '#0D0D1A',
-  base:   '#1A1A2E',
-  teal:   '#00D4C8',
-  lime:   '#B8F400',
-  violet: '#8B5CF6',
-  orange: '#F97316',
-  text:   '#F4F4F4',
-  muted:  '#94A3B8',
-  track:  '#2a2a4a',
-};
-
 const CHAPTERS = [
   {
-    id: 1, title: 'Money Basics', accent: PALETTE.teal,
+    id: 1, title: 'Money Basics', accent: '#00e699',
     levels: [
       { id: 1, state: 'completed', label: 'Budgeting 101',  stars: 3, xp: 50  },
       { id: 2, state: 'completed', label: 'Needs vs Wants', stars: 2, xp: 50  },
@@ -32,7 +15,7 @@ const CHAPTERS = [
     ],
   },
   {
-    id: 2, title: 'Investing', accent: PALETTE.violet,
+    id: 2, title: 'Investing', accent: '#9966ff',
     levels: [
       { id: 6, state: 'locked', label: 'Stocks 101',      stars: 0, xp: 70  },
       { id: 7, state: 'locked', label: 'Diversification', stars: 0, xp: 80  },
@@ -71,7 +54,7 @@ CHAPTERS.forEach((chapter) => {
         Icon: [TrendingUp, Wallet, Coins, Shield][index % 4],
         x: x > 200 ? x - 140 : x + 140,
         y: currentY - 20,
-        color: [PALETTE.teal, PALETTE.lime, PALETTE.orange, PALETTE.violet][index % 4]
+        color: ['#00e699', '#9966ff', '#e0e0e0', '#111111'][index % 4]
       });
     }
 
@@ -118,7 +101,7 @@ const StarRow = ({ count }) => (
   <div className="flex gap-1 mt-2">
     {[1,2,3].map(i => (
       <div key={i} className="flex items-center justify-center">
-        <Star size={16} fill={i <= count ? '#FFCD75' : 'none'} color={i <= count ? '#000' : '#000'} style={{ strokeWidth: 2.5 }} />
+        <Star size={16} fill={i <= count ? '#ffcc00' : 'none'} color="#000" style={{ strokeWidth: 2.5 }} />
       </div>
     ))}
   </div>
@@ -131,9 +114,9 @@ const LevelNode = ({ node, onPlay }) => {
 
   const size = node.isBoss ? 96 : 80;
 
-  let bg = PALETTE.track;
-  let iconColor = PALETTE.muted;
-  if (isCompleted) { bg = PALETTE.violet; iconColor = '#fff'; }
+  let bg = '#e0e0e0';
+  let iconColor = '#666';
+  if (isCompleted) { bg = '#9966ff'; iconColor = '#000'; }
   if (isCurrent)   { bg = node.accent; iconColor = '#000'; }
 
   return (
@@ -147,15 +130,13 @@ const LevelNode = ({ node, onPlay }) => {
       <button
         onClick={() => !isLocked && onPlay()}
         disabled={isLocked}
-        className="relative flex flex-col items-center justify-center transition-all"
+        className={`relative flex flex-col items-center justify-center transition-all ${isLocked ? 'cursor-not-allowed opacity-60' : 'hover:-translate-y-1'}`}
         style={{
           width: size, height: size,
           background: bg,
-          border: B_THICK,
-          boxShadow: isLocked ? 'none' : (isCurrent ? `0 0 0 6px ${PALETTE.lime}, 8px 8px 0 #000` : SH_LG),
+          border: '4px solid #000',
+          boxShadow: isLocked ? 'none' : (isCurrent ? `0 0 0 6px #fff, 0 0 0 10px ${node.accent}, 8px 8px 0px 0px rgba(0,0,0,1)` : '6px 6px 0px 0px rgba(0,0,0,1)'),
           borderRadius: '50%',
-          opacity: isLocked ? 0.6 : 1,
-          cursor: isLocked ? 'not-allowed' : 'pointer',
         }}
       >
         {isCompleted && <Play size={28} fill={iconColor} color={iconColor} />}
@@ -163,10 +144,9 @@ const LevelNode = ({ node, onPlay }) => {
         {isLocked    && (node.isBoss ? <Target size={28} color={iconColor} /> : <Lock size={24} color={iconColor} />)}
       </button>
 
-      <div className="absolute top-full mt-3 flex flex-col items-center w-32">
+      <div className="absolute top-full mt-4 flex flex-col items-center w-36">
         <div 
-          className="px-3 py-1 font-black text-xs uppercase tracking-tight text-center"
-          style={{ background: '#000', color: isLocked ? PALETTE.muted : '#fff', border: B, borderRadius: 8 }}
+          className="px-3 py-1.5 font-black text-xs uppercase tracking-tight text-center bg-white border-[3px] border-black shadow-neo-sm rounded-neo w-full text-black"
         >
           {node.label}
         </div>
@@ -184,14 +164,14 @@ export default function PathPage() {
   const completedLevels = CHAPTERS.flatMap(c => c.levels).filter(l => l.state === 'completed').length;
 
   return (
-    <div className="w-full min-h-screen px-6 md:px-10 pt-8 pb-28 font-sans" style={{ background: PALETTE.bg, maxWidth: 1200, margin: '0 auto' }}>
+    <div className="w-full min-h-screen px-6 md:px-10 pt-8 pb-28 font-sans bg-transparent max-w-6xl mx-auto">
 
       {/* ── Page Header ── */}
       <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
-        <h1 className="font-black uppercase tracking-tight mb-1" style={{ fontSize: 40, color: PALETTE.text }}>
+        <h1 className="font-black uppercase tracking-tight mb-1 text-5xl text-black">
           Your Journey
         </h1>
-        <p className="font-bold uppercase tracking-wider text-sm" style={{ color: PALETTE.muted }}>
+        <p className="font-bold uppercase tracking-wider text-sm text-gray-500">
           Follow the path to master finance
         </p>
       </motion.div>
@@ -199,7 +179,7 @@ export default function PathPage() {
       <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 items-start">
 
         {/* ── LEFT: Curvy Path Map ── */}
-        <div className="flex-1 w-full flex justify-center min-w-0 overflow-hidden" style={{ background: PALETTE.base, border: B, boxShadow: SH_LG, borderRadius: 24 }}>
+        <div className="flex-1 w-full flex justify-center min-w-0 overflow-hidden bg-white border-[4px] border-black shadow-neo-lg rounded-neo py-12">
           
           <div className="relative" style={{ width: PATH_WIDTH, height: TOTAL_HEIGHT }}>
             
@@ -209,8 +189,8 @@ export default function PathPage() {
               <path
                 d={generatePath(false)}
                 fill="none"
-                stroke={PALETTE.track}
-                strokeWidth="24"
+                stroke="#e0e0e0"
+                strokeWidth="28"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
@@ -218,19 +198,19 @@ export default function PathPage() {
                 d={generatePath(false)}
                 fill="none"
                 stroke="#000"
-                strokeWidth="24"
+                strokeWidth="28"
                 strokeDasharray="4 24"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                opacity={0.3}
+                opacity={0.1}
               />
               
               {/* Active Track */}
               <path
                 d={generatePath(true)}
                 fill="none"
-                stroke={PALETTE.teal}
-                strokeWidth="24"
+                stroke="#00e699"
+                strokeWidth="28"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
@@ -239,10 +219,10 @@ export default function PathPage() {
                 d={generatePath(true)}
                 fill="none"
                 stroke="#000"
-                strokeWidth="4"
+                strokeWidth="6"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                opacity={0.2}
+                opacity={0.15}
               />
             </svg>
 
@@ -251,8 +231,8 @@ export default function PathPage() {
               <motion.div
                 key={dec.id}
                 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}
-                className="absolute flex items-center justify-center opacity-60"
-                style={{ left: dec.x, top: dec.y, transform: 'translate(-50%, -50%)', width: 48, height: 48, background: '#000', border: B, borderRadius: 12, transform: `translate(-50%, -50%) rotate(${Math.random() * 20 - 10}deg)` }}
+                className="absolute flex items-center justify-center border-[3px] border-black shadow-neo-sm rounded-neo bg-white"
+                style={{ left: dec.x, top: dec.y, width: 48, height: 48, transform: `translate(-50%, -50%) rotate(${Math.random() * 20 - 10}deg)` }}
               >
                 <dec.Icon size={24} color={dec.color} />
               </motion.div>
@@ -269,8 +249,8 @@ export default function PathPage() {
                     style={{ top: item.y, transform: 'translateY(-50%)' }}
                   >
                     <div 
-                      className="px-6 py-3 font-black text-lg uppercase tracking-tight inline-block"
-                      style={{ background: item.accent, color: '#000', border: B, boxShadow: SH }}
+                      className="px-6 py-3 font-black text-xl uppercase tracking-tight inline-block border-[4px] border-black shadow-neo-base text-black"
+                      style={{ background: item.accent }}
                     >
                       {item.title}
                     </div>
@@ -288,71 +268,53 @@ export default function PathPage() {
         </div>
 
         {/* ── RIGHT SIDEBAR ── */}
-        <div className="hidden lg:flex flex-col gap-5 shrink-0" style={{ width: 320 }}>
-          <div className="sticky top-[76px] flex flex-col gap-5">
+        <div className="hidden lg:flex flex-col gap-6 shrink-0 w-80">
+          <div className="sticky top-[100px] flex flex-col gap-6">
 
             {/* Progress card */}
             <motion.div
               initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.12 }}
-              style={{ background: PALETTE.base, border: B, boxShadow: SH, padding: 24 }}
+              className="bg-white border-[4px] border-black shadow-neo-lg rounded-neo p-6"
             >
-              <p className="text-xs font-black uppercase tracking-widest mb-4" style={{ color: PALETTE.muted }}>
+              <p className="text-xs font-black uppercase tracking-widest mb-4 text-neo-purple">
                 Overall Progress
               </p>
-              <div className="flex items-end justify-between mb-3">
-                <span className="font-black" style={{ fontSize: 42, color: PALETTE.text, lineHeight: 1 }}>
-                  {completedLevels}
-                </span>
-                <span className="font-black text-sm mb-1.5" style={{ color: PALETTE.muted }}>/ {totalLevels} levels</span>
+              
+              <div className="flex items-end gap-2 mb-6">
+                <span className="font-black text-6xl leading-none text-black">{completedLevels}</span>
+                <span className="font-bold text-gray-400 mb-1">/ {totalLevels}</span>
               </div>
-              <div className="h-3" style={{ background: '#000', border: B }}>
-                <div
-                  className="h-full"
-                  style={{ width: `${(completedLevels / totalLevels) * 100}%`, background: PALETTE.teal }}
+              
+              <div className="w-full h-4 bg-gray-200 border-[3px] border-black rounded-full overflow-hidden p-0.5">
+                <motion.div 
+                  initial={{ width: 0 }} 
+                  animate={{ width: `${(completedLevels / totalLevels) * 100}%` }} 
+                  transition={{ duration: 1, ease: 'easeOut' }}
+                  className="h-full bg-neo-teal border-r-[2px] border-black rounded-full" 
                 />
               </div>
             </motion.div>
 
-            {/* Up Next card */}
+            {/* Daily Challenge */}
             <motion.div
-              initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.18 }}
-              style={{ background: PALETTE.teal, border: B, boxShadow: SH, padding: 24 }}
+              initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
+              className="bg-neo-purple border-[4px] border-black shadow-neo-lg rounded-neo p-6 text-white"
             >
-              <p className="text-xs font-black uppercase tracking-widest mb-4" style={{ color: '#000' }}>
-                Up Next
-              </p>
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-14 h-14 flex items-center justify-center text-2xl" style={{ background: '#000', border: B }}>
-                  <Trophy size={24} color={PALETTE.teal} />
-                </div>
-                <div>
-                  <p className="font-black text-lg uppercase leading-tight" style={{ color: '#000' }}>Saving Goals</p>
-                  <p className="font-bold text-sm mt-1" style={{ color: '#1a3a38' }}>Chapter 1 · Level 3</p>
-                </div>
+              <div className="flex items-center gap-2 mb-4">
+                <Zap size={20} className="text-neo-teal" />
+                <span className="font-black text-sm uppercase tracking-widest text-black">Daily Challenge</span>
               </div>
-              <button
-                onClick={() => navigate('/app/games/quiz')}
-                className="w-full py-4 font-black uppercase tracking-wider text-sm transition-all hover:-translate-y-0.5 flex items-center justify-center gap-2"
-                style={{ background: '#000', color: PALETTE.teal, border: B, boxShadow: '4px 4px 0 rgba(0,0,0,0.3)' }}
-              >
-                <Play size={16} fill="currentColor" /> Continue
+              <h3 className="font-black text-2xl tracking-tight mb-2 text-black leading-tight">Complete 2 lessons with perfect score</h3>
+              <p className="text-white/80 font-medium text-sm mb-6">Reward: 150 XP</p>
+              
+              <button className="neo-btn-white w-full py-4 text-lg border-[3px] shadow-neo-sm">
+                Claim Reward
               </button>
-            </motion.div>
-
-            {/* Tip block */}
-            <motion.div
-              initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.22 }}
-              className="p-5"
-              style={{ background: `${PALETTE.violet}1A`, border: `3px solid ${PALETTE.violet}`, color: PALETTE.muted }}
-            >
-              <p className="font-black text-xs uppercase tracking-widest mb-2" style={{ color: PALETTE.violet }}>PRO TIP</p>
-              <p className="font-bold text-sm leading-relaxed">
-                Get all 3 stars on a level to earn bonus XP and unlock leaderboard rewards!
-              </p>
             </motion.div>
 
           </div>
         </div>
+
       </div>
     </div>
   );

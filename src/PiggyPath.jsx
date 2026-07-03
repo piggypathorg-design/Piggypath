@@ -20,36 +20,45 @@ function adj(hex, amt) {
 }
 
 // Body silhouette — GENDER-AWARE shapes
-function renderBody(pixels, gender, skin, outfit, oColor) {
+function renderBody(pixels, gender, skin, top, topColor, bottom, bottomColor) {
   const dk = adj(skin, -40);
-  const odk = adj(oColor, -40);
-  const olg = adj(oColor, 30);
+  const tdk = adj(topColor, -40);
+  const tlg = adj(topColor, 30);
+  const bdk = adj(bottomColor, -40);
+  const blg = adj(bottomColor, 30);
 
   if (gender === "fem") {
     // Narrower shoulders, wider hips
     // Neck
     for (let c = 14; c <= 17; c++) for (let r = 22; r <= 24; r++) pixels.push(px(c, r, skin));
     // Shoulders (narrower)
-    for (let c = 10; c <= 21; c++) pixels.push(px(c, 25, oColor));
-    // Torso (hourglass)
+    for (let c = 10; c <= 21; c++) pixels.push(px(c, 25, topColor));
+    // Torso (hourglass) - Top
     for (let r = 26; r <= 30; r++) {
       const w = r <= 28 ? [11,20] : [10,21];
-      for (let c = w[0]; c <= w[1]; c++) pixels.push(px(c, r, oColor));
+      for (let c = w[0]; c <= w[1]; c++) pixels.push(px(c, r, topColor));
     }
-    // Hip flare
-    for (let c = 9; c <= 22; c++) for (let r = 31; r <= 34; r++) pixels.push(px(c, r, oColor));
-    // Outfit details
-    if (outfit === "dress") {
-      for (let c = 8; c <= 23; c++) for (let r = 32; r <= 36; r++) pixels.push(px(c, r, oColor));
-      // Dress flare
-      for (let c = 7; c <= 24; c++) for (let r = 34; r <= 38; r++) pixels.push(px(c, r, olg, 0.7));
+    // Hip flare - Bottom
+    for (let c = 9; c <= 22; c++) for (let r = 31; r <= 34; r++) pixels.push(px(c, r, bottomColor));
+    
+    // Bottom details
+    if (bottom === "skirt") {
+      for (let c = 8; c <= 23; c++) for (let r = 32; r <= 36; r++) pixels.push(px(c, r, bottomColor));
+      for (let c = 7; c <= 24; c++) for (let r = 34; r <= 38; r++) pixels.push(px(c, r, blg, 0.7));
+      // Legs below skirt
+      for (let c = 11; c <= 13; c++) for (let r = 37; r <= 40; r++) pixels.push(px(c, r, skin));
+      for (let c = 18; c <= 20; c++) for (let r = 37; r <= 40; r++) pixels.push(px(c, r, skin));
+    } else { // pants/jeans
+      for (let c = 11; c <= 13; c++) for (let r = 35; r <= 40; r++) pixels.push(px(c, r, bottom === "shorts" && r > 36 ? skin : bottomColor));
+      for (let c = 18; c <= 20; c++) for (let r = 35; r <= 40; r++) pixels.push(px(c, r, bottom === "shorts" && r > 36 ? skin : bottomColor));
     }
+
     // Arms
     for (let r = 25; r <= 33; r++) {
-      pixels.push(px(8, r, outfit === "tshirt" && r > 27 ? skin : oColor));
-      pixels.push(px(9, r, outfit === "tshirt" && r > 27 ? skin : oColor));
-      pixels.push(px(22, r, outfit === "tshirt" && r > 27 ? skin : oColor));
-      pixels.push(px(23, r, outfit === "tshirt" && r > 27 ? skin : oColor));
+      pixels.push(px(8, r, top === "tshirt" && r > 27 ? skin : topColor));
+      pixels.push(px(9, r, top === "tshirt" && r > 27 ? skin : topColor));
+      pixels.push(px(22, r, top === "tshirt" && r > 27 ? skin : topColor));
+      pixels.push(px(23, r, top === "tshirt" && r > 27 ? skin : topColor));
     }
     // Hands
     for (let c = 7; c <= 9; c++) for (let r = 33; r <= 35; r++) pixels.push(px(c, r, skin));
@@ -58,52 +67,74 @@ function renderBody(pixels, gender, skin, outfit, oColor) {
     // Broader shoulders, narrower waist
     for (let c = 14; c <= 17; c++) for (let r = 22; r <= 24; r++) pixels.push(px(c, r, skin));
     // Shoulders (wider)
-    for (let c = 8; c <= 23; c++) pixels.push(px(c, 25, oColor));
-    // Torso
-    for (let r = 26; r <= 34; r++) {
+    for (let c = 8; c <= 23; c++) pixels.push(px(c, 25, topColor));
+    // Torso - Top
+    for (let r = 26; r <= 32; r++) {
       const w = r <= 29 ? [9,22] : [10,21];
-      for (let c = w[0]; c <= w[1]; c++) pixels.push(px(c, r, oColor));
+      for (let c = w[0]; c <= w[1]; c++) pixels.push(px(c, r, topColor));
     }
+    // Pelvis - Bottom
+    for (let r = 33; r <= 34; r++) {
+      for (let c = 10; c <= 21; c++) pixels.push(px(c, r, bottomColor));
+    }
+    // Legs - Bottom
+    for (let c = 10; c <= 13; c++) for (let r = 35; r <= 40; r++) pixels.push(px(c, r, bottom === "shorts" && r > 36 ? skin : bottomColor));
+    for (let c = 18; c <= 21; c++) for (let r = 35; r <= 40; r++) pixels.push(px(c, r, bottom === "shorts" && r > 36 ? skin : bottomColor));
+
     // Arms (thicker)
     for (let r = 25; r <= 34; r++) {
-      pixels.push(px(6, r, outfit === "tshirt" && r > 28 ? skin : oColor));
-      pixels.push(px(7, r, outfit === "tshirt" && r > 28 ? skin : oColor));
-      pixels.push(px(8, r, outfit === "tshirt" && r > 28 ? skin : oColor));
-      pixels.push(px(23, r, outfit === "tshirt" && r > 28 ? skin : oColor));
-      pixels.push(px(24, r, outfit === "tshirt" && r > 28 ? skin : oColor));
-      pixels.push(px(25, r, outfit === "tshirt" && r > 28 ? skin : oColor));
+      pixels.push(px(6, r, top === "tshirt" && r > 28 ? skin : topColor));
+      pixels.push(px(7, r, top === "tshirt" && r > 28 ? skin : topColor));
+      pixels.push(px(8, r, top === "tshirt" && r > 28 ? skin : topColor));
+      pixels.push(px(23, r, top === "tshirt" && r > 28 ? skin : topColor));
+      pixels.push(px(24, r, top === "tshirt" && r > 28 ? skin : topColor));
+      pixels.push(px(25, r, top === "tshirt" && r > 28 ? skin : topColor));
     }
     for (let c = 5; c <= 8; c++) for (let r = 34; r <= 36; r++) pixels.push(px(c, r, skin));
     for (let c = 23; c <= 26; c++) for (let r = 34; r <= 36; r++) pixels.push(px(c, r, skin));
   } else {
     // Neutral / kids — petite, chubby
     for (let c = 14; c <= 17; c++) for (let r = 22; r <= 23; r++) pixels.push(px(c, r, skin));
-    for (let c = 11; c <= 20; c++) pixels.push(px(c, 24, oColor));
-    for (let r = 25; r <= 32; r++) {
-      for (let c = 11; c <= 20; c++) pixels.push(px(c, r, oColor));
+    for (let c = 11; c <= 20; c++) pixels.push(px(c, 24, topColor));
+    for (let r = 25; r <= 29; r++) {
+      for (let c = 11; c <= 20; c++) pixels.push(px(c, r, topColor));
     }
+    for (let r = 30; r <= 32; r++) {
+      for (let c = 11; c <= 20; c++) pixels.push(px(c, r, bottomColor));
+    }
+    // Legs
+    for (let c = 11; c <= 13; c++) for (let r = 33; r <= 40; r++) pixels.push(px(c, r, bottom === "shorts" && r > 36 ? skin : bottomColor));
+    for (let c = 18; c <= 20; c++) for (let r = 33; r <= 40; r++) pixels.push(px(c, r, bottom === "shorts" && r > 36 ? skin : bottomColor));
+
     // Short arms
     for (let r = 24; r <= 31; r++) {
-      pixels.push(px(9, r, oColor)); pixels.push(px(10, r, oColor));
-      pixels.push(px(21, r, oColor)); pixels.push(px(22, r, oColor));
+      pixels.push(px(9, r, topColor)); pixels.push(px(10, r, topColor));
+      pixels.push(px(21, r, topColor)); pixels.push(px(22, r, topColor));
     }
     for (let c = 8; c <= 10; c++) for (let r = 31; r <= 33; r++) pixels.push(px(c, r, skin));
     for (let c = 21; c <= 23; c++) for (let r = 31; r <= 33; r++) pixels.push(px(c, r, skin));
   }
 
-  // Outfit highlights
-  pixels.push(px(13, 26, olg, 0.3));
-  pixels.push(px(14, 26, olg, 0.3));
+  // Top highlights
+  pixels.push(px(13, 26, tlg, 0.3));
+  pixels.push(px(14, 26, tlg, 0.3));
 
   // Hoodie pocket
-  if (outfit === "hoodie") {
-    for (let c = 13; c <= 18; c++) pixels.push(px(c, 30, odk));
-    for (let c = 13; c <= 18; c++) pixels.push(px(c, 31, odk));
+  if (top === "hoodie") {
+    for (let c = 13; c <= 18; c++) pixels.push(px(c, 30, tdk));
+    for (let c = 13; c <= 18; c++) pixels.push(px(c, 31, tdk));
   }
 
   // Blazer lapels
-  if (outfit === "blazer") {
-    pixels.push(px(14, 25, adj(oColor, 20)));
+  if (top === "blazer") {
+    pixels.push(px(14, 25, adj(topColor, 20)));
+    pixels.push(px(15, 25, adj(topColor, 20)));
+    pixels.push(px(16, 25, adj(topColor, 20)));
+    pixels.push(px(17, 25, adj(topColor, 20)));
+    pixels.push(px(14, 26, "#F4F4F4", 0.5));
+    pixels.push(px(17, 26, "#F4F4F4", 0.5));
+  }
+}(14, 25, adj(oColor, 20)));
     pixels.push(px(15, 25, adj(oColor, 20)));
     pixels.push(px(16, 25, adj(oColor, 20)));
     pixels.push(px(17, 25, adj(oColor, 20)));
@@ -482,10 +513,11 @@ function renderAvatar(cfg) {
   const hair = cfg.hairColor || "#1A1A1A";
   const eye  = cfg.eyeColor  || "#5C3A1E";
   const dark = adj(hair, -40);
-  const oColor = cfg.outfitColor || "#1E3A5F";
+  const tColor = cfg.topColor || "#1E3A5F";
+  const bColor = cfg.bottomColor || "#2b507c";
   const gender = cfg.gender || "masc";
 
-  renderBody(pixels, gender, skin, cfg.outfit || "tshirt", oColor);
+  renderBody(pixels, gender, skin, cfg.top || "tshirt", tColor, cfg.bottom || "jeans", bColor);
   renderFace(pixels, gender, skin, eye, cfg.blushColor || "#FF8A8A");
   renderHair(pixels, cfg.hairStyle || "short_straight", hair, dark, skin);
   if (cfg.facialHair && cfg.facialHair !== "none") renderFacialHair(pixels, cfg.facialHair, adj(skin,-40), hair);
@@ -495,7 +527,7 @@ function renderAvatar(cfg) {
 }
 
 const PixelAvatar = ({ config, size = 100 }) => {
-  const safe = config || { skinColor:"#E8A87C", hairColor:"#1A1A1A", hairStyle:"short_straight", outfitColor:"#1E3A5F", outfit:"tshirt", bgColor:"#1A0D3D", eyeColor:"#5C3A1E", facialHair:"none", accessory:"none", gender:"masc" };
+  const safe = config || { skinColor:"#E8A87C", hairColor:"#1A1A1A", hairStyle:"short_straight", topColor:"#1E3A5F", top:"tshirt", bottomColor: "#2b507c", bottom: "jeans", bgColor:"#1A0D3D", eyeColor:"#5C3A1E", facialHair:"none", accessory:"none", gender:"masc" };
   const html = useMemo(() => renderAvatar(safe), [JSON.stringify(safe)]);
   return (
     <div style={{ width:size, height:size, background:safe.bgColor, flexShrink:0, overflow:"hidden" }}>

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Pen, LogOut, Bell, Shield, Lock } from 'lucide-react';
-import PixelAvatar from './PixelAvatar';
-import AvatarCustomizer from './AvatarCustomizer';
+import CustomAvatar from '../avatar/CustomAvatar';
+import AvatarBuilder from '../avatar/AvatarBuilder';
 import { useAvatar } from '../../hooks/useAvatar';
 
 // ─── SVG Icons ────────────────────────────────────────────────────────────
@@ -381,9 +381,16 @@ const ProfileHeader = ({
              style={{ width: 120, height: 120, border: '4px solid #18181B', boxShadow: '4px 4px 0 #18181B' }}
              onClick={() => setIsEditingAvatar(true)}
            >
-              {/* Pink silhouette proxy using AvatarCustomizer data */}
-              <div className="w-full h-full rounded-full overflow-hidden flex items-center justify-center pt-4 bg-[#FBCFE8]">
-                 <PixelAvatar config={avatarConfig} size={90} />
+              {/* Avatar rendered using our new CustomAvatar */}
+              <div className="w-full h-full rounded-full overflow-hidden flex items-center justify-center bg-[#FBCFE8]">
+                 <CustomAvatar
+                   gender={avatarConfig.gender}
+                   skinTone={avatarConfig.skinTone}
+                   top={avatarConfig.top}
+                   bottom={avatarConfig.bottom}
+                   accessory={avatarConfig.accessory}
+                   className="w-full h-full scale-[1.3] translate-y-4"
+                 />
               </div>
               
               {/* Edit icon overlay */}
@@ -485,13 +492,22 @@ const ProfileHeader = ({
 
       </div>
 
-      {/* Avatar customizer modal */}
+      {/* Avatar editor modal — uses our new AvatarBuilder */}
       {isEditingAvatar && (
-        <AvatarCustomizer
-          initialConfig={avatarConfig}
-          onSave={c => { setAvatarConfig(c); setIsEditingAvatar(false); }}
-          onClose={() => setIsEditingAvatar(false)}
-        />
+        <div className="fixed inset-0 z-[200] bg-black/60 flex items-center justify-center p-4 overflow-y-auto">
+          <div className="w-full max-w-5xl">
+            <div className="flex justify-end mb-2">
+              <button
+                onClick={() => setIsEditingAvatar(false)}
+                className="neo-btn-white px-5 py-2 text-sm font-black"
+              >✕ Close</button>
+            </div>
+            <AvatarBuilder
+              initialConfig={avatarConfig}
+              onSave={c => { setAvatarConfig(c); setIsEditingAvatar(false); }}
+            />
+          </div>
+        </div>
       )}
     </>
   );
