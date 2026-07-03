@@ -28,8 +28,8 @@ const CustomAvatar = ({
         {isFemale && (
           <g id="hair-back" fill={hairColor}>
             {hair === 'long_straight' && (
-              /* Flows down the shoulders matching the updated balanced width */
-              <path d="M 50 100 C 40 150 35 200 38 260 C 48 260 51 240 55 210 Q 60 160 74 120 C 126 120 140 160 145 210 C 147 240 150 260 162 260 C 165 200 160 150 150 100 Z" />
+              /* Flows down to the hips/elbows level for a natural look matching the reference picture */
+              <path d="M 50 100 C 42 140 38 180 40 220 C 48 220 52 210 56 190 Q 60 165 74 120 C 126 120 140 165 144 190 C 148 210 152 220 160 220 C 162 180 158 140 150 100 Z" />
             )}
             {hair === 'curly_locks' && (
               <path d="M 48 95 C 36 130 34 170 39 220 Q 47 220 51 200 C 47 160 55 140 68 120 C 132 120 145 140 149 200 Q 153 220 161 220 C 166 170 164 130 152 95 Z" />
