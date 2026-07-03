@@ -32,13 +32,22 @@ const STEP_LABELS = {
 };
 
 const AvatarBuilder = ({ initialConfig, onSave }) => {
-  const [config, setConfig] = useState(initialConfig || {
-    gender: 'male',
-    skinTone: '#fdf6e3',
-    hair: 'none',
-    top: 'none',
-    bottom: 'none',
-    accessory: 'none',
+  const [config, setConfig] = useState(() => {
+    if (initialConfig) {
+      const base = { ...initialConfig };
+      if (base.gender === 'female' && (!base.hair || base.hair === 'none')) {
+        base.hair = 'long_straight';
+      }
+      return base;
+    }
+    return {
+      gender: 'male',
+      skinTone: '#fdf6e3',
+      hair: 'none',
+      top: 'none',
+      bottom: 'none',
+      accessory: 'none',
+    };
   });
   
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
@@ -51,7 +60,7 @@ const AvatarBuilder = ({ initialConfig, onSave }) => {
       prevGender.current = config.gender;
       setConfig(prev => ({
         ...prev,
-        hair: 'none',
+        hair: config.gender === 'female' ? 'long_straight' : 'none',
         top: 'none',
         bottom: 'none',
         accessory: 'none'

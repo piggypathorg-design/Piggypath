@@ -24,8 +24,12 @@ export const useAvatar = () => {
       if (saved) {
         const parsed = JSON.parse(saved);
         if (parsed?.gender) {
-          // Backward compatibility: fill in hair if missing
-          return { ...DEFAULT_AVATAR, ...parsed };
+          // Backward compatibility: fill in default hair if missing or set to none for female
+          const base = { ...DEFAULT_AVATAR, ...parsed };
+          if (base.gender === 'female' && base.hair === 'none') {
+            base.hair = 'long_straight';
+          }
+          return base;
         }
       }
     } catch (_) {}
@@ -47,6 +51,9 @@ export const useAvatar = () => {
         const remote = data.avatar_config;
         if (remote?.gender) {
           const merged = { ...DEFAULT_AVATAR, ...remote };
+          if (merged.gender === 'female' && merged.hair === 'none') {
+            merged.hair = 'long_straight';
+          }
           setConfig(merged);
           localStorage.setItem(LOCAL_KEY, JSON.stringify(merged));
         }
@@ -62,7 +69,13 @@ export const useAvatar = () => {
         const saved = localStorage.getItem(LOCAL_KEY);
         if (saved) {
           const parsed = JSON.parse(saved);
-          if (parsed?.gender) setConfig({ ...DEFAULT_AVATAR, ...parsed });
+          if (parsed?.gender) {
+            const merged = { ...DEFAULT_AVATAR, ...parsed };
+            if (merged.gender === 'female' && merged.hair === 'none') {
+              merged.hair = 'long_straight';
+            }
+            setConfig(merged);
+          }
         }
       } catch (_) {}
     };
