@@ -207,37 +207,63 @@ const CustomAvatar = ({
           
           {/* Face Elements */}
           <g id="face">
-            {/* Curved eyebrows */}
-            <path d="M 78 88 Q 85 83 91 87" fill="none" strokeWidth="3" strokeLinecap="round" />
-            <path d="M 122 88 Q 115 83 109 87" fill="none" strokeWidth="3" strokeLinecap="round" />
-            
-            {/* Eyes with sparkle reflection */}
-            <circle cx="86" cy="102" r="5" fill="#1a202c" stroke="none" />
-            <circle cx="114" cy="102" r="5" fill="#1a202c" stroke="none" />
-            <circle cx="88" cy="100" r="1.5" fill="#fff" stroke="none" />
-            <circle cx="116" cy="100" r="1.5" fill="#fff" stroke="none" />
-            
-            {/* Female eyelashes */}
-            {isFemale && (
-              <g stroke="#1a202c" strokeWidth="1.5" strokeLinecap="round">
-                <line x1="82" y1="97" x2="80" y2="94" />
-                <line x1="86" y1="96" x2="85" y2="93" />
-                <line x1="90" y1="97" x2="91" y2="94" />
-                <line x1="110" y1="97" x2="109" y2="94" />
-                <line x1="114" y1="96" x2="115" y2="93" />
-                <line x1="118" y1="97" x2="120" y2="94" />
-              </g>
-            )}
+            {isFemale ? (
+              /* Female: Grumpy/pouty facial expressions exactly matching the uploaded picture reference */
+              <>
+                {/* Slanted pouting eyebrows */}
+                <path d="M 78 89 L 88 86" fill="none" strokeWidth="3" strokeLinecap="round" />
+                <path d="M 122 89 L 112 86" fill="none" strokeWidth="3" strokeLinecap="round" />
+                
+                {/* Eyes with sparkle reflection */}
+                <circle cx="86" cy="102" r="5" fill="#1a202c" stroke="none" />
+                <circle cx="114" cy="102" r="5" fill="#1a202c" stroke="none" />
+                <circle cx="88" cy="100" r="1.5" fill="#fff" stroke="none" />
+                <circle cx="116" cy="100" r="1.5" fill="#fff" stroke="none" />
+                
+                {/* Eyelashes */}
+                <g stroke="#1a202c" strokeWidth="1.5" strokeLinecap="round">
+                  <line x1="82" y1="97" x2="80" y2="94" />
+                  <line x1="86" y1="96" x2="85" y2="93" />
+                  <line x1="90" y1="97" x2="91" y2="94" />
+                  <line x1="110" y1="97" x2="109" y2="94" />
+                  <line x1="114" y1="96" x2="115" y2="93" />
+                  <line x1="118" y1="97" x2="120" y2="94" />
+                </g>
 
-            {/* Blushing Cheeks (Rosy circles exactly like references) */}
-            <ellipse cx="72" cy="114" rx="12" ry="8" fill="#ff99a8" stroke="none" opacity="0.8" />
-            <ellipse cx="128" cy="114" rx="12" ry="8" fill="#ff99a8" stroke="none" opacity="0.8" />
-            
-            {/* Nose */}
-            <path d="M 98 111 Q 100 109 102 111" fill="none" stroke="#7a5c4f" strokeWidth="1.5" />
-            
-            {/* Big happy smile */}
-            <path d="M 89 121 Q 100 133 111 121" fill="none" strokeWidth="2.5" strokeLinecap="round" />
+                {/* Blushing Cheeks */}
+                <ellipse cx="72" cy="114" rx="12" ry="8" fill="#ff99a8" stroke="none" opacity="0.8" />
+                <ellipse cx="128" cy="114" rx="12" ry="8" fill="#ff99a8" stroke="none" opacity="0.8" />
+                
+                {/* Nose */}
+                <path d="M 98 111 Q 100 109 102 111" fill="none" stroke="#7a5c4f" strokeWidth="1.5" />
+                
+                {/* Grumpy inverted mouth curve matching picture */}
+                <path d="M 95 124 Q 100 120 105 124" fill="none" strokeWidth="3" strokeLinecap="round" />
+              </>
+            ) : (
+              /* Male: Happy facial expressions */
+              <>
+                {/* Curved eyebrows */}
+                <path d="M 78 88 Q 85 83 91 87" fill="none" strokeWidth="3" strokeLinecap="round" />
+                <path d="M 122 88 Q 115 83 109 87" fill="none" strokeWidth="3" strokeLinecap="round" />
+                
+                {/* Eyes with sparkle reflection */}
+                <circle cx="86" cy="102" r="5" fill="#1a202c" stroke="none" />
+                <circle cx="114" cy="102" r="5" fill="#1a202c" stroke="none" />
+                <circle cx="88" cy="100" r="1.5" fill="#fff" stroke="none" />
+                <circle cx="116" cy="100" r="1.5" fill="#fff" stroke="none" />
+
+                {/* Blushing Cheeks */}
+                <ellipse cx="72" cy="114" rx="12" ry="8" fill="#ff99a8" stroke="none" opacity="0.8" />
+                <ellipse cx="128" cy="114" rx="12" ry="8" fill="#ff99a8" stroke="none" opacity="0.8" />
+                
+                {/* Nose */}
+                <path d="M 98 111 Q 100 109 102 111" fill="none" stroke="#7a5c4f" strokeWidth="1.5" />
+                
+                {/* Big happy smile */}
+                <path d="M 89 121 Q 100 133 111 121" fill="none" strokeWidth="2.5" strokeLinecap="round" />
+              </>
+            )}
           </g>
 
           {/* ==================== HAIR FRONT / STYLES ==================== */}
