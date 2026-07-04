@@ -29,7 +29,7 @@ const CustomAvatar = ({
           <g id="hair-back" fill={hairColor}>
             {hair === 'long_straight' && (
               /* Flows down to the hips/elbows level for a natural look matching the reference picture */
-              <path d="M 50 100 C 42 140 38 180 40 220 C 48 220 52 210 56 190 Q 60 165 74 120 C 126 120 140 165 144 190 C 148 210 152 220 160 220 C 162 180 158 140 150 100 Z" />
+              <path d="M 50 78 C 34 110 32 160 36 220 C 44 222 48 215 50 200 C 48 160 52 130 68 110 C 132 110 148 130 150 200 C 152 215 156 222 164 220 C 168 160 166 110 150 78 Z" />
             )}
             {hair === 'curly_locks' && (
               <path d="M 48 95 C 36 130 34 170 39 220 Q 47 220 51 200 C 47 160 55 140 68 120 C 132 120 145 140 149 200 Q 153 220 161 220 C 166 170 164 130 152 95 Z" />
@@ -275,15 +275,11 @@ const CustomAvatar = ({
                 {hair === 'long_straight' && (
                   /* Parted in the middle with symmetric sweeps down (Reference 1) */
                   <g>
-                    {/* Top skull base cap covering the top of head completely */}
-                    <path d="M 52 100 C 52 50 148 50 148 100 Q 148 75 100 75 Q 52 75 52 100 Z" />
-                    
-                    {/* Left and Right hair sweeps */}
-                    <path d="M 100 75 C 84 74 66 84 56 100 C 50 110 50 120 50 134 C 64 122 82 108 100 75 Z" />
-                    <path d="M 100 75 C 116 74 134 84 144 100 C 150 110 150 120 150 134 C 136 122 118 108 100 75 Z" />
+                    {/* Continuous crown cap and sweeps framing the face */}
+                    <path d="M 52 108 C 50 82 52 60 65 52 C 75 46 125 46 135 52 C 148 60 150 82 148 108 C 148 118 142 118 134 106 C 120 90 110 82 100 82 C 90 82 80 90 66 106 C 58 118 52 118 52 108 Z" />
                     
                     {/* Center Parting Line */}
-                    <line x1="100" y1="50" x2="100" y2="75" stroke="#1a1a1a" strokeWidth="3" />
+                    <line x1="100" y1="48" x2="100" y2="82" stroke="#1a1a1a" strokeWidth="3" />
                   </g>
                 )}
                 {hair === 'bob_cut' && (
