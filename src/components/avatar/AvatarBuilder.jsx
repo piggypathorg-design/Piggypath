@@ -205,11 +205,7 @@ const AvatarBuilder = ({ initialConfig, onSave }) => {
                         renderClothingPreview(option, currentStep)
                       )}
                       
-                      {currentStep !== 'skinTone' && currentStep !== 'gender' && option !== 'none' && (
-                        <span className="absolute bottom-0.5 sm:bottom-1 w-full text-[7px] sm:text-[9px] font-black uppercase text-black text-center truncate px-1">
-                          {option.replace(/_/g, ' ')}
-                        </span>
-                      )}
+
 
                       {isSelected && (
                         <div className="absolute -top-3 -right-3 bg-white border-2 border-black rounded-full p-1 shadow-neo-sm z-20">

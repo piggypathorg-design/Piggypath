@@ -25,53 +25,90 @@ const CustomAvatar = ({
   const FemaleBackHair = () => {
     if (!isFemale) return null;
 
+    // long_straight: Two thick curtain panels that flow from crown all the way down
     if (hair === 'long_straight') {
       return (
-        <g fill={hairColor} stroke="none">
-          {/* Left curtain — wider at top, tapers slightly at bottom */}
-          <path d="M 53 72 C 44 90 36 130 38 210 C 44 212 50 205 52 195 C 50 155 54 120 66 104 C 72 96 68 82 53 72 Z" />
-          {/* Right curtain */}
-          <path d="M 147 72 C 156 90 164 130 162 210 C 156 212 150 205 148 195 C 150 155 146 120 134 104 C 128 96 132 82 147 72 Z" />
-          {/* Subtle highlight strands on left side */}
-          <path d="M 46 100 C 42 140 40 175 42 210 C 44 210 46 205 47 195 C 46 160 48 128 56 108 Z" fill={hairHighlight} opacity="0.4" />
-          {/* Subtle highlight strands on right side */}
-          <path d="M 154 100 C 158 140 160 175 158 210 C 156 210 154 205 153 195 C 154 160 152 128 144 108 Z" fill={hairHighlight} opacity="0.4" />
+        <g stroke="none">
+          {/* ── LEFT PANEL ── wide at crown, slightly narrows, falls to hip level */}
+          <path fill={hairColor}
+            d="M 68 68
+               C 60 72 52 82 48 95
+               C 42 115 40 150 42 220
+               C 48 224 56 220 58 210
+               C 56 185 56 155 60 130
+               C 63 115 68 105 72 100
+               Z"
+          />
+          {/* inner sheen on left panel */}
+          <path fill={hairHighlight} opacity="0.35"
+            d="M 68 80 C 64 92 60 115 62 145 C 64 160 66 190 66 210
+               C 67 210 68 205 68 200 C 68 175 68 145 70 118
+               C 70 105 71 95 72 88 Z"
+          />
+          {/* ── RIGHT PANEL ── mirror */}
+          <path fill={hairColor}
+            d="M 132 68
+               C 140 72 148 82 152 95
+               C 158 115 160 150 158 220
+               C 152 224 144 220 142 210
+               C 144 185 144 155 140 130
+               C 137 115 132 105 128 100
+               Z"
+          />
+          {/* inner sheen on right panel */}
+          <path fill={hairHighlight} opacity="0.35"
+            d="M 132 80 C 136 92 140 115 138 145 C 136 160 134 190 134 210
+               C 133 210 132 205 132 200 C 132 175 132 145 130 118
+               C 130 105 129 95 128 88 Z"
+          />
         </g>
       );
     }
+
     if (hair === 'bob_cut') {
       return (
         <g fill={hairColor} stroke="none">
-          <path d="M 53 72 C 44 88 40 115 44 148 C 50 150 54 144 56 138 C 54 118 56 100 66 88 Z" />
-          <path d="M 147 72 C 156 88 160 115 156 148 C 150 150 146 144 144 138 C 146 118 144 100 134 88 Z" />
+          <path d="M 66 70 C 56 80 50 100 52 136 C 58 140 64 136 66 128 C 64 110 66 92 72 84 Z" />
+          <path d="M 134 70 C 144 80 150 100 148 136 C 142 140 136 136 134 128 C 136 110 134 92 128 84 Z" />
         </g>
       );
     }
+
     if (hair === 'curly_locks') {
       return (
         <g fill={hairColor} stroke="none">
-          <path d="M 52 72 C 38 95 34 140 40 210 C 48 212 52 202 54 188 C 50 155 54 125 66 104 Z" />
-          <path d="M 148 72 C 162 95 166 140 160 210 C 152 212 148 202 146 188 C 150 155 146 125 134 104 Z" />
+          <path d="M 66 68 C 52 90 46 135 50 215 C 56 218 62 210 64 198 C 60 165 62 130 70 108 Z" />
+          <path d="M 134 68 C 148 90 154 135 150 215 C 144 218 138 210 136 198 C 140 165 138 130 130 108 Z" />
         </g>
       );
     }
+
     if (hair === 'ponytail') {
       return (
-        <g fill={hairColor} stroke="none">
-          {/* Ponytail bundle going to the right-back */}
-          <path d="M 130 90 C 148 88 170 100 176 130 C 182 155 172 178 160 180 C 150 168 148 148 140 132 C 136 118 132 105 130 90 Z" />
-          <path d="M 135 92 C 150 90 168 102 172 128 C 168 125 156 118 144 128 Z" fill={hairHighlight} opacity="0.4" />
+        <g stroke="none">
+          {/* ponytail rope going right and down */}
+          <path fill={hairColor}
+            d="M 128 84 C 146 80 168 92 174 122
+               C 180 150 168 175 156 178
+               C 146 165 144 144 138 126
+               C 134 112 130 98 128 84 Z"
+          />
+          <path fill={hairHighlight} opacity="0.4"
+            d="M 136 86 C 150 84 166 96 168 120 C 164 116 154 108 142 118 Z"
+          />
         </g>
       );
     }
+
     if (hair === 'side_part') {
       return (
         <g fill={hairColor} stroke="none">
-          <path d="M 50 72 C 40 90 36 130 38 210 C 44 212 50 205 52 192 C 50 155 52 118 64 100 Z" />
-          <path d="M 150 72 C 160 90 164 130 162 210 C 156 212 150 205 148 192 C 150 155 148 118 136 100 Z" />
+          <path d="M 66 68 C 54 84 48 125 50 215 C 56 218 62 210 64 196 C 62 160 64 120 72 100 Z" />
+          <path d="M 134 68 C 146 84 152 125 150 215 C 144 218 138 210 136 196 C 138 160 136 120 128 100 Z" />
         </g>
       );
     }
+
     return null;
   };
 
@@ -81,105 +118,179 @@ const CustomAvatar = ({
   const FemaleFrontHair = () => {
     if (!isFemale) return null;
 
+    // ── long_straight ──────────────────────────────────────────────
+    // Crown cap + center part + face-frame wisps + strand shading
     if (hair === 'long_straight') {
       return (
         <g stroke="none">
-          {/* Full crown cap — covers entire top of head */}
-          <path
-            fill={hairColor}
-            d="
-              M 100 50
-              C 80 50 63 57 55 68
-              C 48 78 48 92 53 100
-              C 58 108 64 110 66 106
-              C 72 98 80 90 92 86
-              C 96 85 98 84 100 84
-              C 102 84 104 85 108 86
-              C 120 90 128 98 134 106
-              C 136 110 142 108 147 100
-              C 152 92 152 78 145 68
-              C 137 57 120 50 100 50 Z
-            "
+          {/* Main crown cap — hugs the skull tightly */}
+          <path fill={hairColor}
+            d="M 100 50
+               C 82 50 66 56 58 68
+               C 51 78 51 93 56 102
+               C 60 109 66 112 70 108
+               C 74 102 78 96 84 92
+               C 90 88 95 86 100 86
+               C 105 86 110 88 116 92
+               C 122 96 126 102 130 108
+               C 134 112 140 109 144 102
+               C 149 93 149 78 142 68
+               C 134 56 118 50 100 50 Z"
           />
-          {/* Left side strand that frames the face — hangs forward */}
-          <path
-            fill={hairColor}
-            d="M 55 68 C 48 80 46 96 48 112 C 52 116 56 112 58 106 C 58 96 58 84 63 75 Z"
+          {/* Crown sheen — light stripe running front-to-back */}
+          <path fill={hairHighlight} opacity="0.4"
+            d="M 100 52 C 92 53 82 57 76 64 C 85 60 93 58 100 58
+               C 107 58 115 60 124 64 C 118 57 108 53 100 52 Z"
           />
-          {/* Right side strand */}
-          <path
-            fill={hairColor}
-            d="M 145 68 C 152 80 154 96 152 112 C 148 116 144 112 142 106 C 142 96 142 84 137 75 Z"
+          {/* Center parting — thin visible line from crown down to forehead */}
+          <line x1="100" y1="51" x2="100" y2="86"
+            stroke="#2a1a1a" strokeWidth="2" strokeLinecap="round" />
+          {/* Strand lines on left side of crown for depth */}
+          <path fill="none" stroke={hairHighlight} strokeWidth="1" opacity="0.5"
+            d="M 88 86 C 82 80 76 72 74 64" />
+          <path fill="none" stroke={hairHighlight} strokeWidth="1" opacity="0.4"
+            d="M 80 90 C 72 82 67 74 66 66" />
+          {/* Strand lines on right side */}
+          <path fill="none" stroke={hairHighlight} strokeWidth="1" opacity="0.5"
+            d="M 112 86 C 118 80 124 72 126 64" />
+          <path fill="none" stroke={hairHighlight} strokeWidth="1" opacity="0.4"
+            d="M 120 90 C 128 82 133 74 134 66" />
+          {/* Left face-framing wisp — hangs just in front of left ear */}
+          <path fill={hairColor}
+            d="M 58 68 C 50 80 48 96 50 116
+               C 54 120 58 116 60 110
+               C 60 98 60 84 65 74 Z"
           />
-          {/* Center parting line */}
-          <line x1="100" y1="50" x2="100" y2="84" stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round" />
-          {/* Subtle sheen/highlight on crown */}
-          <path
-            fill={hairHighlight}
-            opacity="0.35"
-            d="M 100 50 C 90 51 78 56 72 64 C 82 60 92 57 100 57 C 108 57 118 60 128 64 C 122 56 110 51 100 50 Z"
+          {/* Right face-framing wisp */}
+          <path fill={hairColor}
+            d="M 142 68 C 150 80 152 96 150 116
+               C 146 120 142 116 140 110
+               C 140 98 140 84 135 74 Z"
           />
         </g>
       );
     }
 
+    // ── bob_cut ─────────────────────────────────────────────────────
     if (hair === 'bob_cut') {
       return (
         <g stroke="none">
-          <path
-            fill={hairColor}
-            d="M 100 52 C 76 52 58 62 53 76 C 48 88 50 104 56 112 C 62 118 68 118 72 114 C 76 110 78 106 80 104 C 86 100 92 98 100 98 C 108 98 114 100 120 104 C 122 106 124 110 128 114 C 132 118 138 118 144 112 C 150 104 152 88 147 76 C 142 62 124 52 100 52 Z"
+          <path fill={hairColor}
+            d="M 100 52 C 76 52 58 62 53 76
+               C 48 88 50 106 57 114
+               C 63 120 70 120 74 116
+               C 78 112 80 108 82 106
+               C 88 101 94 99 100 99
+               C 106 99 112 101 118 106
+               C 120 108 122 112 126 116
+               C 130 120 137 120 143 114
+               C 150 106 152 88 147 76
+               C 142 62 124 52 100 52 Z"
           />
-          <line x1="100" y1="52" x2="100" y2="86" stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round" />
+          <path fill={hairHighlight} opacity="0.35"
+            d="M 100 53 C 88 54 78 58 72 66 C 82 62 92 59 100 59
+               C 108 59 118 62 128 66 C 122 58 112 54 100 53 Z"
+          />
+          <line x1="100" y1="52" x2="100" y2="88" stroke="#2a1a1a" strokeWidth="2" strokeLinecap="round" />
         </g>
       );
     }
 
+    // ── curly_locks ─────────────────────────────────────────────────
     if (hair === 'curly_locks') {
       return (
         <g stroke="none">
-          {/* Crown */}
-          <path
-            fill={hairColor}
-            d="M 100 50 C 78 50 60 60 54 74 C 48 87 50 105 58 114 C 66 108 68 100 70 94 C 78 86 88 82 100 82 C 112 82 122 86 130 94 C 132 100 134 108 142 114 C 150 105 152 87 146 74 C 140 60 122 50 100 50 Z"
+          <path fill={hairColor}
+            d="M 100 50 C 78 50 60 60 54 74
+               C 48 88 50 106 58 115
+               C 66 109 68 101 70 95
+               C 78 87 88 83 100 83
+               C 112 83 122 87 130 95
+               C 132 101 134 109 142 115
+               C 150 106 152 88 146 74
+               C 140 60 122 50 100 50 Z"
           />
-          {/* Wavy curls hanging on sides */}
-          <path fill={hairColor} d="M 54 74 C 48 84 46 96 50 108 C 53 116 56 118 58 114 C 55 106 52 96 56 86 Z" />
-          <path fill={hairColor} d="M 146 74 C 152 84 154 96 150 108 C 147 116 144 118 142 114 C 145 106 148 96 144 86 Z" />
-          {/* Curly bob ends */}
-          <path fill={hairColor} d="M 50 108 C 46 118 48 128 54 130 C 60 128 60 120 58 114 Z" />
-          <path fill={hairColor} d="M 150 108 C 154 118 152 128 146 130 C 140 128 140 120 142 114 Z" />
-          <line x1="100" y1="50" x2="100" y2="82" stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round" />
+          {/* Curly side wisps */}
+          <path fill={hairColor}
+            d="M 54 74 C 47 86 45 100 49 112 C 52 120 57 120 59 115
+               C 56 107 53 96 57 86 Z"
+          />
+          <path fill={hairColor}
+            d="M 146 74 C 153 86 155 100 151 112 C 148 120 143 120 141 115
+               C 144 107 147 96 143 86 Z"
+          />
+          {/* Curly ends at bottom of wisps */}
+          <path fill={hairColor}
+            d="M 49 112 C 45 122 47 133 53 135 C 59 133 59 122 57 115 Z"
+          />
+          <path fill={hairColor}
+            d="M 151 112 C 155 122 153 133 147 135 C 141 133 141 122 143 115 Z"
+          />
+          <line x1="100" y1="50" x2="100" y2="83" stroke="#2a1a1a" strokeWidth="2" strokeLinecap="round" />
         </g>
       );
     }
 
+    // ── side_part ───────────────────────────────────────────────────
     if (hair === 'side_part') {
       return (
         <g stroke="none">
-          <path
-            fill={hairColor}
-            d="M 100 52 C 78 50 60 58 52 72 C 46 82 48 98 54 108 C 60 116 68 116 72 110 C 76 104 80 96 86 90 C 90 87 95 85 100 85 C 108 85 118 90 128 98 C 132 104 136 112 144 114 C 150 106 152 90 148 76 C 142 60 122 52 100 52 Z"
+          <path fill={hairColor}
+            d="M 100 52 C 78 50 60 58 52 72
+               C 46 84 48 100 55 110
+               C 61 118 70 118 74 112
+               C 78 106 82 98 88 92
+               C 92 88 96 86 100 86
+               C 108 86 118 91 128 99
+               C 132 105 136 114 144 116
+               C 150 108 152 92 148 78
+               C 142 62 122 52 100 52 Z"
           />
-          {/* Heavy left side swoop */}
-          <path fill={hairColor} d="M 52 72 C 44 84 42 100 44 116 C 48 120 52 116 54 108 C 52 100 50 88 56 78 Z" />
-          {/* Small right side strand */}
-          <path fill={hairColor} d="M 148 76 C 154 88 156 102 154 112 C 150 116 146 114 144 108 C 146 100 148 88 148 76 Z" />
+          {/* Heavy left swoop — the dominant side */}
+          <path fill={hairColor}
+            d="M 52 72 C 44 86 42 104 45 118
+               C 49 122 53 118 55 110
+               C 53 100 51 88 57 78 Z"
+          />
+          {/* Smaller right strand */}
+          <path fill={hairColor}
+            d="M 148 78 C 154 90 156 104 154 114
+               C 150 118 146 116 144 110
+               C 146 100 148 88 148 78 Z"
+          />
         </g>
       );
     }
 
+    // ── ponytail ────────────────────────────────────────────────────
     if (hair === 'ponytail') {
       return (
         <g stroke="none">
-          {/* Crown — swept back */}
-          <path
-            fill={hairColor}
-            d="M 100 52 C 78 52 60 60 54 74 C 48 86 50 100 56 108 C 64 104 72 98 80 94 C 88 90 94 88 100 88 C 106 88 112 90 118 94 C 126 98 132 104 140 110 C 148 100 150 86 146 74 C 140 60 122 52 100 52 Z"
+          {/* Crown cap swept back */}
+          <path fill={hairColor}
+            d="M 100 52 C 78 52 60 60 54 74
+               C 48 87 50 102 58 110
+               C 66 106 74 100 82 96
+               C 88 92 94 90 100 90
+               C 106 90 112 92 118 96
+               C 126 100 134 106 142 112
+               C 150 102 152 87 146 74
+               C 140 60 122 52 100 52 Z"
           />
-          {/* Side strands */}
-          <path fill={hairColor} d="M 54 74 C 48 86 46 100 50 112 C 54 118 58 114 60 108 C 58 98 56 86 60 78 Z" />
-          <path fill={hairColor} d="M 146 74 C 152 86 154 100 150 112 C 146 118 142 114 140 108 C 142 98 144 86 140 78 Z" />
+          {/* Left thin wisp framing face */}
+          <path fill={hairColor}
+            d="M 54 74 C 48 87 46 102 50 116
+               C 54 122 58 118 60 112
+               C 58 100 56 88 60 79 Z"
+          />
+          {/* Right thin wisp */}
+          <path fill={hairColor}
+            d="M 146 74 C 152 87 154 102 150 116
+               C 146 122 142 118 140 112
+               C 142 100 144 88 140 79 Z"
+          />
+          {/* Elastic band / scrunchie at back of head */}
+          <ellipse cx="134" cy="88" rx="7" ry="5" fill="#e8a0bf" stroke="#1a1a1a" strokeWidth="2" />
         </g>
       );
     }
