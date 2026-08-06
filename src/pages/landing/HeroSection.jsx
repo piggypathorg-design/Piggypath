@@ -11,7 +11,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="home" className="w-full relative overflow-hidden bg-white dark:bg-[#18181B] transition-colors pb-16 md:pb-24 pt-24 md:pt-28">
+    <section id="home" className="w-full relative overflow-hidden bg-white dark:bg-[#18181B] transition-colors pb-16 md:pb-24 pt-16 md:pt-20">
       {/* Background Soft Glows */}
       <div className="absolute top-10 left-1/4 w-96 h-96 bg-[#00E599]/15 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute top-40 right-10 w-96 h-96 bg-[#8B5CF6]/15 rounded-full blur-[120px] pointer-events-none" />
