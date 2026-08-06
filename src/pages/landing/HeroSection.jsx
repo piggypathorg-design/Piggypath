@@ -1,281 +1,297 @@
-
-import React from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { Flame, X, Check, Coins, Award } from 'lucide-react';
-import { TrophyIcon } from '../../components/profile/ProfileHeader';
-
-const FallingText = ({ text, className }) => {
-  const words = text.split(" ");
-  return (
-    <div className={`flex flex-wrap ${className}`}>
-      {words.map((word, i) => (
-        <React.Fragment key={i}>
-          <div className="flex">
-            {word.split("").map((letter, j) => (
-              <motion.span
-                key={j}
-                initial={{ y: -50, opacity: 0, rotate: -20 }}
-                animate={{ y: 0, opacity: 1, rotate: 0 }}
-                transition={{ duration: 0.6, delay: (i * 0.1) + (j * 0.03), type: "spring", bounce: 0.6 }}
-                style={{ display: "inline-block" }}
-              >
-                {letter}
-              </motion.span>
-            ))}
-          </div>
-          <span className="w-3 md:w-6" />{/* space */}
-        </React.Fragment>
-      ))}
-    </div>
-  );
-};
+import { Check, X, Sparkles, ArrowRight, Play } from 'lucide-react';
 
 const HeroSection = () => {
+  const [selectedQuizOption, setSelectedQuizOption] = useState('emergency');
+
   const scrollTo = (id) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <section id="home" className="w-full relative overflow-hidden" style={{ minHeight: '90vh' }}>
-      {/* Background dot pattern */}
-      <div className="absolute inset-0 z-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#18181B 2px, transparent 2px)', backgroundSize: '24px 24px' }} />
-      
-      <div className="max-w-7xl mx-auto px-6 pt-16 md:pt-24 pb-12 md:pb-20 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 lg:items-center items-center">
+    <section id="home" className="w-full relative overflow-hidden bg-white dark:bg-[#18181B] transition-colors pb-16 md:pb-24 pt-24 md:pt-28">
+      {/* Background Soft Glows */}
+      <div className="absolute top-10 left-1/4 w-96 h-96 bg-[#00E599]/15 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-40 right-10 w-96 h-96 bg-[#8B5CF6]/15 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         
-        {/* Decorative Abstract Star Illustration */}
-        <motion.svg 
-           initial={{ rotate: -45, scale: 0 }}
-           animate={{ rotate: 15, scale: 1 }}
-           transition={{ duration: 0.8, type: 'spring' }}
-           className="absolute top-10 left-10 md:top-20 md:-left-10 w-24 h-24 -z-10 drop-shadow-[4px_4px_0_#18181B] dark:drop-shadow-[4px_4px_0_#00E599] fill-[#8B5CF6] stroke-[#18181B] dark:stroke-white stroke-[4px]" 
-           viewBox="0 0 100 100"
-        >
-           <path d="M50 0L61 39L100 50L61 61L50 100L39 61L0 50L39 39Z" />
-        </motion.svg>
+        {/* Top Hero Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          {/* Left Hero Content */}
+          <div className="flex flex-col items-start lg:col-span-6">
+            
+            {/* Soft Badge */}
+            <motion.div 
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-purple-200/60 dark:border-purple-900/40 bg-purple-50/80 dark:bg-purple-950/30 text-purple-700 dark:text-purple-300 font-bold text-xs tracking-wide mb-6 shadow-sm"
+            >
+              <Sparkles size={14} className="text-[#8B5CF6]" />
+              <span>For anyone set on financial freedom</span>
+            </motion.div>
 
+            {/* Headline */}
+            <motion.h1 
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tight text-[#18181B] dark:text-white mb-6"
+            >
+              Get good with money, <br className="hidden sm:block" />
+              <span className="text-[#8B5CF6]">one short game</span> at a time.
+            </motion.h1>
 
+            {/* Body Description */}
+            <motion.p 
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-lg md:text-xl font-medium text-gray-500 dark:text-gray-400 leading-relaxed max-w-xl mb-8"
+            >
+              PiggyPath breaks personal finance concepts like investing, taxes, and budgeting down into short, high-impact bite-sized lessons, interactive quiz cards, and real-life simulations that feel like a game.
+            </motion.p>
 
-        {/* Left Content */}
-        <div className="flex flex-col gap-8 lg:col-span-5">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border-[3px] border-[#18181B] dark:border-white bg-white dark:bg-[#27272A] w-max font-bold text-sm tracking-wide shadow-[#18181B] dark:shadow-[#FFFFFF]">
-            <span className="text-[#8B5CF6]">✦</span> PRE-LAUNCH <span className="mx-1">•</span> NOW BOARDING
-          </div>
+            {/* CTA Action Buttons */}
+            <motion.div 
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mb-4"
+            >
+              <button 
+                onClick={() => scrollTo('waitlist')} 
+                className="w-full sm:w-auto bg-[#00E599] hover:bg-[#00D08A] text-[#18181B] font-bold text-[16px] px-8 py-4 rounded-full transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#00E599] focus:ring-offset-2 dark:focus:ring-offset-[#18181B] flex items-center justify-center gap-2"
+              >
+                Get started for free
+                <ArrowRight size={18} />
+              </button>
 
-          <h1 className="text-4xl md:text-6xl lg:text-[60px] xl:text-[64px] font-black leading-[1.1] tracking-tight">
-            Gamify <span className="text-[#00E599]">your way to </span> <br className="hidden md:block" /> financial freedom.
-          </h1>
+              <button 
+                onClick={() => scrollTo('features')} 
+                className="w-full sm:w-auto border border-gray-200 dark:border-gray-700 bg-white/60 dark:bg-gray-800/40 text-[#18181B] dark:text-white font-bold text-[16px] px-8 py-4 rounded-full transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400 flex items-center justify-center gap-2"
+              >
+                <Play size={16} className="fill-current" />
+                See how it works
+              </button>
+            </motion.div>
 
-          <p className="text-lg md:text-2xl font-medium text-[#3F3F46] dark:text-[#A1A1AA] leading-relaxed max-w-xl">
-            PiggyPath turns financial education into an interactive journey where you learn budgeting, investing, wealth building and personal finance through gamified experiences, not boring videos or textbooks.
-          </p>
+            {/* Subtext */}
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="text-xs font-semibold text-gray-400 dark:text-gray-500 mb-10"
+            >
+              No credit card required. Start learning in 30 sec.
+            </motion.p>
 
-          <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 pt-4 w-full">
-            <button onClick={() => scrollTo('waitlist')} className="bg-[#00E599] text-[#18181B] border-[3px] border-[#18181B] dark:border-white shadow-[4px_4px_0_#18181B] dark:shadow-[#FFFFFF] text-lg lg:text-xl font-black px-6 md:px-8 py-4 rounded-xl transition-transform hover:-translate-y-1 w-full sm:w-auto flex justify-center items-center whitespace-nowrap">
-              Join Waitlist →
-            </button>
-            <button onClick={() => scrollTo('features')} className="bg-white dark:bg-[#27272A] text-[#18181B] dark:text-[#F4F4F5] border-[3px] border-[#18181B] dark:border-white shadow-[4px_4px_0_#18181B] dark:shadow-[#FFFFFF] flex items-center justify-center gap-2 text-lg lg:text-xl font-black px-6 md:px-8 py-4 rounded-xl transition-transform hover:-translate-y-1 w-full sm:w-auto whitespace-nowrap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} width={24} height={24} className="shrink-0">
-                <circle cx="12" cy="12" r="10"/>
-                <polygon points="10 8 16 12 10 16 10 8" fill="#18181B"/>
-              </svg>
-              See How It Works
-            </button>
-          </div>
-
-
-        </div>
-
-        {/* Right Visual: Dashboard Mockup */}
-        <div className="w-full lg:col-span-7 z-10">
-          <motion.div 
-            initial={{ opacity: 0, x: 100, rotate: 5 }}
-            animate={{ opacity: 1, x: 0, rotate: 0 }}
-            transition={{ duration: 0.8, type: 'spring' }}
-            className="relative w-full h-auto md:aspect-[4/3] rounded-3xl bg-white dark:bg-[#27272A] border-[4px] border-[#18181B] dark:border-white shadow-[12px_12px_0_#18181B] dark:shadow-[#FFFFFF] p-6 md:p-8 lg:p-10"
-          >
-          {/* Header */}
-          <div className="flex justify-between items-start mb-8">
-            <div className="flex items-stretch gap-4">
-              <div className="w-[72px] shrink-0 rounded-2xl bg-[#8B5CF6] border-[3px] border-[#18181B] dark:border-white flex items-center justify-center font-black text-3xl text-white shadow-[#18181B] dark:shadow-[#FFFFFF]">
-                PP
+            {/* Stats Counter Row (From Figma Screenshot 1) */}
+            <motion.div 
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="grid grid-cols-4 gap-4 sm:gap-8 pt-6 border-t border-gray-100 dark:border-gray-800/80 w-full max-w-lg"
+            >
+              <div>
+                <div className="text-2xl sm:text-3xl font-black text-[#18181B] dark:text-white">5</div>
+                <div className="text-xs font-bold text-gray-400 uppercase tracking-wider mt-0.5">Modules</div>
               </div>
               <div>
-                <div className="text-xs font-bold text-[#71717A] tracking-wider uppercase">Today's Quest</div>
-                <div className="text-xl font-black text-[#18181B] dark:text-[#F4F4F5] leading-tight">Master<br/>Accounting</div>
+                <div className="text-2xl sm:text-3xl font-black text-[#18181B] dark:text-white">50</div>
+                <div className="text-xs font-bold text-gray-400 uppercase tracking-wider mt-0.5">Lessons</div>
+              </div>
+              <div>
+                <div className="text-2xl sm:text-3xl font-black text-[#18181B] dark:text-white">1275+</div>
+                <div className="text-xs font-bold text-gray-400 uppercase tracking-wider mt-0.5">Points</div>
+              </div>
+              <div>
+                <div className="text-2xl sm:text-3xl font-black text-[#18181B] dark:text-white">3 min</div>
+                <div className="text-xs font-bold text-gray-400 uppercase tracking-wider mt-0.5">Per day</div>
+              </div>
+            </motion.div>
+
+          </div>
+
+          {/* Right Hero Visual: Pure SVG/JSX Interactive Quiz Card */}
+          <div className="lg:col-span-6 w-full flex justify-center lg:justify-end">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.7, type: 'spring', bounce: 0.3 }}
+              className="w-full max-w-lg bg-gradient-to-b from-[#F5F3FF] to-[#FAF8FF] dark:from-[#211D36] dark:to-[#191728] border border-purple-100 dark:border-purple-900/30 rounded-[32px] p-8 sm:p-10 shadow-xl relative overflow-hidden"
+            >
+              {/* Soft decorative background circles */}
+              <div className="absolute top-0 right-0 w-40 h-40 bg-[#00E599]/20 rounded-full blur-2xl pointer-events-none" />
+              <div className="absolute bottom-0 left-0 w-40 h-40 bg-[#8B5CF6]/20 rounded-full blur-2xl pointer-events-none" />
+
+              {/* Module Header Pill */}
+              <div className="flex items-center justify-between mb-8 relative z-10">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-gray-800/80 border border-purple-200/50 dark:border-purple-800/50 text-sm font-bold text-[#8B5CF6] dark:text-purple-300 shadow-sm">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#00E599] animate-pulse" />
+                  Module 1: Savings 101
+                </div>
+                <span className="text-sm font-bold text-gray-400">Quiz Preview</span>
+              </div>
+
+              {/* PNG Mascot */}
+              <div className="flex flex-col items-center mb-8 relative z-10">
+                <div className="w-28 h-28 bg-pink-100/80 dark:bg-pink-950/40 rounded-full flex items-center justify-center shadow-inner mb-4 border border-pink-200 dark:border-pink-800/40 overflow-hidden relative">
+                  <img src="/mascot-hero.png" alt="Happy Piggy Mascot" className="w-[85%] h-[85%] object-contain object-center" />
+                </div>
+                <div className="bg-white/90 dark:bg-gray-800/90 border border-purple-100 dark:border-gray-700 rounded-2xl px-5 py-3 text-center text-sm font-semibold text-gray-600 dark:text-gray-300 shadow-sm max-w-[280px]">
+                  <span className="font-bold text-[#8B5CF6]">Piggy Hint:</span> Keep 3-6 months of expenses for unexpected events!
+                </div>
+              </div>
+
+              {/* Quiz Question Card */}
+              <div className="bg-white dark:bg-[#18181B] rounded-2xl p-6 border border-purple-100 dark:border-purple-950 shadow-sm relative z-10 mb-8">
+                <p className="font-bold text-[#18181B] dark:text-white text-base sm:text-lg mb-5 leading-snug">
+                  Which fund protects you from sudden expenses like medical emergencies?
+                </p>
+
+                <div className="space-y-4">
+                  {/* Option A (Selected) */}
+                  <button 
+                    onClick={() => setSelectedQuizOption('emergency')}
+                    className={`w-full flex items-center justify-between p-4 rounded-xl border text-left font-bold text-base transition-all focus:outline-none focus:ring-2 focus:ring-[#00E599] ${
+                      selectedQuizOption === 'emergency'
+                        ? 'border-[#00E599] bg-[#00E599]/10 text-[#18181B] dark:text-white shadow-sm'
+                        : 'border-gray-200 dark:border-gray-700 bg-gray-50/50 dark:bg-gray-800/40 text-gray-600 dark:text-gray-300 hover:bg-gray-100'
+                    }`}
+                  >
+                    <span className="flex items-center gap-3">
+                      <span className="w-6 h-6 rounded-full border border-[#00E599] bg-[#00E599] text-[#18181B] flex items-center justify-center text-sm">
+                        <Check size={14} strokeWidth={3} />
+                      </span>
+                      Emergency Fund
+                    </span>
+                    <span className="text-sm font-bold text-[#00E599] uppercase tracking-wider">Correct</span>
+                  </button>
+
+                  {/* Option B */}
+                  <button 
+                    onClick={() => setSelectedQuizOption('stocks')}
+                    className={`w-full flex items-center justify-between p-4 rounded-xl border text-left font-semibold text-base transition-all focus:outline-none focus:ring-2 focus:ring-purple-400 ${
+                      selectedQuizOption === 'stocks'
+                        ? 'border-purple-400 bg-purple-50 dark:bg-purple-900/20 text-[#18181B] dark:text-white'
+                        : 'border-gray-200 dark:border-gray-700 bg-gray-50/50 dark:bg-gray-800/40 text-gray-600 dark:text-gray-300 hover:bg-gray-100'
+                    }`}
+                  >
+                    <span className="flex items-center gap-3">
+                      <span className="w-6 h-6 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center text-sm" />
+                      Stock Market Speculation
+                    </span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Progress Bar Footer */}
+              <div className="space-y-2 relative z-10">
+                <div className="flex justify-between items-center text-sm font-bold text-gray-500 dark:text-gray-400">
+                  <span>Lesson 1 of 5 completed</span>
+                  <span className="text-[#00E599]">20%</span>
+                </div>
+                <div className="w-full h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                  <div className="h-full bg-[#00E599] rounded-full w-1/5 transition-all duration-500" />
+                </div>
+              </div>
+
+            </motion.div>
+          </div>
+
+        </div>
+
+        {/* The Problem / The Solution Comparison Cards */}
+        <div className="mt-28 md:mt-36 grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
+          
+          {/* The Problem */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            className="bg-white dark:bg-[#18181B] rounded-[32px] p-8 md:p-10 border border-red-100 dark:border-red-950/40 shadow-sm flex flex-col items-start h-full"
+          >
+            <div className="inline-block px-3.5 py-1 border border-red-200 dark:border-red-900/50 rounded-full bg-red-50 dark:bg-red-950/30 text-red-600 dark:text-red-400 font-bold uppercase text-[11px] tracking-wider mb-6">
+              The Problem
+            </div>
+            <h2 className="text-3xl md:text-5xl font-black text-[#18181B] dark:text-white tracking-tight leading-tight mb-4">
+              Finance is <span className="text-gray-400 dark:text-gray-500">boring</span> and <span className="text-gray-400 dark:text-gray-500">confusing.</span>
+            </h2>
+            <p className="text-lg md:text-xl font-medium text-gray-500 dark:text-gray-400 max-w-2xl leading-relaxed mb-8">
+              Traditional financial education relies on dense articles, long videos, and complex jargon that puts people to sleep. It feels like a chore, not a path to freedom.
+            </p>
+            <div className="bg-red-50/50 dark:bg-red-950/20 border border-red-100 dark:border-red-900/30 rounded-2xl p-6 flex flex-col gap-3.5 mt-auto w-full">
+              <div className="flex items-center gap-3 font-bold text-gray-600 dark:text-gray-300 text-sm">
+                <div className="bg-red-100 dark:bg-red-900/50 p-1.5 rounded-full shrink-0 text-red-600 dark:text-red-400">
+                  <X size={14} strokeWidth={3} />
+                </div>
+                Too much financial jargon
+              </div>
+              <div className="flex items-center gap-3 font-bold text-gray-600 dark:text-gray-300 text-sm">
+                <div className="bg-red-100 dark:bg-red-900/50 p-1.5 rounded-full shrink-0 text-red-600 dark:text-red-400">
+                  <X size={14} strokeWidth={3} />
+                </div>
+                Endless unengaging video lectures
+              </div>
+              <div className="flex items-center gap-3 font-bold text-gray-600 dark:text-gray-300 text-sm">
+                <div className="bg-red-100 dark:bg-red-900/50 p-1.5 rounded-full shrink-0 text-red-600 dark:text-red-400">
+                  <X size={14} strokeWidth={3} />
+                </div>
+                Hard to apply to everyday decisions
               </div>
             </div>
-            
-            <div className="flex flex-col items-end gap-3">
-               <div className="w-12 h-12 rounded-full bg-[#00E599] border-[3px] border-[#18181B] dark:border-white flex items-center justify-center shadow-[#18181B] dark:shadow-[#FFFFFF] relative top-2 right-2 font-black text-xl hover:scale-110 transition-transform cursor-pointer mb-4">
-                 $
-               </div>
-               <div className="px-4 py-2 rounded-xl bg-white dark:bg-[#27272A] border-[3px] border-[#18181B] dark:border-white shadow-[#18181B] dark:shadow-[#FFFFFF] font-bold text-xs flex items-center gap-2">
-                 <Flame size={14} className="text-orange-500" /> 12 DAY STREAK
-               </div>
-            </div>
-          </div>
-
-          {/* Progress Bar */}
-          <div className="mb-8">
-            <div className="flex justify-between font-bold text-sm mb-2">
-               <span>XP • 1,240 / 1,600</span>
-               <span className="text-[#8B5CF6]">77%</span>
-            </div>
-            <div className="h-6 w-full bg-white dark:bg-[#27272A] border-[3px] border-[#18181B] dark:border-white rounded-full overflow-hidden p-1">
-               <motion.div 
-                 initial={{ width: 0 }}
-                 animate={{ width: '77%' }}
-                 transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
-                 className="h-full bg-[#00E599] rounded-full"
-               />
-            </div>
-          </div>
-
-          {/* Stats Cards */}
-          <div className="grid grid-cols-3 gap-2 md:gap-4 mb-8">
-            <div className="bg-[#00E599] border-[3px] border-[#18181B] dark:border-white rounded-2xl p-2 md:p-4 shadow-[#18181B] dark:shadow-[#FFFFFF] hover:-translate-y-1 transition-transform">
-               <div className="flex flex-col sm:flex-row justify-between items-start mb-2">
-                 <Coins size={16} className="md:w-5 md:h-5" strokeWidth={2.5} color="#18181B" />
-                 <span className="text-[8px] md:text-[10px] font-black tracking-widest text-[#18181B] dark:text-[#F4F4F5]/70 mt-1 sm:mt-0">COINS</span>
-               </div>
-               <div className="text-lg md:text-2xl font-black">2,480</div>
-            </div>
-            <div className="bg-[#8B5CF6] text-white border-[3px] border-[#18181B] dark:border-white rounded-2xl p-2 md:p-4 shadow-[#18181B] dark:shadow-[#FFFFFF] hover:-translate-y-1 transition-transform">
-               <div className="flex flex-col sm:flex-row justify-between items-start mb-2">
-                 <Award size={16} className="md:w-5 md:h-5" strokeWidth={2.5} color="#FFF" />
-                 <span className="text-[8px] md:text-[10px] font-black tracking-widest text-white/70 mt-1 sm:mt-0">BADGES</span>
-               </div>
-               <div className="text-lg md:text-2xl font-black">14</div>
-            </div>
-            <div className="bg-white dark:bg-[#27272A] border-[3px] border-[#18181B] dark:border-white rounded-2xl p-2 md:p-4 shadow-[#18181B] dark:shadow-[#FFFFFF] hover:-translate-y-1 transition-transform">
-               <div className="flex flex-col sm:flex-row justify-between items-start mb-2">
-                 <svg viewBox="0 0 24 24" fill="#EF4444" stroke="#18181B" strokeWidth={2.5} className="w-4 h-4 md:w-5 md:h-5">
-                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                 </svg>
-                 <span className="text-[8px] md:text-[10px] font-black tracking-widest text-[#18181B] dark:text-[#F4F4F5]/50 mt-1 sm:mt-0">HEARTS</span>
-               </div>
-               <div className="text-lg md:text-2xl font-black">5</div>
-            </div>
-          </div>
-
-          {/* Journey Path */}
-          <div>
-            <div className="text-[10px] font-black tracking-widest text-[#71717A] mb-4 uppercase">Your Learning Path</div>
-            <div className="flex items-center justify-between relative">
-               <div className="absolute top-1/2 left-0 w-full h-[3px] bg-[#E4E4E7] -z-10 -translate-y-1/2"></div>
-               <div className="absolute top-1/2 left-0 w-2/3 h-[3px] bg-[#00E599] -z-10 -translate-y-1/2"></div>
-               {[1,2,3,4,5].map(step => (
-                 <div key={step} className={`shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-full border-[3px] border-[#18181B] dark:border-white flex items-center justify-center font-black text-xs md:text-sm shadow-[#18181B] dark:shadow-[#FFFFFF] ${step <= 3 ? 'bg-[#00E599]' : step === 4 ? 'bg-[#8B5CF6] text-white scale-110 md:scale-125' : 'bg-white dark:bg-[#27272A] text-[#A1A1AA] border-[#A1A1AA] shadow-none'}`}>
-                   {step <= 3 ? <svg viewBox="0 0 24 24" fill="none" stroke="#18181B" strokeWidth={3} className="w-3 h-3 md:w-4 md:h-4"><polyline points="20 6 9 17 4 12"/></svg> : step}
-                 </div>
-               ))}
-            </div>
-          </div>
-
-          {/* Floating 'Continue' button */}
-          <motion.div 
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 1 }}
-            className="absolute -bottom-6 md:-bottom-10 left-4 right-4 md:left-8 md:right-8 bg-[#F4F4F5] dark:bg-[#18181B] border-[3px] border-[#18181B] dark:border-white p-3 md:p-4 rounded-xl shadow-[#18181B] dark:shadow-[#FFFFFF] flex items-center justify-between z-10"
-          >
-            <div>
-              <div className="font-black text-xs md:text-sm">Continue Lesson</div>
-              <div className="font-bold text-[10px] md:text-xs text-[#71717A]">Accounting • 3 min left</div>
-            </div>
-            <div className="w-8 h-8 md:w-10 md:h-10 bg-[#00E599] border-2 border-[#18181B] dark:border-white rounded-lg shadow-[#18181B] dark:shadow-[#FFFFFF] flex items-center justify-center cursor-pointer hover:bg-white dark:bg-[#27272A] transition-colors">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#18181B" strokeWidth={3} className="w-4 h-4 md:w-5 md:h-5">
-                 <line x1="5" y1="12" x2="19" y2="12" />
-                 <polyline points="12 5 19 12 12 19" />
-              </svg>
-            </div>
           </motion.div>
 
-          {/* Achievement popup */}
+          {/* The Solution */}
           <motion.div 
-             initial={{ y: 50, opacity: 0, rotate: 10 }}
-             animate={{ y: 0, opacity: 1, rotate: -5 }}
-             transition={{ delay: 2, type: 'spring', bounce: 0.5 }}
-             className="absolute -bottom-20 right-0 md:-right-8 bg-white dark:bg-[#27272A] border-[3px] border-[#18181B] dark:border-white px-4 md:px-6 py-2 md:py-3 rounded-xl shadow-[#18181B] dark:shadow-[#FFFFFF] flex items-center gap-2 md:gap-3 z-20 scale-90 md:scale-100 origin-bottom-right"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ delay: 0.1 }}
+            className="bg-white dark:bg-[#18181B] rounded-[32px] p-8 md:p-10 border border-emerald-100 dark:border-emerald-950/40 shadow-sm flex flex-col items-start h-full"
           >
-             <TrophyIcon className="w-5 h-5 md:w-6 md:h-6" color="#8B5CF6" />
-             <span className="font-black text-xs md:text-sm whitespace-nowrap">Achievement Unlocked</span>
-          </motion.div>
-        </motion.div>
-        </div>
-      </div>
-
-      {/* ────────────────────── PROBLEM & SOLUTION SECTION ────────────────────── */}
-      <div className="max-w-7xl mx-auto px-6 py-16 md:py-24 border-t-[3px] border-[#18181B] mt-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
-          
-          {/* PROBLEM */}
-          <motion.div 
-            initial={{ y: 50, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="flex flex-col gap-6 h-full"
-          >
-            <div className="inline-block px-4 py-1 border-[3px] border-[#18181B] dark:border-white rounded-lg bg-[#FF4444] text-white font-black uppercase text-sm w-max shadow-[#18181B] dark:shadow-[#FFFFFF]">The Problem</div>
-            <h2 className="text-3xl md:text-5xl font-black leading-tight lg:min-h-[110px]">
-              Why Financial Education Is <span className="underline decoration-[#FF4444] decoration-4 underline-offset-4">Broken</span>
+            <div className="inline-block px-3.5 py-1 border border-[#00E599]/30 rounded-full bg-[#00E599]/10 text-emerald-600 dark:text-[#00E599] font-bold uppercase text-[11px] tracking-wider mb-6">
+              The Solution
+            </div>
+            <h2 className="text-3xl md:text-5xl font-black text-[#18181B] dark:text-white tracking-tight leading-tight mb-4">
+              Meet <span className="text-[#8B5CF6]">PiggyPath</span>
             </h2>
-            <p className="text-lg font-medium text-[#3F3F46] dark:text-[#A1A1AA] leading-relaxed">
-              Most people learn finance too late. Schools rarely teach practical money skills and most financial content is delivered through long videos, complicated jargon or overwhelming textbooks.
+            <p className="text-lg md:text-xl font-medium text-gray-500 dark:text-gray-400 max-w-2xl leading-relaxed mb-8">
+              PiggyPath transforms financial education into an engaging experience where users learn through action. Instead of watching hours of content, learners active play their path.
             </p>
-            <div className="bg-white dark:bg-[#27272A] border-[3px] border-[#18181B] dark:border-white rounded-2xl p-6 shadow-[8px_8px_0_#18181B] dark:shadow-[#FFFFFF] flex flex-col gap-4 mt-auto">
-               <div className="flex items-center gap-4 font-bold text-[#18181B] dark:text-[#F4F4F5]">
-                 <div className="bg-[#FF4444] p-1.5 border-[2px] border-[#18181B] shadow-[2px_2px_0_#18181B] rounded-md"><X size={16} color="#FFF" strokeWidth={3.5} /></div>
-                 Boring PDF Guides
-               </div>
-               <div className="flex items-center gap-4 font-bold text-[#18181B] dark:text-[#F4F4F5]">
-                 <div className="bg-[#FF4444] p-1.5 border-[2px] border-[#18181B] shadow-[2px_2px_0_#18181B] rounded-md"><X size={16} color="#FFF" strokeWidth={3.5} /></div>
-                 2-Hour Video Lectures
-               </div>
-               <div className="flex items-center gap-4 font-bold text-[#18181B] dark:text-[#F4F4F5]">
-                 <div className="bg-[#FF4444] p-1.5 border-[2px] border-[#18181B] shadow-[2px_2px_0_#18181B] rounded-md"><X size={16} color="#FFF" strokeWidth={3.5} /></div>
-                 Overwhelming Jargon
-               </div>
-            </div>
-          </motion.div>
-
-          {/* SOLUTION */}
-          <motion.div 
-            initial={{ y: 50, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ delay: 0.2 }}
-            className="flex flex-col gap-6 h-full"
-          >
-            <div className="inline-block px-4 py-1 border-[3px] border-[#18181B] dark:border-white rounded-lg bg-[#00E599] text-[#18181B] dark:text-[#F4F4F5] font-black uppercase text-sm w-max shadow-[#18181B] dark:shadow-[#FFFFFF]">The Solution</div>
-            <h2 className="text-3xl md:text-5xl font-black leading-tight lg:min-h-[110px]">
-              Meet <span className="bg-[#00E599] px-2 py-1 rounded-lg">PiggyPath</span>
-            </h2>
-            <p className="text-lg font-medium text-[#3F3F46] dark:text-[#A1A1AA] leading-relaxed">
-              PiggyPath transforms financial education into an engaging experience where users learn through action. Instead of watching hours of content, learners:
-            </p>
-            <div className="bg-[#8B5CF6] text-white border-[3px] border-[#18181B] dark:border-white rounded-2xl p-6 shadow-[8px_8px_0_#18181B] dark:shadow-[#FFFFFF] flex flex-col gap-4 mt-auto">
-               <div className="flex items-center gap-4 font-bold">
-                 <div className="bg-[#00E599] p-1.5 border-[2px] border-[#18181B] shadow-[2px_2px_0_#18181B] rounded-md"><Check size={16} color="#18181B" strokeWidth={3.5} /></div>
-                 Interactive levels
-               </div>
-               <div className="flex items-center gap-4 font-bold">
-                 <div className="bg-[#00E599] p-1.5 border-[2px] border-[#18181B] shadow-[2px_2px_0_#18181B] rounded-md"><Check size={16} color="#18181B" strokeWidth={3.5} /></div>
-                 Financial games
-               </div>
-               <div className="flex items-center gap-4 font-bold">
-                 <div className="bg-[#00E599] p-1.5 border-[2px] border-[#18181B] shadow-[2px_2px_0_#18181B] rounded-md"><Check size={16} color="#18181B" strokeWidth={3.5} /></div>
-                 Earn rewards & build wealth
-               </div>
+            <div className="bg-[#8B5CF6] text-white rounded-2xl p-6 shadow-md flex flex-col gap-3.5 mt-auto w-full">
+              <div className="flex items-center gap-3 font-bold text-sm">
+                <div className="bg-[#00E599] p-1.5 rounded-full shrink-0 text-[#18181B]">
+                  <Check size={14} strokeWidth={3.5} />
+                </div>
+                Bite-sized interactive levels & quizzes
+              </div>
+              <div className="flex items-center gap-3 font-bold text-sm">
+                <div className="bg-[#00E599] p-1.5 rounded-full shrink-0 text-[#18181B]">
+                  <Check size={14} strokeWidth={3.5} />
+                </div>
+                Gamified real-life money simulations
+              </div>
+              <div className="flex items-center gap-3 font-bold text-sm">
+                <div className="bg-[#00E599] p-1.5 rounded-full shrink-0 text-[#18181B]">
+                  <Check size={14} strokeWidth={3.5} />
+                </div>
+                Earn XP, streaks, and Moon Stone artifacts
+              </div>
             </div>
           </motion.div>
 
         </div>
+
       </div>
     </section>
   );
 };
 
 export default HeroSection;
+

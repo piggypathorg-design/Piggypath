@@ -1,12 +1,9 @@
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { X, Check } from 'lucide-react';
-import Logo from '../../components/common/Logo';
+import { X, Check, MessageCircle, Share2, Users, Globe } from 'lucide-react';
 
 const ConversionSection = () => {
-  const [openFAQ, setOpenFAQ] = useState(null);
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState('');
   const [showSuccessModal, setShowSuccessModal] = useState(false);
@@ -38,241 +35,246 @@ const ConversionSection = () => {
         body: new URLSearchParams({ email: email })
       });
       
-      // Success!
       setShowSuccessModal(true);
-      setEmail(''); // clear input
-    } catch (error) {
+      setEmail('');
+    } catch {
       setEmailError('Something went wrong. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const faqs = [
-    { q: 'What is PiggyPath?', a: 'PiggyPath is a gamified financial learning platform designed to help people learn money skills through interactive experiences.' },
-    { q: 'Is PiggyPath free?', a: 'The platform will include both free and premium experiences.' },
-    { q: 'Do I need investment experience?', a: 'No, PiggyPath is built for beginners.' },
-    { q: 'Is real money involved?', a: 'No, virtual investing uses simulated funds.' },
-    { q: 'When is PiggyPath launching?', a: 'Join the waitlist to stay updated.' },
-  ];
+  const scrollToSubscribe = () => {
+    const el = document.getElementById('subscribe-form');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      el.focus();
+    }
+  };
 
   return (
     <>
-      <div className="w-full bg-[#F4F4F5] dark:bg-[#18181B] text-[#18181B] dark:text-[#F4F4F5]">
+      <div className="w-full bg-white dark:bg-[#18181B] text-[#18181B] dark:text-white transition-colors">
       
-      {/* 11. WHO IS IT FOR? */}
-      <section className="py-24 max-w-7xl mx-auto px-6 border-b-[3px] border-[#18181B]">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-black mb-4">Built For The Next Generation</h2>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {[
-            { title: 'Students', desc: 'Build money skills early.', bg: '#8B5CF6', textWhite: true },
-            { title: 'Young Professionals', desc: 'Learn to manage income.', bg: '#8B5CF6', textWhite: true },
-            { title: 'Future Investors', desc: 'Practice before investing.', bg: '#8B5CF6', textWhite: true },
-            { title: 'Entrepreneurs', desc: 'Understand business and money.', bg: '#8B5CF6', textWhite: true },
-          ].map((c, i) => (
-            <motion.div 
-              key={i}
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="border-[3px] border-[#18181B] dark:border-white rounded-2xl p-6 shadow-[#18181B] dark:shadow-[#FFFFFF] hover:-translate-y-2 transition-transform"
-              style={{ backgroundColor: c.bg, color: c.textWhite ? 'white' : '#18181B' }}
-            >
-              <h3 className="text-xl md:text-2xl lg:text-[20px] xl:text-2xl font-black mb-2 tracking-tight whitespace-nowrap">{c.title}</h3>
-              <p className="font-bold">{c.desc}</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+        {/* WHY PIGGYPATH? (Comparison Table) */}
+        <section className="py-20 md:py-28 max-w-7xl mx-auto px-6 border-b border-gray-100 dark:border-gray-800">
+          <div className="text-center mb-16">
+            <span className="inline-block px-4 py-1.5 border border-purple-700/60 dark:border-purple-900/40 rounded-full bg-purple-50 dark:bg-purple-950/40 text-[#8B5CF6] dark:text-purple-300 text-xs font-bold tracking-widest uppercase mb-4">
+              Clear Difference
+            </span>
+            <h2 className="text-3xl md:text-5xl font-black mb-4 text-[#18181B] dark:text-white tracking-tight leading-tight">Why We Are Different</h2>
+          </div>
 
-      {/* 12. WHY PIGGYPATH? */}
-      <section className="py-24 max-w-7xl mx-auto px-6 border-b-[3px] border-[#18181B]">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-black mb-4">Why We are Different</h2>
-        </div>
-        <div className="max-w-4xl mx-auto bg-white dark:bg-[#27272A] border-[4px] border-[#18181B] dark:border-white rounded-3xl shadow-[#18181B] dark:shadow-[#FFFFFF] overflow-hidden">
-           <div className="grid grid-cols-2 border-b-[4px] border-[#18181B]">
-              <div className="p-3 md:p-6 bg-[#A1A1AA] text-white font-black text-lg md:text-2xl text-center border-r-[4px] border-[#18181B]">Traditional Courses</div>
-              <div className="p-3 md:p-6 bg-[#00E599] text-[#18181B] dark:text-[#F4F4F5] font-black text-lg md:text-2xl text-center">PiggyPath</div>
-           </div>
-           {[
-             { t: 'Long Videos', p: 'Interactive Experiences' },
-             { t: 'Passive Learning', p: 'Active Learning' },
-             { t: 'Theory First', p: 'Practice First' },
-             { t: 'Boring Content', p: 'Gamified Content' },
-             { t: 'One-Time Consumption', p: 'Continuous Progress' },
-           ].map((row, i) => (
-              <div key={i} className={`grid grid-cols-2 ${i !== 4 ? 'border-b-[3px] border-[#18181B]' : ''}`}>
-                 <div className="p-2 md:p-4 text-center font-bold text-[#71717A] border-r-[3px] border-[#18181B] flex items-center justify-center gap-1.5 md:gap-3 text-xs md:text-base">
-                    <div className="bg-[#FF4444] p-0.5 md:p-1 border-[2px] border-[#18181B] shadow-[2px_2px_0_#18181B] rounded-md hidden sm:block"><X className="w-3 h-3 md:w-4 md:h-4" color="#FFF" strokeWidth={4} /></div> {row.t}
-                 </div>
-                 <div className="p-2 md:p-4 text-center font-black flex items-center justify-center gap-1.5 md:gap-3 text-xs md:text-base">
-                    <div className="bg-[#00E599] p-0.5 md:p-1 border-[2px] border-[#18181B] shadow-[2px_2px_0_#18181B] rounded-md hidden sm:block"><Check className="w-3 h-3 md:w-4 md:h-4" color="#18181B" strokeWidth={4} /></div> {row.p}
-                 </div>
+          <div className="max-w-6xl mx-auto bg-white dark:bg-[#1E1B2E] border border-gray-700/80 dark:border-purple-900/30 rounded-[32px] shadow-sm overflow-hidden">
+            <div className="grid grid-cols-2 border-b border-gray-700/80 dark:border-purple-900/30">
+              <div className="p-4 md:p-6 bg-gray-50 dark:bg-gray-900/60 text-black-500 font-bold text-base md:text-lg text-center border-r border-gray-700/80 dark:border-purple-900/30">
+                Traditional Courses
               </div>
-           ))}
-        </div>
-      </section>
-
-      {/* 13. WAITLIST */}
-      <section id="waitlist" className="py-32 bg-white dark:bg-[#18181B] border-b-[3px] border-[#18181B] dark:border-white relative flex justify-center items-center px-6">
-        <div className="relative w-full max-w-4xl bg-white dark:bg-[#27272A] border-[4px] border-[#18181B] dark:border-white rounded-2xl shadow-[8px_8px_0_#18181B] dark:shadow-[#FFFFFF] overflow-hidden p-6 md:p-16 text-center">
-          
-          {/* Decorative Circles */}
-          <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#8B5CF6] border-[4px] border-[#18181B] dark:border-white rounded-full"></div>
-          <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-[#00E599] border-[4px] border-[#18181B] dark:border-white rounded-full"></div>
-
-          <div className="relative z-10">
-            <div className="inline-block px-4 py-1.5 border-[2px] border-[#18181B] dark:border-white rounded-full bg-white dark:bg-[#18181B] text-[#18181B] dark:text-[#F4F4F5] font-black uppercase text-[10px] tracking-widest mb-8">
-              LIMITED EARLY ACCESS
+              <div className="p-4 md:p-6 bg-[#00E599]/10 text-emerald-600 dark:text-[#00E599] font-black text-base md:text-lg text-center">
+                PiggyPath
+              </div>
             </div>
             
-            <h2 className="text-3xl md:text-5xl lg:text-[52px] font-black mb-6 leading-[1.3] uppercase text-[#18181B] dark:text-[#F4F4F5] max-w-3xl mx-auto">
-              Be Among The First To <br className="hidden md:block" /> Experience <span className="bg-[#00E599] text-[#18181B] px-3 py-1 inline-block mt-2 md:mt-0">PIGGYPATH.</span>
-            </h2>
-            
-            <p className="text-lg md:text-xl font-medium text-[#71717A] dark:text-[#A1A1AA] mb-10 max-w-2xl mx-auto">
-              Get early access, product updates, and launch announcements.
-            </p>
-
-            <form className="flex flex-col justify-center max-w-2xl mx-auto mb-6 relative" onSubmit={handleJoinWaitlist}>
-              <div className="flex flex-col md:flex-row gap-4 w-full">
-                <div className="relative flex-1">
-                   <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-[#71717A]">
-                     <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                   </div>
-                   <input 
-                     type="email" 
-                     value={email}
-                     onChange={(e) => { setEmail(e.target.value); setEmailError(''); }}
-                     placeholder="you@example.com" 
-                     className={`w-full pl-12 pr-6 py-4 rounded-xl border-[4px] ${emailError ? 'border-red-500' : 'border-[#18181B] dark:border-white'} text-[#18181B] dark:text-[#F4F4F5] bg-white dark:bg-[#18181B] font-bold text-lg focus:outline-none focus:ring-4 focus:ring-[#00E599] shadow-[4px_4px_0_#18181B] dark:shadow-[#FFFFFF]`}
-                   />
+            {[
+              ['Hours of boring videos', 'Short interactive games'],
+              ['Complex jargon', 'Simple everyday language'],
+              ['Theoretical concepts', 'Real-world simulations'],
+              ['No accountability', 'Streaks and daily challenges'],
+            ].map((row, i) => (
+              <div key={i} className={`grid grid-cols-2 ${i !== 3 ? 'border-b border-gray-700 dark:border-gray-800' : ''}`}>
+                <div className="p-4 md:p-6 text-gray-500 font-medium text-center text-sm md:text-base border-r border-gray-700 dark:border-gray-800 flex items-center justify-center gap-2">
+                  <X size={18} className="text-red-400 shrink-0" /> {row[0]}
                 </div>
-                <button disabled={isSubmitting} type="submit" className={`px-8 py-4 bg-[#00E599] text-[#18181B] border-[4px] border-[#18181B] dark:border-white rounded-xl font-black text-lg shadow-[4px_4px_0_#18181B] dark:shadow-[#FFFFFF] ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:-translate-y-1 hover:shadow-[6px_6px_0_#18181B] dark:hover:shadow-[6px_6px_0_#000]'} transition-all flex items-center justify-center gap-2 w-full md:w-auto`}>
-                  {isSubmitting ? 'Joining...' : <>Join Waitlist <span>→</span></>}
+                <div className="p-4 md:p-6 font-bold text-center text-sm md:text-base flex items-center justify-center gap-2 text-[#18181B] dark:text-white">
+                  <Check size={18} className="text-[#00E599] shrink-0 stroke-[3]" /> {row[1]}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* CTA SECTION (Deep Purple Card with glowing blurs & inline SVG Mascot) */}
+        <section id="waitlist" className="py-20 md:py-28 max-w-7xl mx-auto px-6">
+          <div className="bg-[#252145] rounded-[32px] p-10 md:p-20 text-center text-white relative overflow-hidden shadow-2xl border border-purple-900/40">
+            {/* Soft gradient blurs */}
+            <div className="absolute top-0 left-0 w-80 h-80 bg-[#00E599]/20 rounded-full blur-[100px] -translate-y-1/2 -translate-x-1/4 pointer-events-none" />
+            <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#8B5CF6]/30 rounded-full blur-[120px] translate-y-1/4 translate-x-1/4 pointer-events-none" />
+            
+            <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center">
+              
+              {/* PNG Mascot */}
+              <div className="mb-6 w-24 h-24 bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-lg flex items-center justify-center overflow-hidden relative">
+                <img src="/mascot-waitlist.png" alt="Sunglasses Piggy Mascot" className="w-[85%] h-[85%] object-contain object-center" />
+              </div>
+              
+              <h2 className="text-3xl md:text-5xl font-black mb-6 tracking-tight leading-tight">
+                Your money journey starts with one lesson
+              </h2>
+              <p className="text-lg md:text-xl font-medium text-gray-300 mb-10 max-w-2xl leading-relaxed">
+                It is free to begin, and three minutes is all it takes. Your future self will thank you.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full max-w-md">
+                <button 
+                  onClick={scrollToSubscribe}
+                  className="w-full sm:w-auto bg-[#00E599] hover:bg-[#00D08A] text-[#18181B] font-bold px-8 py-4 rounded-full transition-all shadow-md text-base sm:text-lg whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-[#00E599] focus:ring-offset-2 focus:ring-offset-[#252145]"
+                >
+                  Create your free account
+                </button>
+                <button 
+                  onClick={scrollToSubscribe}
+                  className="w-full sm:w-auto text-white font-bold px-12 py-4 rounded-full transition-all text-base sm:text-lg border border-white/20 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white whitespace-nowrap"
+                >
+                  Log in
                 </button>
               </div>
-              {emailError && <p className="text-red-500 font-bold mt-2 text-left w-full pl-2 absolute -bottom-8">{emailError}</p>}
-            </form>
 
-
-          </div>
-        </div>
-      </section>
-
-      {/* 15. FAQ SECTION */}
-      <section id="faq" className="py-24 max-w-4xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-black mb-4">Frequently Asked Questions</h2>
-        </div>
-        <div className="flex flex-col gap-4">
-          {faqs.map((faq, i) => (
-            <div key={i} className="bg-white dark:bg-[#27272A] border-[3px] border-[#18181B] dark:border-white rounded-2xl shadow-[#18181B] dark:shadow-[#FFFFFF] overflow-hidden">
-              <button 
-                className="w-full px-6 py-5 text-left font-black text-xl flex justify-between items-center"
-                onClick={() => setOpenFAQ(openFAQ === i ? null : i)}
-              >
-                {faq.q}
-                <span className={`transform transition-transform text-2xl ${openFAQ === i ? 'rotate-45' : ''}`}>+</span>
-              </button>
-              <AnimatePresence>
-                {openFAQ === i && (
-                  <motion.div 
-                    initial={{ height: 0 }}
-                    animate={{ height: 'auto' }}
-                    exit={{ height: 0 }}
-                    className="overflow-hidden"
-                  >
-                    <div className="px-6 pb-5 font-medium text-[#3F3F46] dark:text-[#A1A1AA] text-lg">
-                      {faq.a}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
             </div>
-          ))}
-        </div>
-      </section>
+          </div>
+        </section>
 
-      {/* 16. FOOTER */}
-      <footer className="border-t-[4px] border-[#18181B] bg-white dark:bg-[#27272A] pt-16 pb-8">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 border-b-[3px] border-[#18181B] pb-12 mb-8">
-            <div className="md:col-span-2">
-              <div className="flex flex-col gap-6 max-w-xs">
-                <Logo className="text-3xl" />
-                <p className="font-bold text-[#71717A] dark:text-[#A1A1AA] text-lg">
-                  The Duolingo for Finance. Learn money skills through interactive games and stories.
+        {/* FOOTER */}
+        <footer className="bg-[#111219] pt-20 pb-10 text-white border-t border-[#1F212E]">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-12 border-b border-[#2A2A35] pb-12 mb-8">
+              
+              {/* Left Column: Brand & Subscribe */}
+              <div className="md:col-span-4 flex flex-col gap-6">
+                <h3 className="text-2xl font-black">PiggyPath.</h3>
+                <p className="font-medium text-gray-400 text-[14px] leading-relaxed max-w-sm">
+                  PiggyPath makes money and life skills fun, practical, and accessible for everyone. Learn by playing, not memorizing.
                 </p>
+                
+                <form onSubmit={handleJoinWaitlist} className="flex flex-col gap-2 mt-2">
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <input 
+                      id="subscribe-form"
+                      type="email" 
+                      placeholder="Your email address"
+                      aria-label="Email address for newsletter subscription"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="flex-1 bg-[#1C1D29] border border-gray-700/60 px-5 py-3 rounded-full text-white font-medium outline-none focus:ring-2 focus:ring-[#00E599] transition-all text-[14px]"
+                    />
+                    <button 
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="bg-[#00E599] hover:bg-[#00D08A] text-[#18181B] font-bold px-6 py-3 rounded-full transition-all text-[14px] whitespace-nowrap disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-[#00E599]"
+                    >
+                      {isSubmitting ? '...' : 'Subscribe'}
+                    </button>
+                  </div>
+                  {emailError && (
+                    <div className="text-red-400 text-xs font-medium px-2">{emailError}</div>
+                  )}
+                </form>
+              </div>
+              
+              {/* Right Columns: Links */}
+              <div className="md:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-8 mt-2">
+                <div>
+                  <h4 className="font-bold text-[15px] mb-5 text-white">Product</h4>
+                  <ul className="space-y-3 font-medium text-gray-400 text-[14px]">
+                    <li><button onClick={() => {document.getElementById('features')?.scrollIntoView({behavior: 'smooth'})}} className="hover:text-white transition-colors">Features</button></li>
+                    <li><button onClick={() => {document.getElementById('courses')?.scrollIntoView({behavior: 'smooth'})}} className="hover:text-white transition-colors">Courses</button></li>
+                    <li><button onClick={() => {document.getElementById('pricing')?.scrollIntoView({behavior: 'smooth'})}} className="hover:text-white transition-colors">Pricing</button></li>
+                    <li><span className="hover:text-white transition-colors cursor-pointer">Mini Games</span></li>
+                    <li><span className="hover:text-white transition-colors cursor-pointer">Download App</span></li>
+                  </ul>
+                </div>
+                
+                <div>
+                  <h4 className="font-bold text-[15px] mb-5 text-white">Courses</h4>
+                  <ul className="space-y-3 font-medium text-gray-400 text-[14px]">
+                    <li><span className="hover:text-white transition-colors cursor-pointer">Personal finance</span></li>
+                    <li><span className="hover:text-white transition-colors cursor-pointer">Taxation</span></li>
+                    <li><span className="hover:text-white transition-colors cursor-pointer">Banking</span></li>
+                    <li><span className="hover:text-white transition-colors cursor-pointer">Investing</span></li>
+                    <li><span className="hover:text-white transition-colors cursor-pointer">Entrepreneurship</span></li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h4 className="font-bold text-[15px] mb-5 text-white">Company</h4>
+                  <ul className="space-y-3 font-medium text-gray-400 text-[14px]">
+                    <li><span className="hover:text-white transition-colors cursor-pointer">About us</span></li>
+                    <li><span className="hover:text-white transition-colors cursor-pointer">Careers</span></li>
+                    <li><span className="hover:text-white transition-colors cursor-pointer">Blog</span></li>
+                    <li><span className="hover:text-white transition-colors cursor-pointer">Press</span></li>
+                    <li><a href="mailto:piggypath.org@gmail.com" className="hover:text-white transition-colors">Contact</a></li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h4 className="font-bold text-[15px] mb-5 text-white">Support</h4>
+                  <ul className="space-y-3 font-medium text-gray-400 text-[14px]">
+                    <li><span className="hover:text-white transition-colors cursor-pointer">Help Centre</span></li>
+                    <li><span className="hover:text-white transition-colors cursor-pointer">Community</span></li>
+                    <li><span className="hover:text-white transition-colors cursor-pointer">Schools</span></li>
+                    <li><span className="hover:text-white transition-colors cursor-pointer">Privacy</span></li>
+                    <li><span className="hover:text-white transition-colors cursor-pointer">Terms</span></li>
+                  </ul>
+                </div>
               </div>
             </div>
-            <div>
-              <h4 className="font-black text-lg mb-4">Links</h4>
-              <ul className="space-y-3 font-bold text-[#71717A]">
-                <li><a href="#" className="hover:text-[#00E599] hover:underline">About</a></li>
-                <li><a href="mailto:piggypath.org@gmail.com" className="hover:text-[#00E599] hover:underline">Contact</a></li>
-                <li><Link to="/privacy" className="hover:text-[#00E599] hover:underline">Privacy Policy</Link></li>
-                <li><Link to="/terms" className="hover:text-[#00E599] hover:underline">Terms of Service</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-black text-lg mb-4">Socials</h4>
-              <ul className="flex gap-4 font-bold text-[#71717A]">
-                <li><a href="https://www.instagram.com/piggy_path?igsh=dngwODVzYzFydm14" target="_blank" rel="noopener noreferrer" className="flex w-10 h-10 items-center justify-center rounded-lg border-2 border-[#18181B] dark:border-white shadow-[2px_2px_0_#18181B] dark:shadow-[#FFFFFF] hover:-translate-y-1 hover:text-[#8B5CF6] hover:border-[#8B5CF6] transition-all">
-                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                </a></li>
-                <li><a href="https://www.linkedin.com/company/piggypath" target="_blank" rel="noopener noreferrer" className="flex w-10 h-10 items-center justify-center rounded-lg border-2 border-[#18181B] dark:border-white shadow-[2px_2px_0_#18181B] dark:shadow-[#FFFFFF] hover:-translate-y-1 hover:text-[#8B5CF6] hover:border-[#8B5CF6] transition-all">
-                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                </a></li>
-                <li><a href="https://x.com/Piggypath_Edu" target="_blank" rel="noopener noreferrer" className="flex w-10 h-10 items-center justify-center rounded-lg border-2 border-[#18181B] dark:border-white shadow-[2px_2px_0_#18181B] dark:shadow-[#FFFFFF] hover:-translate-y-1 hover:text-[#8B5CF6] hover:border-[#8B5CF6] transition-all">
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" /></svg>
-                </a></li>
-                <li><a href="mailto:piggypath.org@gmail.com" className="flex w-10 h-10 items-center justify-center rounded-lg border-2 border-[#18181B] dark:border-white shadow-[2px_2px_0_#18181B] dark:shadow-[#FFFFFF] hover:-translate-y-1 hover:text-[#8B5CF6] hover:border-[#8B5CF6] transition-all">
-                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                </a></li>
-              </ul>
+
+            {/* Bottom Bar */}
+            <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+              <div className="text-gray-500 font-medium text-[13px]">
+                © 2026 PiggyPath. Made with care for money learners.
+              </div>
+              
+              <div className="flex gap-3">
+                <a href="#" aria-label="Community Chat" className="w-10 h-10 rounded-full bg-[#1C1D29] flex items-center justify-center text-gray-400 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#00E599]">
+                  <MessageCircle size={18} />
+                </a>
+                <a href="#" aria-label="Share PiggyPath" className="w-10 h-10 rounded-full bg-[#1C1D29] flex items-center justify-center text-gray-400 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#00E599]">
+                  <Share2 size={18} />
+                </a>
+                <a href="#" aria-label="Social Community" className="w-10 h-10 rounded-full bg-[#1C1D29] flex items-center justify-center text-gray-400 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#00E599]">
+                  <Users size={18} />
+                </a>
+                <a href="#" aria-label="Global Website" className="w-10 h-10 rounded-full bg-[#1C1D29] flex items-center justify-center text-gray-400 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#00E599]">
+                  <Globe size={18} />
+                </a>
+              </div>
             </div>
           </div>
-          <div className="text-center font-bold text-[#A1A1AA]">
-            © PiggyPath. All rights reserved.
-          </div>
-        </div>
-      </footer>
-    </div>
+        </footer>
+      </div>
+
+      {/* SUCCESS MODAL */}
       <AnimatePresence>
         {showSuccessModal && (
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm px-6"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm px-6"
           >
             <motion.div 
-              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              initial={{ scale: 0.95, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.9, opacity: 0, y: 20 }}
-              className="bg-white dark:bg-[#27272A] border-[4px] border-[#18181B] dark:border-white rounded-3xl p-8 max-w-md w-full shadow-[8px_8px_0_#00E599] text-center relative"
+              exit={{ scale: 0.95, opacity: 0, y: 20 }}
+              className="bg-[#18181B] border border-gray-800 rounded-3xl p-8 max-w-md w-full shadow-2xl text-center relative"
             >
               <button 
                 onClick={() => setShowSuccessModal(false)}
-                className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-[#18181B] text-white hover:bg-red-500 transition-colors"
+                aria-label="Close success modal"
+                className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-gray-800 text-gray-400 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#00E599]"
               >
-                <X size={16} strokeWidth={3} />
+                <X size={16} strokeWidth={2.5} />
               </button>
-              <div className="w-16 h-16 bg-[#00E599] rounded-2xl border-[3px] border-[#18181B] flex items-center justify-center mx-auto mb-6 shadow-[4px_4px_0_#18181B]">
-                <Check size={32} className="text-[#18181B]" strokeWidth={3} />
+              <div className="w-16 h-16 bg-[#00E599]/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Check size={32} className="text-[#00E599]" strokeWidth={3} />
               </div>
-              <h3 className="text-3xl font-black mb-2 text-[#18181B] dark:text-white">You're on the list!</h3>
-              <p className="font-bold text-[#71717A] dark:text-[#A1A1AA] mb-6">
+              <h3 className="text-2xl font-bold mb-2 text-white">You're on the list!</h3>
+              <p className="font-medium text-gray-400 mb-6 text-sm">
                 You have been successfully added to the PiggyPath waitlist. Keep an eye on your inbox!
               </p>
               <button 
                 onClick={() => setShowSuccessModal(false)}
-                className="w-full py-4 bg-[#18181B] dark:bg-white text-white dark:text-[#18181B] font-black rounded-xl text-lg hover:-translate-y-1 transition-transform"
+                className="w-full py-3.5 bg-[#8B5CF6] hover:bg-[#7C3AED] text-white font-bold rounded-full text-base transition-colors focus:outline-none focus:ring-2 focus:ring-[#8B5CF6]"
               >
                 Awesome!
               </button>
@@ -285,3 +287,4 @@ const ConversionSection = () => {
 };
 
 export default ConversionSection;
+

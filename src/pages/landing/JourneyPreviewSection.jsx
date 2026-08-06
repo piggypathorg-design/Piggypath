@@ -1,198 +1,180 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { ShoppingCart, Rocket, TrendingUp, CreditCard, Coins, Trophy, Flame, Gift, Wallet, PiggyBank, Diamond } from 'lucide-react';
+import { ShoppingCart, Rocket, TrendingUp, CreditCard, Coins, Trophy, Flame, Gift, Check } from 'lucide-react';
 
 const JourneyPreviewSection = () => {
   return (
-    <section id="journey" className="w-full bg-white dark:bg-[#18181B] text-[#18181B] dark:text-[#F4F4F5] py-24 relative overflow-hidden border-t-[3px] border-[#18181B] dark:border-white">
-      <div className="max-w-7xl mx-auto px-6 relative z-10 flex flex-col gap-32">
+    <section id="journey" className="w-full bg-white dark:bg-[#18181B] py-20 md:py-28 relative overflow-hidden transition-colors">
+      <div className="max-w-7xl mx-auto px-6 relative z-10 flex flex-col gap-28 md:gap-36">
         
-        {/* 7. LEARNING JOURNEY PREVIEW */}
-        <div>
-          <div className="mb-16">
-            <div className="inline-block px-4 py-1.5 border-[3px] border-[#18181B] dark:border-white rounded-full bg-white dark:bg-[#27272A] text-[#18181B] dark:text-[#F4F4F5] font-black uppercase text-xs mb-6 shadow-[#18181B] dark:shadow-[#FFFFFF]">
+        {/* LEARNING JOURNEY PREVIEW */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          {/* Left Side: Text */}
+          <div className="lg:col-span-5">
+            <span className="inline-block px-4 py-1.5 border border-indigo-200/60 dark:border-indigo-900/40 rounded-full bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-300 font-bold uppercase text-xs mb-6 tracking-wider">
               Your Roadmap
-            </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight uppercase">
+            </span>
+            <h2 className="text-3xl md:text-5xl font-black mb-6 text-[#18181B] dark:text-white tracking-tight leading-tight">
               Your Journey To <br className="hidden md:block" /> <span className="text-[#8B5CF6]">Financial Freedom</span>
             </h2>
-            <p className="text-xl font-medium text-[#3F3F46] dark:text-[#A1A1AA] max-w-2xl">
-              Every journey is broken into milestones and levels,
-               designed to be completed in just a few minutes.
+            <p className="text-lg md:text-xl font-medium text-gray-500 dark:text-gray-400 leading-relaxed">
+              Every journey is broken into milestones and levels. Learn concepts through guided stories and master them by playing simulations.
             </p>
           </div>
 
-          {/* Timeline Container */}
-          <div className="relative w-full overflow-x-auto pb-10 pt-4 hidden-scrollbar">
-            <div className="min-w-[900px] flex justify-between items-start relative px-4">
-               {/* Background Lines */}
-               <div className="absolute top-10 left-16 right-16 h-1 flex items-center -z-10">
-                 <div className="w-1/5 bg-[#00E599] h-1 border-y border-[#00E599]"></div>
-                 <div className="w-1/5 bg-[#00E599] h-1 border-y border-[#00E599]"></div>
-                 <div className="w-1/5 bg-[#00E599] h-1 border-y border-[#00E599]"></div>
-                 <div className="w-1/5 border-t-[3px] border-dashed border-[#D4D4D8] dark:border-white h-1"></div>
-                 <div className="w-1/5 border-t-[3px] border-dashed border-[#D4D4D8] dark:border-white h-1"></div>
-               </div>
-
-               {[
-                 { id: 1, title: 'MONEY BASICS', status: 'completed', icon: <Coins size={32} strokeWidth={2.5} /> },
-                 { id: 2, title: 'BUDGETING', status: 'completed', icon: <Wallet size={32} strokeWidth={2.5} /> },
-                 { id: 3, title: 'SAVING', status: 'completed', icon: <PiggyBank size={32} strokeWidth={2.5} /> },
-                 { id: 4, title: 'CREDIT', status: 'in-progress', icon: <CreditCard size={32} strokeWidth={2.5} /> },
-                 { id: 5, title: 'INVESTING', status: 'locked', icon: <TrendingUp size={32} strokeWidth={2.5} /> },
-                 { id: 6, title: 'WEALTH BUILDING', status: 'locked', icon: <Diamond size={32} strokeWidth={2.5} /> },
-               ].map((node, i) => (
-                 <div key={node.id} className="flex flex-col items-center w-32 relative group cursor-pointer hover:-translate-y-2 transition-transform">
-                   {/* Node Box */}
-                   <div className={`relative w-20 h-20 rounded-2xl border-[4px] border-[#18181B] dark:border-white flex items-center justify-center shadow-[#18181B] dark:shadow-[#FFFFFF] mb-4 z-10 transition-colors
-                     ${node.status === 'completed' ? 'bg-[#00E599] text-[#18181B]' : 
-                       node.status === 'in-progress' ? 'bg-[#8B5CF6] text-white' : 
-                       'bg-white dark:bg-[#27272A] text-[#18181B] dark:text-[#F4F4F5]'}`}
-                   >
-                     {node.icon}
-                     
-                     {/* Number Badge */}
-                     <div className="absolute -top-3 -right-3 w-6 h-6 bg-[#18181B] dark:bg-white text-white dark:text-[#18181B] rounded-full flex items-center justify-center font-black text-[10px] border-2 border-transparent dark:border-white">
-                       {node.id}
-                     </div>
-                   </div>
-
-                   {/* Title */}
-                   <div className="font-black text-sm text-center mb-2 leading-tight text-[#18181B] dark:text-[#F4F4F5]">
-                     {node.title}
-                   </div>
-
-                   {/* Pill */}
-                   <div className={`px-3 py-1 rounded-full border-2 border-[#18181B] dark:border-white font-black text-[10px] uppercase shadow-[2px_2px_0_#18181B] dark:shadow-[#FFFFFF]
-                     ${node.status === 'completed' ? 'bg-[#00E599] text-[#18181B]' : 
-                       node.status === 'in-progress' ? 'bg-[#8B5CF6] text-white' : 
-                       'bg-white dark:bg-[#27272A] text-[#18181B] dark:text-[#F4F4F5]'}`}
-                   >
-                     {node.status.replace('-', ' ')}
-                   </div>
-                 </div>
-               ))}
-            </div>
-          </div>
-        </div>
-
-        {/* 8. GAMES & SIMULATIONS */}
-        <div>
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black mb-4">Learn Through Play</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Right Side: Stacked Cards */}
+          <div className="lg:col-span-7 flex flex-col gap-4">
             {[
-              { title: 'Budget Survivor', desc: 'Can you survive a month on your first salary without going broke?', color: '#FF4444', icon: <ShoppingCart size={40} className="text-[#18181B] dark:text-[#F4F4F5] dark:text-white" /> },
-              { title: 'Startup Challenge', desc: 'Manage a growing business, handle cash flow, and expand.', color: '#FBBF24', icon: <Rocket size={40} className="text-[#18181B] dark:text-[#F4F4F5] dark:text-white" /> },
-              { title: 'Investment Quest', desc: 'Build your first portfolio and watch the compound interest magic.', color: '#00E599', icon: <TrendingUp size={40} className="text-[#18181B] dark:text-[#F4F4F5] dark:text-white" /> },
-              { title: 'Credit Score Rescue', desc: 'Recover from financial mistakes and build an 800+ credit score.', color: '#8B5CF6', icon: <CreditCard size={40} className="text-[#18181B] dark:text-[#F4F4F5] dark:text-white" /> },
+              { title: 'Budget Survivor', desc: 'Can you survive a month on your first salary without going broke?', color: '#EF4444', bg: 'bg-red-50/70 dark:bg-red-950/30 border-red-100 dark:border-red-900/30', icon: <ShoppingCart size={24} /> },
+              { title: 'Startup Challenge', desc: 'Manage a growing business, handle cash flow, and expand operations.', color: '#F59E0B', bg: 'bg-amber-50/70 dark:bg-amber-950/30 border-amber-100 dark:border-amber-900/30', icon: <Rocket size={24} /> },
+              { title: 'Investment Quest', desc: 'Build your first portfolio and watch the compound interest magic.', color: '#10B981', bg: 'bg-emerald-50/70 dark:bg-emerald-950/30 border-emerald-100 dark:border-emerald-900/30', icon: <TrendingUp size={24} /> },
+              { title: 'Credit Score Rescue', desc: 'Recover from financial mistakes and build an 800+ credit score.', color: '#8B5CF6', bg: 'bg-purple-50/70 dark:bg-purple-950/30 border-purple-100 dark:border-purple-900/30', icon: <CreditCard size={24} /> },
             ].map((game, i) => (
               <motion.div 
                 key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="group bg-gray-100 dark:bg-[#27272A] border-[3px] border-[#18181B] dark:border-white rounded-3xl p-6 shadow-[#000] dark:shadow-[#FFFFFF] flex gap-6 items-center hover:bg-gray-200 dark:hover:bg-[#3F3F46] transition-colors"
+                transition={{ delay: i * 0.1 }}
+                className={`group border rounded-[24px] p-5 shadow-sm flex gap-5 items-center hover:shadow-md transition-all cursor-pointer hover:-translate-y-1 ${game.bg}`}
               >
-                 <div className="w-20 h-20 shrink-0 rounded-2xl border-[3px] border-[#18181B] dark:border-white shadow-[#000] dark:shadow-[#FFFFFF] flex items-center justify-center text-4xl" style={{ background: game.color }}>
-                   {game.icon}
-                 </div>
-                 <div>
-                   <h3 className="text-2xl font-black mb-2 transition-colors">{game.title}</h3>
-                   <p className="font-medium text-[#3F3F46] dark:text-[#A1A1AA] transition-colors">{game.desc}</p>
-                 </div>
+                <div className="w-14 h-14 shrink-0 rounded-2xl flex items-center justify-center shadow-sm" style={{ backgroundColor: `${game.color}20`, color: game.color }}>
+                  {game.icon}
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold mb-1 text-[#18181B] dark:text-white">{game.title}</h3>
+                  <p className="font-medium text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{game.desc}</p>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
 
-        {/* 9. VIRTUAL INVESTING PREVIEW */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        {/* VIRTUAL INVESTING PREVIEW */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="order-2 lg:order-1">
-             <motion.div 
-                initial={{ opacity: 0, rotate: -2, x: -50 }}
-                whileInView={{ opacity: 1, rotate: 0, x: 0 }}
-                viewport={{ once: true }}
-                className="bg-[#F4F4F5] dark:bg-[#18181B] dark:bg-zinc-900 rounded-3xl p-6 border-[4px] border-[#18181B] dark:border-white shadow-[12px_12px_0_#8B5CF6] relative"
-             >
-                <div className="flex justify-between items-center mb-6 border-b-2 border-[#D4D4D8] dark:border-zinc-700 pb-4">
-                   <div>
-                     <div className="text-xs font-bold text-[#71717A] dark:text-zinc-400 uppercase tracking-wider">Portfolio Value</div>
-                     <div className="text-4xl font-black text-[#18181B] dark:text-[#F4F4F5] dark:text-white">$12,450.00</div>
-                     <div className="text-[#00E599] font-bold text-sm mt-1">↑ $1,200 (10.4%) All Time</div>
-                   </div>
-                   <div className="px-4 py-2 bg-[#8B5CF6] text-white font-bold rounded-xl border-2 border-[#18181B] dark:border-white shadow-[#18181B] dark:shadow-[#FFFFFF]">
-                     Buy / Sell
-                   </div>
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.96 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="bg-white dark:bg-[#18181B] rounded-[32px] p-6 md:p-8 border border-gray-200/80 dark:border-gray-800 shadow-xl relative"
+            >
+              <div className="flex justify-between items-center mb-6 border-b border-gray-100 dark:border-gray-800 pb-4">
+                <div>
+                  <div className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Portfolio Value</div>
+                  <div className="text-3xl md:text-4xl font-black text-[#18181B] dark:text-white">$12,450.00</div>
+                  <div className="text-[#10B981] font-bold text-xs sm:text-sm mt-1.5 flex items-center gap-1">
+                    <TrendingUp size={16} /> + $1,200 (10.4%) All Time
+                  </div>
                 </div>
-                {/* Mock Chart */}
-                <div className="h-40 w-full flex items-end gap-2 mb-6">
-                   {[40, 50, 45, 60, 55, 70, 85, 80, 95, 100].map((h, i) => (
-                     <motion.div 
-                       key={i} 
-                       initial={{ height: 0 }}
-                       whileInView={{ height: `${h}%` }}
-                       viewport={{ once: true }}
-                       transition={{ delay: i * 0.1, duration: 0.5 }}
-                       className="flex-1 bg-[#00E599] border-2 border-[#18181B] dark:border-white rounded-t-sm"
-                     />
-                   ))}
+                <button className="px-5 py-2.5 bg-[#8B5CF6] hover:bg-[#7C3AED] text-white font-bold text-sm rounded-full shadow-sm transition-all hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#8B5CF6]">
+                  Trade Sim
+                </button>
+              </div>
+
+              {/* Mock Chart */}
+              <div className="h-36 w-full flex items-end gap-2 mb-6 pt-2">
+                {[40, 50, 45, 60, 55, 70, 85, 80, 95, 100].map((h, i) => (
+                  <motion.div 
+                    key={i} 
+                    initial={{ height: 0 }}
+                    whileInView={{ height: `${h}%` }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.08, duration: 0.4 }}
+                    className="flex-1 bg-gradient-to-t from-[#10B981]/20 to-[#10B981] rounded-t-md opacity-90"
+                  />
+                ))}
+              </div>
+
+              <div className="space-y-3">
+                <div className="flex justify-between items-center p-4 border border-gray-100 dark:border-gray-800 rounded-2xl bg-gray-50/60 dark:bg-gray-800/40">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-black dark:bg-white text-white dark:text-black rounded-full flex items-center justify-center text-[11px] font-black shadow-sm">
+                      AAPL
+                    </div>
+                    <div>
+                      <div className="font-bold text-[#18181B] dark:text-white text-sm">Apple Inc.</div>
+                      <div className="text-xs font-medium text-gray-400">Technology</div>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <div className="font-black text-[#18181B] dark:text-white text-sm">$150.25</div>
+                    <div className="text-[#10B981] text-xs font-bold">+ 1.2%</div>
+                  </div>
                 </div>
-                <div className="space-y-3">
-                   <div className="flex justify-between items-center p-3 border-2 border-[#18181B] dark:border-white rounded-xl bg-white dark:bg-[#27272A] dark:bg-zinc-800 text-[#18181B] dark:text-[#F4F4F5] dark:text-white">
-                     <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center text-white text-xs font-bold">APPL</div>
-                        <div className="font-bold">Apple Inc.</div>
-                     </div>
-                     <div className="text-right">
-                        <div className="font-black">$150.25</div>
-                        <div className="text-[#00E599] text-xs font-bold">↑ 1.2%</div>
-                     </div>
-                   </div>
-                </div>
-             </motion.div>
+              </div>
+            </motion.div>
           </div>
+
           <div className="order-1 lg:order-2">
-            <h2 className="text-4xl md:text-5xl font-black mb-6">Practice Before You Invest</h2>
-            <p className="text-xl font-medium text-[#3F3F46] dark:text-[#A1A1AA] mb-8">
+            <span className="inline-block px-4 py-1.5 border border-emerald-200/60 dark:border-emerald-900/40 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-300 font-bold uppercase text-xs mb-6 tracking-wider">
+              Simulation
+            </span>
+            <h2 className="text-3xl md:text-5xl font-black mb-6 text-[#18181B] dark:text-white tracking-tight leading-tight">
+              Practice Before You Invest
+            </h2>
+            <p className="text-lg md:text-xl font-medium text-gray-500 dark:text-gray-400 mb-8 leading-relaxed max-w-2xl">
               Apply everything you have learned in a risk-free virtual market. Trade stocks, build portfolios, and test strategies.
             </p>
-            <ul className="space-y-4 text-lg font-bold">
-               <li className="flex items-center gap-3"><span className="text-[#00E599] text-2xl">✓</span> Real-time market data.</li>
-               <li className="flex items-center gap-3"><span className="text-[#00E599] text-2xl">✓</span> Track performance over time.</li>
-               <li className="flex items-center gap-3"><span className="text-[#00E599] text-2xl">✓</span> Learn from outcomes with no risk.</li>
+            <ul className="space-y-4 text-base font-bold text-gray-600 dark:text-gray-300">
+              <li className="flex items-center gap-3">
+                <span className="w-6 h-6 rounded-full bg-[#00E599]/20 text-[#10B981] flex items-center justify-center shrink-0">
+                  <Check size={16} strokeWidth={3} />
+                </span> 
+                Real-time market data.
+              </li>
+              <li className="flex items-center gap-3">
+                <span className="w-6 h-6 rounded-full bg-[#00E599]/20 text-[#10B981] flex items-center justify-center shrink-0">
+                  <Check size={16} strokeWidth={3} />
+                </span> 
+                Track performance over time.
+              </li>
+              <li className="flex items-center gap-3">
+                <span className="w-6 h-6 rounded-full bg-[#00E599]/20 text-[#10B981] flex items-center justify-center shrink-0">
+                  <Check size={16} strokeWidth={3} />
+                </span> 
+                Learn from outcomes with zero financial risk.
+              </li>
             </ul>
           </div>
         </div>
 
-        {/* 10. REWARDS & PROGRESSION */}
-        <div className="text-center">
-          <h2 className="text-3xl md:text-5xl font-black mb-6"><span className="bg-[#00E599] text-[#18181B] px-3 py-1 inline-block">Progress That Feels Rewarding</span></h2>
-          <p className="text-xl font-medium text-[#3F3F46] dark:text-[#A1A1AA] max-w-2xl mx-auto mb-16">
-            Every lesson, challenge and game moves you closer to new rewards and milestones.
-          </p>
+        {/* REWARDS & PROGRESSION */}
+        <div className="mt-20 p-8 sm:p-12 md:p-16 rounded-[40px] bg-gray-50/80 dark:bg-[#15131C] border border-gray-100 dark:border-gray-800/60 w-full">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-black text-[#18181B] dark:text-white tracking-tight leading-tight mb-4">
+              Progress That Feels Rewarding
+            </h2>
+            <p className="text-lg md:text-xl font-medium text-gray-500 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
+              Every lesson, challenge, and game moves you closer to new rewards and milestones.
+            </p>
+          </div>
           
-          <div className="flex flex-wrap justify-center gap-8">
-             {[
-               { label: 'Coins', icon: <Coins size={48} className="text-[#18181B] dark:text-[#F4F4F5] dark:text-white" />, color: '#FFCD75' },
-               { label: 'Badges', icon: <Trophy size={48} className="text-[#18181B] dark:text-[#F4F4F5] dark:text-white" />, color: '#8B5CF6' },
-               { label: 'Streaks', icon: <Flame size={48} className="text-[#18181B] dark:text-[#F4F4F5] dark:text-white" />, color: '#FF4444' },
-               { label: 'Chests', icon: <Gift size={48} className="text-[#18181B] dark:text-[#F4F4F5] dark:text-white" />, color: '#00E599' },
-             ].map((r, i) => (
-               <motion.div 
-                 key={i}
-                 whileHover={{ scale: 1.1, rotate: 5 }}
-                 className="flex flex-col items-center gap-4"
-               >
-                 <div className="w-24 h-24 rounded-full border-[4px] border-[#18181B] dark:border-white flex items-center justify-center text-5xl shadow-[4px_4px_0_#18181B] dark:shadow-[#FFFFFF] bg-white dark:bg-[#27272A]">
-                   {r.icon}
-                 </div>
-                 <div className="font-black text-xl px-4 py-1 rounded-lg border-2 border-[#18181B] dark:border-white shadow-[#000] dark:shadow-[#FFFFFF]" style={{ backgroundColor: r.color, color: '#18181B' }}>
-                   {r.label}
-                 </div>
-               </motion.div>
-             ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
+            {[
+              { label: 'Piggy Coins', desc: 'Earned for completing lessons and acing quizzes.', icon: <Coins size={32} className="text-amber-500" />, bg: 'bg-amber-50 dark:bg-amber-950/40 border-amber-200/50 dark:border-amber-800/40', color: 'text-amber-600 dark:text-amber-400' },
+              { label: 'Skill Badges', desc: 'Show off your mastery in specific financial topics.', icon: <Trophy size={32} className="text-indigo-500" />, bg: 'bg-indigo-50 dark:bg-indigo-950/40 border-indigo-200/50 dark:border-indigo-800/40', color: 'text-indigo-600 dark:text-indigo-400' },
+              { label: 'Daily Streaks', desc: 'Build daily habits and multiply your earned rewards.', icon: <Flame size={32} className="text-red-500" />, bg: 'bg-red-50 dark:bg-red-950/40 border-red-200/50 dark:border-red-800/40', color: 'text-red-600 dark:text-red-400' },
+              { label: 'Mystery Chests', desc: 'Unlock mystery boxes filled with rare artifacts.', icon: <Gift size={32} className="text-emerald-500" />, bg: 'bg-emerald-50 dark:bg-emerald-950/40 border-emerald-200/50 dark:border-emerald-800/40', color: 'text-emerald-600 dark:text-emerald-400' },
+            ].map((r, i) => (
+              <motion.div 
+                key={i}
+                whileHover={{ scale: 1.03, y: -4 }}
+                className="flex flex-col items-start gap-4 p-6 sm:p-8 bg-white dark:bg-[#1C1A24] border border-gray-100 dark:border-gray-800/60 rounded-[32px] shadow-sm hover:shadow-md transition-all cursor-pointer"
+              >
+                <div className={`w-16 h-16 rounded-2xl flex items-center justify-center shadow-sm border ${r.bg}`}>
+                  {r.icon}
+                </div>
+                <div>
+                  <h3 className={`font-black text-xl mb-2 ${r.color}`}>
+                    {r.label}
+                  </h3>
+                  <p className="text-sm font-medium text-gray-500 dark:text-gray-400 leading-relaxed">
+                    {r.desc}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
 
@@ -202,3 +184,4 @@ const JourneyPreviewSection = () => {
 };
 
 export default JourneyPreviewSection;
+

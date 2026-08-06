@@ -1,4 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700;800&family=Press+Start+2P&display=swap');
+
+:root {
+  --neo-primary: #00E599;
+  --neo-warning: #FFD100;
+  --neo-error: #FF6B6B;
+  --neo-accent: #8B5CF6;
+  --neo-dark: #18181B;
+  --neo-light: #F4F4F5;
+  --neo-border-color: #18181B;
+  
+  --neo-border-width: 3px;
+  --neo-border-width-lg: 4px;
+  
+  --neo-shadow-offset: 4px;
+  --neo-shadow-offset-lg: 6px;
+  --neo-shadow-offset-xl: 8px;
+  
+  --neo-radius-sm: 0.5rem;    /* 8px */
+  --neo-radius-md: 0.75rem;   /* 12px */
+  --neo-radius-lg: 1rem;      /* 16px */
+  --neo-radius-xl: 1.5rem;    /* 24px */
+  --neo-radius-2xl: 2rem;     /* 32px */
+}
 
 @tailwind base;
 @tailwind components;
@@ -6,180 +29,94 @@
 
 @layer base {
   body {
-    font-family: 'Inter', sans-serif;
-    color: #F4F4F4;
-    background-color: #0c0620;
-    background-image:
-      /* nebula glow left */
-      radial-gradient(ellipse 40% 30% at 20% 30%, rgba(139,92,246,0.14) 0%, transparent 70%),
-      /* nebula glow right */
-      radial-gradient(ellipse 35% 25% at 80% 20%, rgba(196,181,253,0.09) 0%, transparent 70%),
-      /* deep purple vertical gradient */
-      linear-gradient(180deg, #0c0620 0%, #130930 30%, #1a0d3d 60%, #12082a 100%);
-    background-attachment: fixed;
-    min-height: 100vh;
-    width: 100vw;
-    overflow-x: hidden;
-    position: relative;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--neo-dark);
+    background-color: var(--neo-light);
   }
 
-  /* Starfield overlay — CSS only, no JS */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    background-image:
-      /* cross-stars (simulated with radial dots at different sizes) */
-      radial-gradient(1px 1px at 8%  12%, #c4b5fd 0%, transparent 100%),
-      radial-gradient(2px 2px at 18% 28%, #a78bfa 0%, transparent 100%),
-      radial-gradient(1px 1px at 32%  8%, #e0d7ff 0%, transparent 100%),
-      radial-gradient(2px 2px at 52% 18%, #c4b5fd 0%, transparent 100%),
-      radial-gradient(1px 1px at 65% 10%, #a78bfa 0%, transparent 100%),
-      radial-gradient(2px 2px at 78% 25%, #e0d7ff 0%, transparent 100%),
-      radial-gradient(2px 2px at 88% 15%, #c4b5fd 0%, transparent 100%),
-      radial-gradient(1px 1px at 42% 35%, #a78bfa 0%, transparent 100%),
-      radial-gradient(1px 1px at 72% 38%, #e0d7ff 0%, transparent 100%),
-      radial-gradient(1px 1px at 25% 42%, #c4b5fd 0%, transparent 100%),
-      radial-gradient(2px 2px at 55% 45%, #a78bfa 0%, transparent 100%),
-      radial-gradient(1px 1px at 90% 40%, #c4b5fd 0%, transparent 100%),
-      radial-gradient(1px 1px at 14% 20%, #e0d7ff 0%, transparent 100%),
-      radial-gradient(1px 1px at 38% 22%, #c4b5fd 0%, transparent 100%),
-      radial-gradient(1px 1px at 60% 18%, #a78bfa 0%, transparent 100%),
-      radial-gradient(1px 1px at 74%  8%, #e0d7ff 0%, transparent 100%),
-      radial-gradient(1px 1px at 82% 32%, #c4b5fd 0%, transparent 100%),
-      radial-gradient(1px 1px at 35% 48%, #a78bfa 0%, transparent 100%),
-      radial-gradient(1px 1px at 95% 22%, #e0d7ff 0%, transparent 100%),
-      radial-gradient(1px 1px at  6% 38%, #c4b5fd 0%, transparent 100%),
-      radial-gradient(1px 1px at 46%  8%, #e0d7ff 0%, transparent 100%),
-      radial-gradient(1px 1px at 58% 38%, #a78bfa 0%, transparent 100%),
-      radial-gradient(1px 1px at 22% 55%, #c4b5fd 0%, transparent 100%),
-      radial-gradient(1px 1px at 68% 60%, #e0d7ff 0%, transparent 100%),
-      radial-gradient(1px 1px at  4% 65%, #a78bfa 0%, transparent 100%),
-      radial-gradient(1px 1px at 84% 68%, #c4b5fd 0%, transparent 100%),
-      radial-gradient(1px 1px at 30% 72%, #e0d7ff 0%, transparent 100%),
-      radial-gradient(1px 1px at 50% 78%, #a78bfa 0%, transparent 100%),
-      radial-gradient(1px 1px at 76% 75%, #c4b5fd 0%, transparent 100%),
-      radial-gradient(1px 1px at 12% 82%, #e0d7ff 0%, transparent 100%);
-    opacity: 0.85;
-    animation: twinkleField 6s ease-in-out infinite alternate;
+  .dark body {
+    color: var(--neo-light);
+    background-color: var(--neo-dark);
   }
 
-  /* Larger cross-star shapes overlaid */
-  body::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    background-image:
-      radial-gradient(3px 3px at 10% 15%, #c4b5fd 0%, transparent 100%),
-      radial-gradient(3px 3px at 85% 20%, #a78bfa 0%, transparent 100%),
-      radial-gradient(4px 4px at 55% 10%, #e0d7ff 0%, transparent 100%),
-      radial-gradient(3px 3px at 30% 50%, #c4b5fd 0%, transparent 100%),
-      radial-gradient(4px 4px at 70% 55%, #a78bfa 0%, transparent 100%),
-      radial-gradient(3px 3px at 15% 70%, #e0d7ff 0%, transparent 100%),
-      radial-gradient(4px 4px at 92% 65%, #c4b5fd 0%, transparent 100%),
-      radial-gradient(3px 3px at 45% 80%, #a78bfa 0%, transparent 100%);
-    opacity: 0.7;
-    animation: twinkleField 4s ease-in-out infinite alternate-reverse;
+  /* Custom Scrollbar for Builder */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
   }
-
-  @keyframes twinkleField {
-    0%   { opacity: 0.55; }
-    50%  { opacity: 0.9; }
-    100% { opacity: 0.6; }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
   }
-
-  .font-pixel {
-    font-family: 'Press Start 2P', monospace;
-    -webkit-font-smoothing: none;
-    image-rendering: pixelated;
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #A1A1AA;
+    border-radius: 10px;
   }
-}
-
-@layer components {
-  /* Codedex-style dark card — slightly elevated, subtle border */
-  .cdx-card {
-    background: #1a1a2e;
-    border: 1px solid #2a2a4a;
-    border-radius: 12px;
-    padding: 20px;
-    transition: border-color 0.15s ease;
-  }
-  .cdx-card:hover {
-    border-color: #3a3a6a;
-  }
-
-  /* Pixel panel — hard border, no border-radius, retro RPG */
-  .pixel-panel {
-    background: #12123A;
-    border: 2px solid #29366F;
-    position: relative;
-  }
-
-  .glow-teal { box-shadow: 0 0 16px rgba(0, 212, 200, 0.3); }
-  .glow-lime { box-shadow: 0 0 16px rgba(184, 244, 0, 0.3); }
-  .glow-violet { box-shadow: 0 0 16px rgba(139, 92, 246, 0.3); }
-
-  /* Top-nav bar */
-  .top-nav {
-    background: #0f0f23;
-    border-bottom: 1px solid #1e1e3a;
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    padding: 0 24px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  /* Sidebar stat row — like Codedex profile sidebar */
-  .stat-chip {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2px;
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: #71717A;
   }
 }
 
 @layer utilities {
-  .pixel-btn:active {
-    transform: translate(3px, 3px);
-    box-shadow: none !important;
+  .neo-border {
+    border: var(--neo-border-width) solid var(--neo-border-color);
   }
-
-  .text-gradient-lime {
-    background: linear-gradient(90deg, #00D4C8, #B8F400);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  .neo-border-lg {
+    border: var(--neo-border-width-lg) solid var(--neo-border-color);
   }
-  .bg-gradient-teal-lime {
-    background: linear-gradient(90deg, #00D4C8, #B8F400);
+  .neo-shadow {
+    box-shadow: var(--neo-shadow-offset) var(--neo-shadow-offset) 0 var(--neo-border-color);
   }
-
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+  .neo-shadow-lg {
+    box-shadow: var(--neo-shadow-offset-lg) var(--neo-shadow-offset-lg) 0 var(--neo-border-color);
   }
-  .animate-blink {
-    animation: blink 1s steps(1) infinite;
+  .neo-shadow-xl {
+    box-shadow: var(--neo-shadow-offset-xl) var(--neo-shadow-offset-xl) 0 var(--neo-border-color);
   }
-
-  @keyframes wiggle {
-    0%, 100% { transform: rotate(-3deg); }
-    50% { transform: rotate(3deg); }
+  
+  .neo-card {
+    @apply bg-white transition-all duration-200;
+    border: var(--neo-border-width) solid var(--neo-border-color);
+    box-shadow: var(--neo-shadow-offset) var(--neo-shadow-offset) 0 var(--neo-border-color);
+    border-radius: var(--neo-radius-xl);
   }
-  .animate-wiggle {
-    animation: wiggle 0.5s ease-in-out infinite;
+  .neo-card-lg {
+    @apply bg-white transition-all duration-200;
+    border: var(--neo-border-width-lg) solid var(--neo-border-color);
+    box-shadow: var(--neo-shadow-offset-xl) var(--neo-shadow-offset-xl) 0 var(--neo-border-color);
+    border-radius: var(--neo-radius-2xl);
+  }
+  
+  .neo-btn {
+    @apply font-black transition-all active:translate-y-1 active:shadow-none hover:-translate-y-1;
+    border: var(--neo-border-width) solid var(--neo-border-color);
+    box-shadow: var(--neo-shadow-offset) var(--neo-shadow-offset) 0 var(--neo-border-color);
+    border-radius: var(--neo-radius-xl);
+  }
+  .neo-btn:hover {
+    box-shadow: var(--neo-shadow-offset-lg) var(--neo-shadow-offset-lg) 0 var(--neo-border-color);
+  }
+  
+  .neo-btn-primary {
+    @apply neo-btn;
+    background-color: var(--neo-primary);
+    color: var(--neo-dark);
+  }
+  
+  .neo-btn-warning {
+    @apply neo-btn;
+    background-color: var(--neo-warning);
+    color: var(--neo-dark);
+  }
+  
+  .neo-btn-error {
+    @apply neo-btn;
+    background-color: var(--neo-error);
+    color: white;
+  }
+  
+  .neo-btn-accent {
+    @apply neo-btn;
+    background-color: var(--neo-accent);
+    color: white;
   }
 }
-
-/* Scrollbar */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #29366F; border-radius: 10px; }
-::-webkit-scrollbar-thumb:hover { background: #8B5CF6; }
