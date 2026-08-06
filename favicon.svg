@@ -1,0 +1,37 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Ears -->
+  <path d="M 22 45 Q 5 35 12 55 Q 18 65 26 55 Z" fill="#FFD1CB" stroke="#111827" strokeWidth="3" strokeLinejoin="round" />
+  <path d="M 20 48 Q 12 42 15 54 Q 18 58 22 52 Z" fill="#FF9A9E" />
+  
+  <path d="M 78 45 Q 95 35 88 55 Q 82 65 74 55 Z" fill="#FFD1CB" stroke="#111827" strokeWidth="3" strokeLinejoin="round" />
+  <path d="M 80 48 Q 88 42 85 54 Q 82 58 78 52 Z" fill="#FF9A9E" />
+
+  <!-- Head with Hair Tuft -->
+  <path d="M 42 22 Q 46 10 50 16 Q 54 6 58 22 A 32 32 0 1 1 42 22 Z" fill="#FFD1CB" stroke="#111827" strokeWidth="3" strokeLinejoin="round" />
+
+  <!-- Cheeks -->
+  <ellipse cx="28" cy="62" rx="7" ry="4.5" fill="#FF9B9B" opacity="0.8" />
+  <ellipse cx="72" cy="62" rx="7" ry="4.5" fill="#FF9B9B" opacity="0.8" />
+  
+  <!-- Mouth (Open Smile, under snout) -->
+  <path d="M 40 68 Q 50 85 60 68 Z" fill="#111827" stroke="#111827" strokeWidth="3" strokeLinejoin="round" />
+  <path d="M 44 72 Q 50 68 56 72 Q 50 82 44 72 Z" fill="#FF7878" />
+
+  <!-- Snout -->
+  <ellipse cx="50" cy="65" rx="14" ry="10" fill="#FFB6B9" stroke="#111827" strokeWidth="3" />
+  <ellipse cx="46" cy="64" rx="2.5" ry="4" fill="#111827" />
+  <ellipse cx="54" cy="64" rx="2.5" ry="4" fill="#111827" />
+
+  <!-- Eyes (Happy open eyes) -->
+  <ellipse cx="36" cy="48" rx="5" ry="7" fill="#111827" />
+  <circle cx="36" cy="45" r="2" fill="#FFF" />
+  <circle cx="38" cy="49" r="1" fill="#FFF" />
+
+  <ellipse cx="64" cy="48" rx="5" ry="7" fill="#111827" />
+  <circle cx="64" cy="45" r="2" fill="#FFF" />
+  <circle cx="66" cy="49" r="1" fill="#FFF" />
+
+  <!-- Eyebrows -->
+  <path d="M 31 38 Q 36 34 41 38" fill="none" stroke="#111827" strokeWidth="2.5" strokeLinecap="round" />
+  <path d="M 69 38 Q 64 34 59 38" fill="none" stroke="#111827" strokeWidth="2.5" strokeLinecap="round" />
+</svg>
