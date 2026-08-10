@@ -62,10 +62,8 @@ const courses = [
 
 const CoursesSection = () => {
   const [activeCourse, setActiveCourse] = useState(courses[0]);
-  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
-    if (isPaused) return;
     const timer = setInterval(() => {
       setActiveCourse((prev) => {
         const index = courses.findIndex(c => c.id === prev.id);
@@ -74,7 +72,7 @@ const CoursesSection = () => {
       });
     }, 5000);
     return () => clearInterval(timer);
-  }, [isPaused]);
+  }, []);
 
   return (
     <section id="courses" className="w-full py-20 md:py-28 bg-[#FAF9FF] dark:bg-[#18181B] border-t border-b border-gray-100 dark:border-gray-800/80 transition-colors">
@@ -95,8 +93,6 @@ const CoursesSection = () => {
         {/* Interactive Course Navigator Grid */}
         <div 
           className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
         >
           
           {/* Module List Selector */}
