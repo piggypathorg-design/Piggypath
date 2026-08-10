@@ -66,7 +66,6 @@ const NavBar = () => {
           </div>
 
           <div className="hidden md:flex items-center gap-8 font-bold text-sm text-gray-600 dark:text-gray-300">
-            <button onClick={() => scrollTo('home')} className="hover:text-[#8B5CF6] dark:hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#8B5CF6] rounded-lg px-1">Home</button>
             <button onClick={() => scrollTo('features')} className="hover:text-[#8B5CF6] dark:hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#8B5CF6] rounded-lg px-1">Features</button>
             <button onClick={() => scrollTo('courses')} className="hover:text-[#8B5CF6] dark:hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#8B5CF6] rounded-lg px-1">Courses</button>
             <button onClick={() => scrollTo('journey')} className="hover:text-[#8B5CF6] dark:hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#8B5CF6] rounded-lg px-1">Journey</button>

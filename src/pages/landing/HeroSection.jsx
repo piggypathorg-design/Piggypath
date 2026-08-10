@@ -1,5 +1,27 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useEffect, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+
+const AnimatedNumber = ({ value, suffix = "" }) => {
+  const [current, setCurrent] = useState(0);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+
+  useEffect(() => {
+    if (!isInView) return;
+    let startTime;
+    const duration = 2000;
+    const animate = (time) => {
+      if (!startTime) startTime = time;
+      const progress = Math.min((time - startTime) / duration, 1);
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      setCurrent(Math.floor(easeOutQuart * value));
+      if (progress < 1) requestAnimationFrame(animate);
+    };
+    requestAnimationFrame(animate);
+  }, [value, isInView]);
+  
+  return <span ref={ref}>{current}{suffix}</span>;
+};
 import { Check, X, Sparkles, ArrowRight, Play } from 'lucide-react';
 
 const HeroSection = () => {
@@ -90,19 +112,19 @@ const HeroSection = () => {
               className="grid grid-cols-4 gap-4 sm:gap-8 pt-6 border-t border-gray-100 dark:border-gray-800/80 w-full max-w-lg"
             >
               <div>
-                <div className="text-2xl sm:text-3xl font-black text-[#18181B] dark:text-white">5</div>
+                <div className="text-2xl sm:text-3xl font-black text-[#18181B] dark:text-white"><AnimatedNumber value={5} /></div>
                 <div className="text-xs font-bold text-gray-400 uppercase tracking-wider mt-0.5">Modules</div>
               </div>
               <div>
-                <div className="text-2xl sm:text-3xl font-black text-[#18181B] dark:text-white">50</div>
+                <div className="text-2xl sm:text-3xl font-black text-[#18181B] dark:text-white"><AnimatedNumber value={50} /></div>
                 <div className="text-xs font-bold text-gray-400 uppercase tracking-wider mt-0.5">Lessons</div>
               </div>
               <div>
-                <div className="text-2xl sm:text-3xl font-black text-[#18181B] dark:text-white">1275+</div>
+                <div className="text-2xl sm:text-3xl font-black text-[#18181B] dark:text-white"><AnimatedNumber value={1275} suffix="+" /></div>
                 <div className="text-xs font-bold text-gray-400 uppercase tracking-wider mt-0.5">Points</div>
               </div>
               <div>
-                <div className="text-2xl sm:text-3xl font-black text-[#18181B] dark:text-white">3 min</div>
+                <div className="text-2xl sm:text-3xl font-black text-[#18181B] dark:text-white"><AnimatedNumber value={3} suffix=" min" /></div>
                 <div className="text-xs font-bold text-gray-400 uppercase tracking-wider mt-0.5">Per day</div>
               </div>
             </motion.div>
