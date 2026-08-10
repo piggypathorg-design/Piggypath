@@ -1,7 +1,5 @@
 import { motion } from 'framer-motion';
 import { Quote } from 'lucide-react';
-import { createAvatar } from '@dicebear/core';
-import { lorelei } from '@dicebear/collection';
 
 const testimonials = [
   {
@@ -64,7 +62,7 @@ const TestimonialsSection = () => {
               <div className="flex items-center gap-4 mt-auto pt-4 border-t border-black/5 dark:border-white/10">
                 <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 shadow-inner overflow-hidden ${t.bg}`}>
                   <img 
-                    src={createAvatar(lorelei, { seed: t.name, backgroundColor: ["b6e3f4","c0aede","d1d4f9","ffd5dc","ffdfbf"] }).toDataUri()} 
+                    src={`https://api.dicebear.com/9.x/lorelei/svg?seed=${encodeURIComponent(t.name)}&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf`} 
                     alt={t.name} 
                     className="w-full h-full object-cover" 
                   />
