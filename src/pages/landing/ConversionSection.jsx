@@ -1,7 +1,8 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Check, MessageCircle, Share2, Users, Globe, Instagram, Twitter, Linkedin, Mail } from 'lucide-react';
+import { X, Check, MessageCircle, Share2, Users, Globe, Mail } from 'lucide-react';
+import { FaInstagram, FaXTwitter, FaLinkedin } from 'react-icons/fa6';
 
 const ConversionSection = () => {
   const [email, setEmail] = useState('');
@@ -226,13 +227,13 @@ const ConversionSection = () => {
               
               <div className="flex flex-wrap gap-3">
                 <a href="https://www.instagram.com/piggy_path?igsh=dngwODVzYzFydm14" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-10 h-10 rounded-full bg-[#1C1D29] flex items-center justify-center text-gray-400 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#00E599]">
-                  <Instagram size={18} />
+                  <FaInstagram size={18} />
                 </a>
                 <a href="https://x.com/Piggypath_Edu" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="w-10 h-10 rounded-full bg-[#1C1D29] flex items-center justify-center text-gray-400 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#00E599]">
-                  <Twitter size={18} />
+                  <FaXTwitter size={18} />
                 </a>
                 <a href="#" aria-label="LinkedIn" className="w-10 h-10 rounded-full bg-[#1C1D29] flex items-center justify-center text-gray-400 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#00E599]">
-                  <Linkedin size={18} />
+                  <FaLinkedin size={18} />
                 </a>
                 <a href="mailto:admin@piggypath.in" aria-label="Admin Email" className="w-10 h-10 rounded-full bg-[#1C1D29] flex items-center justify-center text-gray-400 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#00E599]">
                   <Mail size={18} />
