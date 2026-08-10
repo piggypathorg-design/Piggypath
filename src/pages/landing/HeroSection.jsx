@@ -51,7 +51,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-lg md:text-xl font-medium text-gray-500 dark:text-gray-400 leading-relaxed max-w-xl mb-16"
+              className="text-base md:text-lg font-medium text-gray-500 dark:text-gray-400 leading-relaxed max-w-xl mb-16"
             >
               PiggyPath simplifies finance into quick lessons, interactive quizzes, and real-life simulations that feel like a game.
             </motion.p>
