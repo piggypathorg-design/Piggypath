@@ -18,7 +18,7 @@ const FeaturesSection = () => {
             <h2 className="text-3xl md:text-5xl font-black mb-6 text-[#18181B] dark:text-white tracking-tight leading-tight">
               Three minutes a day is enough
             </h2>
-            <p className="text-lg md:text-xl font-medium text-gray-500 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-base md:text-lg font-medium text-gray-500 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
               Short sessions beat long ones you never finish. Here is the loop that keeps learners coming back.
             </p>
           </div>
@@ -100,7 +100,7 @@ const FeaturesSection = () => {
             <h2 className="text-3xl md:text-5xl font-black mb-6 text-[#18181B] dark:text-white tracking-tight leading-tight">
               Learn it, play it, keep it
             </h2>
-            <p className="text-lg md:text-xl font-medium text-gray-500 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-base md:text-lg font-medium text-gray-500 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
               Most apps just hand you videos. PiggyPath links every part together, so what you learn in a lesson gets reinforced in a game, rewarded with coins, and tracked on your path.
             </p>
           </div>

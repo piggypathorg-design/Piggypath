@@ -37,7 +37,7 @@ const PricingSection = () => {
           Start free, upgrade when you are ready
         </h2>
         
-        <p className="text-lg md:text-xl font-medium text-gray-500 dark:text-gray-400 max-w-2xl text-center leading-relaxed mb-10">
+        <p className="text-base md:text-lg font-medium text-gray-500 dark:text-gray-400 max-w-2xl text-center leading-relaxed mb-10">
           On the free plan you get 5 keys every day, which is plenty to build a daily habit. Go Premium for unlimited keys and every course.
         </p>
 

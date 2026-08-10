@@ -84,7 +84,7 @@ const FAQSection = () => {
           Questions people ask us
         </h2>
         
-        <p className="text-lg md:text-xl font-medium text-gray-500 dark:text-gray-400 max-w-2xl text-center leading-relaxed mb-16 hidden">
+        <p className="text-base md:text-lg font-medium text-gray-500 dark:text-gray-400 max-w-2xl text-center leading-relaxed mb-16 hidden">
         </p>
 
         <div className="w-full flex flex-col">

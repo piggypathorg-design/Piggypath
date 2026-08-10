@@ -75,7 +75,7 @@ const CoursesSection = () => {
           The curriculum
         </h2>
         
-        <p className="text-lg md:text-xl font-medium text-gray-500 dark:text-gray-400 max-w-2xl text-center leading-relaxed mb-16">
+        <p className="text-base md:text-lg font-medium text-gray-500 dark:text-gray-400 max-w-2xl text-center leading-relaxed mb-16">
           Start from the very basics and go all the way to real-world financial mastery. No jargon, no dry textbook theory - just actionable lessons.
         </p>
 

@@ -17,7 +17,7 @@ const JourneyPreviewSection = () => {
             <h2 className="text-3xl md:text-5xl font-black mb-6 text-[#18181B] dark:text-white tracking-tight leading-tight">
               Your Journey To <br className="hidden md:block" /> <span className="text-[#8B5CF6]">Financial Freedom</span>
             </h2>
-            <p className="text-lg md:text-xl font-medium text-gray-500 dark:text-gray-400 leading-relaxed">
+            <p className="text-base md:text-lg font-medium text-gray-500 dark:text-gray-400 leading-relaxed">
               Every journey is broken into milestones and levels. Learn concepts through guided stories and master them by playing simulations.
             </p>
           </div>
@@ -113,7 +113,7 @@ const JourneyPreviewSection = () => {
             <h2 className="text-3xl md:text-5xl font-black mb-6 text-[#18181B] dark:text-white tracking-tight leading-tight">
               Practice Before You Invest
             </h2>
-            <p className="text-lg md:text-xl font-medium text-gray-500 dark:text-gray-400 mb-8 leading-relaxed max-w-2xl">
+            <p className="text-base md:text-lg font-medium text-gray-500 dark:text-gray-400 mb-8 leading-relaxed max-w-2xl">
               Apply everything you have learned in a risk-free virtual market. Trade stocks, build portfolios, and test strategies.
             </p>
             <ul className="space-y-4 text-base font-bold text-gray-600 dark:text-gray-300">
@@ -145,7 +145,7 @@ const JourneyPreviewSection = () => {
             <h2 className="text-3xl md:text-5xl font-black text-[#18181B] dark:text-white tracking-tight leading-tight mb-4">
               Progress That Feels Rewarding
             </h2>
-            <p className="text-lg md:text-xl font-medium text-gray-500 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-base md:text-lg font-medium text-gray-500 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
               Every lesson, challenge, and game moves you closer to new rewards and milestones.
             </p>
           </div>
