@@ -104,7 +104,7 @@ const ConversionSection = () => {
               
               {/* PNG Mascot */}
               <div className="mb-6 w-24 h-24 bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-lg flex items-center justify-center overflow-hidden relative">
-                <img src="/mascot-waitlist.png" alt="Sunglasses Piggy Mascot" className="w-[85%] h-[85%] object-contain object-center" />
+                <img src="./mascot-waitlist.png" alt="Sunglasses Piggy Mascot" className="w-[85%] h-[85%] object-contain object-center" />
               </div>
               
               <h2 className="text-3xl md:text-5xl font-black mb-6 tracking-tight leading-tight">

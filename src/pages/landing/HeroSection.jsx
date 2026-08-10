@@ -141,7 +141,7 @@ const HeroSection = () => {
               {/* PNG Mascot */}
               <div className="flex flex-col items-center mb-8 relative z-10">
                 <div className="w-28 h-28 bg-pink-100/80 dark:bg-pink-950/40 rounded-full flex items-center justify-center shadow-inner mb-4 border border-pink-200 dark:border-pink-800/40 overflow-hidden relative">
-                  <img src="/mascot-hero.png" alt="Happy Piggy Mascot" className="w-[85%] h-[85%] object-contain object-center" />
+                  <img src="./mascot-hero.png" alt="Happy Piggy Mascot" className="w-[85%] h-[85%] object-contain object-center" />
                 </div>
                 <div className="bg-white/90 dark:bg-gray-800/90 border border-purple-100 dark:border-gray-700 rounded-2xl px-5 py-3 text-center text-sm font-semibold text-gray-600 dark:text-gray-300 shadow-sm max-w-[280px]">
                   <span className="font-bold text-[#8B5CF6]">Piggy Hint:</span> Keep 3-6 months of expenses for unexpected events!
