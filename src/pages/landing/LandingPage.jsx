@@ -37,7 +37,7 @@ const NavBar = () => {
 
   const scrollTo = (id) => {
     if (id === 'home') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.documentElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
       return;
     }
     const el = document.getElementById(id);
