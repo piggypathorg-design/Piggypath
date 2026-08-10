@@ -81,14 +81,6 @@ const HeroSection = () => {
             </motion.div>
 
             {/* Subtext */}
-            <motion.p 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="text-xs font-semibold text-gray-400 dark:text-gray-500 mb-10"
-            >
-              No credit card required. Start learning in 30 sec.
-            </motion.p>
 
             {/* Stats Counter Row (From Figma Screenshot 1) */}
             <motion.div 
