@@ -62,7 +62,7 @@ const TestimonialsSection = () => {
               <div className="flex items-center gap-4 mt-auto pt-4 border-t border-black/5 dark:border-white/10">
                 <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 shadow-inner overflow-hidden ${t.bg}`}>
                   <img 
-                    src={`/images/avatars/${t.name.toLowerCase()}.png`} 
+                    src={`./images/avatars/${t.name.toLowerCase()}.png`} 
                     alt={t.name} 
                     className="w-full h-full object-cover scale-110" 
                   />
