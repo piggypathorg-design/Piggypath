@@ -62,17 +62,19 @@ const courses = [
 
 const CoursesSection = () => {
   const [activeCourse, setActiveCourse] = useState(courses[0]);
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveCourse((current) => {
-        const currentIndex = courses.findIndex(c => c.id === current.id);
-        const nextIndex = (currentIndex + 1) % courses.length;
-        return courses[nextIndex];
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      setActiveCourse((prev) => {
+        const index = courses.findIndex(c => c.id === prev.id);
+        const next = (index + 1) % courses.length;
+        return courses[next];
       });
     }, 5000);
-    return () => clearInterval(interval);
-  }, [activeCourse]);
+    return () => clearInterval(timer);
+  }, [isPaused]);
 
   return (
     <section id="courses" className="w-full py-20 md:py-28 bg-[#FAF9FF] dark:bg-[#18181B] border-t border-b border-gray-100 dark:border-gray-800/80 transition-colors">
@@ -91,7 +93,11 @@ const CoursesSection = () => {
         </p>
 
         {/* Interactive Course Navigator Grid */}
-        <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        <div 
+          className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
           
           {/* Module List Selector */}
           <div className="lg:col-span-5 flex flex-col gap-4">
