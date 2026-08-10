@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Layers, CheckCircle2, ChevronRight } from 'lucide-react';
 
@@ -62,6 +62,17 @@ const courses = [
 
 const CoursesSection = () => {
   const [activeCourse, setActiveCourse] = useState(courses[0]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveCourse((current) => {
+        const currentIndex = courses.findIndex(c => c.id === current.id);
+        const nextIndex = (currentIndex + 1) % courses.length;
+        return courses[nextIndex];
+      });
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [activeCourse]);
 
   return (
     <section id="courses" className="w-full py-20 md:py-28 bg-[#FAF9FF] dark:bg-[#18181B] border-t border-b border-gray-100 dark:border-gray-800/80 transition-colors">
