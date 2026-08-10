@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Check, MessageCircle, Share2, Users, Globe } from 'lucide-react';
+import { X, Check, MessageCircle, Share2, Users, Globe, Instagram, Twitter, Linkedin, Mail } from 'lucide-react';
 
 const ConversionSection = () => {
   const [email, setEmail] = useState('');
@@ -224,18 +224,21 @@ const ConversionSection = () => {
                 © 2026 PiggyPath. Made with care for money learners.
               </div>
               
-              <div className="flex gap-3">
-                <a href="#" aria-label="Community Chat" className="w-10 h-10 rounded-full bg-[#1C1D29] flex items-center justify-center text-gray-400 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#00E599]">
-                  <MessageCircle size={18} />
+              <div className="flex flex-wrap gap-3">
+                <a href="https://www.instagram.com/piggy_path?igsh=dngwODVzYzFydm14" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-10 h-10 rounded-full bg-[#1C1D29] flex items-center justify-center text-gray-400 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#00E599]">
+                  <Instagram size={18} />
                 </a>
-                <a href="#" aria-label="Share PiggyPath" className="w-10 h-10 rounded-full bg-[#1C1D29] flex items-center justify-center text-gray-400 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#00E599]">
-                  <Share2 size={18} />
+                <a href="https://x.com/Piggypath_Edu" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="w-10 h-10 rounded-full bg-[#1C1D29] flex items-center justify-center text-gray-400 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#00E599]">
+                  <Twitter size={18} />
                 </a>
-                <a href="#" aria-label="Social Community" className="w-10 h-10 rounded-full bg-[#1C1D29] flex items-center justify-center text-gray-400 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#00E599]">
-                  <Users size={18} />
+                <a href="#" aria-label="LinkedIn" className="w-10 h-10 rounded-full bg-[#1C1D29] flex items-center justify-center text-gray-400 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#00E599]">
+                  <Linkedin size={18} />
                 </a>
-                <a href="#" aria-label="Global Website" className="w-10 h-10 rounded-full bg-[#1C1D29] flex items-center justify-center text-gray-400 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#00E599]">
-                  <Globe size={18} />
+                <a href="mailto:admin@piggypath.in" aria-label="Admin Email" className="w-10 h-10 rounded-full bg-[#1C1D29] flex items-center justify-center text-gray-400 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#00E599]">
+                  <Mail size={18} />
+                </a>
+                <a href="mailto:piggypath.org@gmail.com" aria-label="Support Email" className="w-10 h-10 rounded-full bg-[#1C1D29] flex items-center justify-center text-gray-400 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#00E599]">
+                  <Mail size={18} />
                 </a>
               </div>
             </div>
