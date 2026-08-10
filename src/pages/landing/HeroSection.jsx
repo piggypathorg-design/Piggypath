@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { Check, X, Sparkles, ArrowRight, Play } from 'lucide-react';
 
 const AnimatedNumber = ({ value, suffix = "" }) => {
   const [current, setCurrent] = useState(0);
@@ -22,7 +23,6 @@ const AnimatedNumber = ({ value, suffix = "" }) => {
   
   return <span ref={ref}>{current}{suffix}</span>;
 };
-import { Check, X, Sparkles, ArrowRight, Play } from 'lucide-react';
 
 const HeroSection = () => {
   const [selectedQuizOption, setSelectedQuizOption] = useState('emergency');
