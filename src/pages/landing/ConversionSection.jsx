@@ -238,9 +238,6 @@ const ConversionSection = () => {
                 <a href="mailto:admin@piggypath.in" aria-label="Admin Email" className="w-10 h-10 rounded-full bg-[#1C1D29] flex items-center justify-center text-gray-400 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#00E599]">
                   <Mail size={18} />
                 </a>
-                <a href="mailto:piggypath.org@gmail.com" aria-label="Support Email" className="w-10 h-10 rounded-full bg-[#1C1D29] flex items-center justify-center text-gray-400 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#00E599]">
-                  <Mail size={18} />
-                </a>
               </div>
             </div>
           </div>
