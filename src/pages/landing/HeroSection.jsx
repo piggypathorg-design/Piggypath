@@ -51,7 +51,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-base md:text-lg font-medium text-gray-500 dark:text-gray-400 leading-relaxed max-w-xl mb-16"
+              className="text-base md:text-lg font-medium text-gray-500 dark:text-gray-400 leading-relaxed max-w-xl mb-8"
             >
               PiggyPath simplifies finance into quick lessons, interactive quizzes, and real-life simulations that feel like a game.
             </motion.p>
@@ -222,7 +222,7 @@ const HeroSection = () => {
             <h2 className="text-3xl md:text-5xl font-black text-[#18181B] dark:text-white tracking-tight leading-tight mb-4">
               Finance is <span className="text-gray-400 dark:text-gray-500">boring</span> and <span className="text-gray-400 dark:text-gray-500">confusing.</span>
             </h2>
-            <p className="text-base md:text-lg font-medium text-gray-500 dark:text-gray-400 max-w-2xl leading-relaxed mb-8">
+            <p className="text-base md:text-lg font-medium text-gray-500 dark:text-gray-400 max-w-2xl leading-relaxed mb-4">
               Traditional financial education relies on dense articles, long videos, and complex jargon that puts people to sleep. It feels like a chore, not a path to freedom.
             </p>
             <div className="bg-red-50/50 dark:bg-red-950/20 border border-red-100 dark:border-red-900/30 rounded-2xl p-6 flex flex-col gap-3.5 mt-auto w-full">
@@ -261,7 +261,7 @@ const HeroSection = () => {
             <h2 className="text-3xl md:text-5xl font-black text-[#18181B] dark:text-white tracking-tight leading-tight mb-4">
               Meet <span className="text-[#8B5CF6]">PiggyPath</span>
             </h2>
-            <p className="text-base md:text-lg font-medium text-gray-500 dark:text-gray-400 max-w-2xl leading-relaxed mb-8">
+            <p className="text-base md:text-lg font-medium text-gray-500 dark:text-gray-400 max-w-2xl leading-relaxed mb-4">
               PiggyPath transforms financial education into an engaging experience where users learn through action. Instead of watching hours of content, learners active play their path.
             </p>
             <div className="bg-[#8B5CF6] text-white rounded-2xl p-6 shadow-md flex flex-col gap-3.5 mt-auto w-full">

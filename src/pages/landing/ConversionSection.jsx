@@ -110,7 +110,7 @@ const ConversionSection = () => {
               <h2 className="text-3xl md:text-5xl font-black mb-6 tracking-tight leading-tight">
                 Your money journey starts with one lesson
               </h2>
-              <p className="text-base md:text-lg font-medium text-gray-300 mb-10 max-w-2xl leading-relaxed">
+              <p className="text-base md:text-lg font-medium text-gray-300 mb-6 max-w-2xl leading-relaxed">
                 It is free to begin, and three minutes is all it takes. Your future self will thank you.
               </p>
 

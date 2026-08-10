@@ -113,7 +113,7 @@ const JourneyPreviewSection = () => {
             <h2 className="text-3xl md:text-5xl font-black mb-6 text-[#18181B] dark:text-white tracking-tight leading-tight">
               Practice Before You Invest
             </h2>
-            <p className="text-base md:text-lg font-medium text-gray-500 dark:text-gray-400 mb-8 leading-relaxed max-w-2xl">
+            <p className="text-base md:text-lg font-medium text-gray-500 dark:text-gray-400 mb-4 leading-relaxed max-w-2xl">
               Apply everything you have learned in a risk-free virtual market. Trade stocks, build portfolios, and test strategies.
             </p>
             <ul className="space-y-4 text-base font-bold text-gray-600 dark:text-gray-300">

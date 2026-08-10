@@ -38,7 +38,7 @@ const TestimonialsSection = () => {
           People are finally getting money
         </h2>
         
-        <p className="text-base md:text-lg font-medium text-gray-500 dark:text-gray-400 max-w-2xl text-center leading-relaxed mb-16">
+        <p className="text-base md:text-lg font-medium text-gray-500 dark:text-gray-400 max-w-2xl text-center leading-relaxed mb-10">
           A few words from learners in our early community. Stories are illustrative of the experience.
         </p>
 
