@@ -115,20 +115,28 @@ const ConversionSection = () => {
                 It is free to begin, and three minutes is all it takes. Your future self will thank you.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full max-w-md">
-                <button 
-                  onClick={scrollToSubscribe}
-                  className="w-full sm:w-auto bg-[#00E599] hover:bg-[#00D08A] text-[#18181B] font-bold px-8 py-4 rounded-full transition-all shadow-md text-base sm:text-lg whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-[#00E599] focus:ring-offset-2 focus:ring-offset-[#252145]"
-                >
-                  Create your free account
-                </button>
-                <button 
-                  onClick={scrollToSubscribe}
-                  className="w-full sm:w-auto text-white font-bold px-12 py-4 rounded-full transition-all text-base sm:text-lg border border-white/20 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white whitespace-nowrap"
-                >
-                  Log in
-                </button>
-              </div>
+              <form onSubmit={handleJoinWaitlist} className="flex flex-col gap-2 w-full max-w-md">
+                <div className="flex flex-col sm:flex-row gap-3 w-full">
+                  <input 
+                    type="email" 
+                    placeholder="Your email address"
+                    aria-label="Email address for waitlist"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="flex-1 bg-[#1C1D29] border border-gray-700/60 px-6 py-4 rounded-full text-white font-medium outline-none focus:ring-2 focus:ring-[#00E599] transition-all text-base sm:text-lg"
+                  />
+                  <button 
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="bg-[#00E599] hover:bg-[#00D08A] text-[#18181B] font-bold px-8 py-4 rounded-full transition-all text-base sm:text-lg whitespace-nowrap disabled:opacity-50 shadow-md focus:outline-none focus:ring-2 focus:ring-[#00E599] focus:ring-offset-2 focus:ring-offset-[#252145]"
+                  >
+                    {isSubmitting ? '...' : 'Join waitlist'}
+                  </button>
+                </div>
+                {emailError && (
+                  <div className="text-red-400 text-sm font-medium px-4 text-left">{emailError}</div>
+                )}
+              </form>
 
             </div>
           </div>
