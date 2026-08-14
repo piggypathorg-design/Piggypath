@@ -144,32 +144,20 @@ const LearningPath = () => {
           }
 
           if (item.type === 'node') {
-            // Calculate a zig-zag offset using sin
             const isCompleted = item.status === 'completed';
             const isPractice = item.status === 'practice';
             const isCurrent = item.status === 'current';
             const isLockedPractice = item.status === 'locked_practice';
             const isLocked = item.status === 'locked';
 
-            // Base zig-zag pattern: center, left, right, left, right...
-            const offsets = [0, -40, -80, -40, 0, 40, 80, 40];
-            const xOffset = offsets[i % offsets.length];
+            // Determine if label should be on left or right
+            const isLabelLeft = i % 2 === 0;
 
             // Render node based on status
             return (
               <div key={item.id} className="relative z-10 w-full flex justify-center my-6 group cursor-pointer">
-                <div 
-                  className="flex flex-col items-center gap-3 transition-transform hover:scale-105"
-                  style={{ transform: `translateX(${xOffset}px)` }}
-                >
+                <div className="flex flex-col items-center gap-3 transition-transform hover:scale-105 relative">
                   
-                  {/* Label (alternating left/right based on offset) */}
-                  <div className={`absolute top-1/2 -translate-y-1/2 whitespace-nowrap text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity bg-white dark:bg-zinc-800 px-3 py-1.5 rounded-lg shadow-md border border-zinc-200 dark:border-zinc-700 z-20 hidden md:block ${
-                    xOffset > 0 ? 'right-[calc(100%+1rem)]' : 'left-[calc(100%+1rem)]'
-                  }`}>
-                    {item.title}
-                  </div>
-
                   <div className={`
                     w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center border-[4px] shadow-sm relative z-10
                     ${isCompleted ? 'bg-[#00E599] border-[#00D08A] text-white' : ''}
@@ -185,14 +173,16 @@ const LearningPath = () => {
                     {isLocked && <Lock size={20} strokeWidth={2.5} />}
                   </div>
 
-                  {/* Desktop persistent label */}
-                  <div className="absolute top-[calc(100%+0.5rem)] text-center w-48 -ml-24 left-1/2 hidden md:block pointer-events-none">
-                    <span className={`text-[11px] font-bold leading-tight ${isLocked ? 'text-zinc-400' : 'text-zinc-700 dark:text-zinc-300'}`}>
+                  {/* Desktop alternating label */}
+                  <div className={`absolute top-1/2 -translate-y-1/2 w-48 hidden md:flex items-center pointer-events-none ${
+                    isLabelLeft ? 'right-[calc(100%+1.5rem)] justify-end text-right' : 'left-[calc(100%+1.5rem)] justify-start text-left'
+                  }`}>
+                    <span className={`text-[12px] font-bold leading-tight ${isLocked ? 'text-zinc-400' : 'text-zinc-700 dark:text-zinc-300'}`}>
                       {item.title}
                     </span>
                   </div>
 
-                  {/* Mobile label */}
+                  {/* Mobile label (always bottom) */}
                   <div className="mt-1 text-center w-40 md:hidden pointer-events-none">
                     <span className={`text-[11px] font-bold leading-tight ${isLocked ? 'text-zinc-400' : 'text-zinc-700 dark:text-zinc-300'}`}>
                       {item.title}
