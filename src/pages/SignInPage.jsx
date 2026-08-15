@@ -27,13 +27,7 @@ const OAUTH_PROVIDERS = [
     label: 'Google',
     icon: <GoogleIcon />,
     className: 'bg-white text-zinc-800 border border-zinc-200 hover:bg-zinc-50 dark:bg-zinc-800 dark:text-white dark:border-zinc-700 dark:hover:bg-zinc-700',
-  },
-  {
-    id: 'apple',
-    label: 'Apple',
-    icon: <AppleIcon />,
-    className: 'bg-white text-zinc-800 border border-zinc-200 hover:bg-zinc-50 dark:bg-zinc-800 dark:text-white dark:border-zinc-700 dark:hover:bg-zinc-700',
-  },
+  }
 ];
 
 /* ─── main component ─── */
@@ -185,7 +179,7 @@ export default function SignInPage() {
           {/* OAuth Buttons */}
           {mode !== 'forgot' && (
             <>
-              <div className="grid grid-cols-2 gap-3 mb-6">
+              <div className="grid grid-cols-1 gap-3 mb-6">
                 {OAUTH_PROVIDERS.map((p) => (
                   <button
                     key={p.id}
