@@ -9,6 +9,7 @@ import LandingPage from './pages/landing/LandingPage';
 import SignInPage from './pages/SignInPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsOfServicePage from './pages/TermsOfServicePage';
+import CodeOfConductPage from './pages/CodeOfConductPage';
 import GameLibraryPage from './pages/GameLibraryPage';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/privacy" element={<PrivacyPolicyPage />} />
         <Route path="/terms" element={<TermsOfServicePage />} />
+        <Route path="/code-of-conduct" element={<CodeOfConductPage />} />
 
         {/* Auth */}
         <Route path="/signin" element={<SignInPage />} />

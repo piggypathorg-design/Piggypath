@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Check, MessageCircle, Share2, Users, Globe, Mail } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { FaInstagram, FaXTwitter, FaLinkedin } from 'react-icons/fa6';
 
 const ConversionSection = () => {
@@ -220,8 +221,9 @@ const ConversionSection = () => {
                     <li><span className="hover:text-white transition-colors cursor-pointer">Help Centre</span></li>
                     <li><span className="hover:text-white transition-colors cursor-pointer">Community</span></li>
                     <li><span className="hover:text-white transition-colors cursor-pointer">Schools</span></li>
-                    <li><span className="hover:text-white transition-colors cursor-pointer">Privacy</span></li>
-                    <li><span className="hover:text-white transition-colors cursor-pointer">Terms</span></li>
+                    <li><Link to="/privacy" className="hover:text-white transition-colors block">Privacy Policy</Link></li>
+                    <li><Link to="/terms" className="hover:text-white transition-colors block">Terms of Service</Link></li>
+                    <li><Link to="/code-of-conduct" className="hover:text-white transition-colors block">Code of Conduct</Link></li>
                   </ul>
                 </div>
               </div>
