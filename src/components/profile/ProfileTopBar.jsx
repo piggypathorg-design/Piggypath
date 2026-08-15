@@ -1,9 +1,16 @@
 import React from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../contexts/AuthContext';
 
 const ProfileTopBar = () => {
   const navigate = useNavigate();
+  const { signOut } = useAuth();
+
+  const handleLogout = async () => {
+    await signOut();
+    navigate('/');
+  };
 
   return (
     <div className="w-full bg-white dark:bg-[#18181B] border-b-[3px] border-[#18181B] dark:border-[#F4F4F5] px-6 py-4 flex items-center justify-between sticky top-0 z-40 transition-colors">
@@ -23,10 +30,16 @@ const ProfileTopBar = () => {
       </div>
 
       {/* Right Area */}
-      <div>
+      <div className="flex items-center gap-4">
         <span className="bg-[#18181B] dark:bg-[#F4F4F5] text-[#00E599] dark:text-[#18181B] font-black text-xs px-3 py-1.5 tracking-widest font-['Space_Mono',monospace] transition-colors border-2 border-transparent dark:border-[#18181B]">
           @PIGGYPATH
         </span>
+        <button 
+          onClick={handleLogout}
+          className="bg-red-500 hover:bg-red-600 text-white border-[3px] border-[#18181B] dark:border-[#F4F4F5] shadow-[4px_4px_0_#18181B] dark:shadow-[4px_4px_0_#F4F4F5] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0_#18181B] dark:hover:shadow-[2px_2px_0_#F4F4F5] transition-all px-4 py-2 font-black text-sm uppercase"
+        >
+          LOGOUT
+        </button>
       </div>
 
     </div>
