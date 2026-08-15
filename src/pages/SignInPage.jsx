@@ -182,7 +182,8 @@ export default function SignInPage() {
             </p>
           </div>
 
-          {/* OAuth Buttons */}
+          {/* OAuth Buttons (Hidden until configured in Supabase) */}
+          {/* 
           {mode !== 'forgot' && (
             <>
               <div className="grid grid-cols-2 gap-3 mb-6">
@@ -199,7 +200,6 @@ export default function SignInPage() {
                 ))}
               </div>
 
-              {/* Divider */}
               <div className="relative flex items-center justify-center mb-6">
                 <div className="absolute inset-x-0 h-px bg-zinc-200 dark:bg-zinc-800" />
                 <span className="relative bg-white dark:bg-zinc-900 px-4 text-xs font-medium text-zinc-400">
@@ -208,6 +208,7 @@ export default function SignInPage() {
               </div>
             </>
           )}
+          */}
 
           {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-4">
