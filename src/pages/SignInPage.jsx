@@ -164,7 +164,7 @@ export default function SignInPage() {
           {/* Heading */}
           <div className="text-center mb-8">
             <h1 className="text-[28px] font-black mb-2 flex items-center justify-center gap-2 tracking-tight">
-              {mode === 'signin' && 'Less go ⚡️'}
+              {mode === 'signin' && 'Less go'}
               {mode === 'signup' && 'Create Account 🐷'}
               {mode === 'forgot' && 'Reset Password 🔑'}
             </h1>
