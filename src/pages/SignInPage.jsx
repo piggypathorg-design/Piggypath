@@ -242,7 +242,7 @@ export default function SignInPage() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="jatin@example.com"
+                placeholder="you@example.com"
                 className="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 focus:border-[#8B5CF6] dark:focus:border-[#8B5CF6] focus:ring-1 focus:ring-[#8B5CF6] rounded-lg px-4 py-2.5 outline-none transition-all text-sm"
               />
             </div>
@@ -260,7 +260,7 @@ export default function SignInPage() {
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    placeholder="piggypath"
+                    placeholder="••••••••"
                     className="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 focus:border-[#8B5CF6] dark:focus:border-[#8B5CF6] focus:ring-1 focus:ring-[#8B5CF6] rounded-lg px-4 py-2.5 pr-10 outline-none transition-all text-sm"
                   />
                   <button
