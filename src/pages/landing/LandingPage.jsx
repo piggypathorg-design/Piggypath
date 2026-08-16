@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../contexts/AuthContext';
 import HeroSection from './HeroSection';
 import FeaturesSection from './FeaturesSection';
 import CoursesSection from './CoursesSection';
@@ -98,6 +100,15 @@ const NavBar = () => {
 };
 
 const LandingPage = () => {
+  const { user } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user) {
+      navigate('/app', { replace: true });
+    }
+  }, [user, navigate]);
+
   return (
     <div className="relative min-h-screen font-sans selection:bg-[#00E599]/30 selection:text-[#18181B] bg-white dark:bg-[#18181B] text-[#18181B] dark:text-white transition-colors overflow-x-hidden">
       <NavBar />

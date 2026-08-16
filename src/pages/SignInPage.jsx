@@ -52,13 +52,12 @@ export default function SignInPage() {
 
   const clearMessages = () => { setError(''); setSuccess(''); };
 
-  /* ─── OAuth ─── */
   const handleOAuth = async (provider) => {
     clearMessages();
     setOauthLoading(provider);
     const { error } = await supabase.auth.signInWithOAuth({
       provider,
-      options: { redirectTo: `${window.location.origin}/app` },
+      options: { redirectTo: `${window.location.origin}/` },
     });
     if (error) setError(error.message);
     setOauthLoading(null);
@@ -84,13 +83,13 @@ export default function SignInPage() {
         const { error } = await supabase.auth.signUp({
           email,
           password,
-          options: { emailRedirectTo: `${window.location.origin}/app` },
+          options: { emailRedirectTo: `${window.location.origin}/` },
         });
         if (error) throw error;
         setSuccess('Account created! Check your email to confirm your address.');
       } else if (mode === 'forgot') {
         const { error } = await supabase.auth.resetPasswordForEmail(email, {
-          redirectTo: `${window.location.origin}/reset-password`,
+          redirectTo: `${window.location.origin}/`,
         });
         if (error) throw error;
         setSuccess('Password reset link sent! Check your inbox.');
