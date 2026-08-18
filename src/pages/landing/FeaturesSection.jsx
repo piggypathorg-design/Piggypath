@@ -108,36 +108,36 @@ const FeaturesSection = () => {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
             {[
               { 
-                icon: <BookOpen size={24} />, title: 'Courses', desc: '5 courses from Personal Finance to Taxation, lessons on a gamified path.', 
-                bg: 'bg-[#E6F9F0] dark:bg-emerald-500/10 border border-emerald-200/50 dark:border-emerald-500/20', text: 'text-[#18181B] dark:text-white', colSpan: 'md:col-span-4'
+                icon: <BookOpen size={20} />, title: 'Courses', desc: '5 courses from Personal Finance to Taxation, lessons on a gamified path.', 
+                bg: 'bg-[#E6F9F0] dark:bg-emerald-950/40 border border-emerald-200/50 dark:border-emerald-500/30', text: 'text-[#18181B] dark:text-white', colSpan: 'md:col-span-4'
               },
               { 
-                icon: <Gamepad2 size={24} />, title: 'Mini Games', desc: 'Practice concepts through play. Earn XP, coins & collectibles.', 
-                bg: 'bg-[#F0EBFF] dark:bg-violet-500/10 border border-purple-200/50 dark:border-violet-500/20', text: 'text-[#18181B] dark:text-white', colSpan: 'md:col-span-4'
+                icon: <Gamepad2 size={20} />, title: 'Mini Games', desc: 'Practice concepts through play. Earn XP, coins & collectibles.', 
+                bg: 'bg-[#F0EBFF] dark:bg-violet-950/40 border border-purple-200/50 dark:border-violet-500/30', text: 'text-[#18181B] dark:text-white', colSpan: 'md:col-span-4'
               },
               { 
-                icon: <ShoppingBag size={24} />, title: 'Shop', desc: 'Spend gems on outfits, keys & real merch.', 
-                bg: 'bg-[#FFF9E6] dark:bg-amber-500/10 border border-amber-200/50 dark:border-amber-500/20', text: 'text-[#18181B] dark:text-white', colSpan: 'md:col-span-4'
+                icon: <ShoppingBag size={20} />, title: 'Shop', desc: 'Spend gems on outfits, keys & real merch.', 
+                bg: 'bg-[#FFF9E6] dark:bg-amber-950/30 border border-amber-200/50 dark:border-amber-500/30', text: 'text-[#18181B] dark:text-white', colSpan: 'md:col-span-4'
               },
               { 
-                icon: <Target size={24} />, title: 'Daily Challenges', desc: 'Small daily goals for coins, XP & mystery boxes.', 
-                bg: 'bg-[#FFEBF5] dark:bg-rose-500/10 border border-pink-200/50 dark:border-rose-500/20', text: 'text-[#18181B] dark:text-white', colSpan: 'md:col-span-6'
+                icon: <Target size={20} />, title: 'Daily Challenges', desc: 'Small daily goals for coins, XP & mystery boxes.', 
+                bg: 'bg-[#FFEBF5] dark:bg-rose-950/30 border border-pink-200/50 dark:border-rose-500/30', text: 'text-[#18181B] dark:text-white', colSpan: 'md:col-span-6'
               },
               { 
-                icon: <Flame size={24} />, title: 'Streaks', desc: 'Keep your learning streak alive every day.', 
-                bg: 'bg-[#EEF2FF] dark:bg-blue-500/10 border border-indigo-200/50 dark:border-blue-500/20', text: 'text-[#18181B] dark:text-white', colSpan: 'md:col-span-6'
+                icon: <Flame size={20} />, title: 'Streaks', desc: 'Keep your learning streak alive every day.', 
+                bg: 'bg-[#EEF2FF] dark:bg-indigo-950/40 border border-indigo-200/50 dark:border-indigo-500/30', text: 'text-[#18181B] dark:text-white', colSpan: 'md:col-span-6'
               },
               { 
-                icon: <Medal size={24} />, title: 'Leaderboards', desc: 'Global, country & friends rankings, weekly & monthly.', 
-                bg: 'bg-[#E6F9F0] dark:bg-emerald-500/10 border border-emerald-200/50 dark:border-emerald-500/20', text: 'text-[#18181B] dark:text-white', colSpan: 'md:col-span-4'
+                icon: <Medal size={20} />, title: 'Leaderboards', desc: 'Global, country & friends rankings, weekly & monthly.', 
+                bg: 'bg-[#E6F9F0] dark:bg-emerald-950/40 border border-emerald-200/50 dark:border-emerald-500/30', text: 'text-[#18181B] dark:text-white', colSpan: 'md:col-span-4'
               },
               { 
-                icon: <Star size={24} />, title: 'Achievements', desc: 'Unlock badges, artifacts & cosmetics for milestones.', 
-                bg: 'bg-[#FFF9E6] dark:bg-amber-500/10 border border-amber-200/50 dark:border-amber-500/20', text: 'text-[#18181B] dark:text-white', colSpan: 'md:col-span-4'
+                icon: <Star size={20} />, title: 'Achievements', desc: 'Unlock badges, artifacts & cosmetics for milestones.', 
+                bg: 'bg-[#FFF9E6] dark:bg-amber-950/30 border border-amber-200/50 dark:border-amber-500/30', text: 'text-[#18181B] dark:text-white', colSpan: 'md:col-span-4'
               },
               { 
-                icon: <TrendingUp size={24} />, title: 'Portfolio Sim', desc: 'Practice investing with virtual money. Launching soon.', 
-                bg: 'bg-[#FFEBF5] dark:bg-rose-500/10 border border-pink-200/50 dark:border-rose-500/20', text: 'text-[#18181B] dark:text-white', colSpan: 'md:col-span-4',
+                icon: <TrendingUp size={20} />, title: 'Portfolio Sim', desc: 'Practice investing with virtual money. Launching soon.', 
+                bg: 'bg-[#FFEBF5] dark:bg-rose-950/30 border border-pink-200/50 dark:border-rose-500/30', text: 'text-[#18181B] dark:text-white', colSpan: 'md:col-span-4',
                 badge: 'Coming soon'
               },
             ].map((f, i) => (
@@ -151,18 +151,18 @@ const FeaturesSection = () => {
               >
                 {f.mascot && f.mascot}
                 <div className="flex justify-between items-start relative z-10">
-                  <div className="w-12 h-12 bg-white/90 dark:bg-gray-800/90 rounded-2xl flex items-center justify-center mb-8 shadow-sm text-[#18181B] dark:text-white">
+                  <div className="w-10 h-10 bg-white/90 dark:bg-white/5 border border-transparent dark:border-white/10 rounded-xl flex items-center justify-center mb-8 shadow-sm text-[#18181B] dark:text-white">
                     {f.icon}
                   </div>
                   {f.badge && (
-                    <span className="bg-pink-200/80 dark:bg-pink-900/60 text-pink-800 dark:text-pink-200 text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">
+                    <span className="bg-pink-200/80 dark:bg-rose-900/60 text-pink-800 dark:text-rose-200 text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">
                       {f.badge}
                     </span>
                   )}
                 </div>
                 <div className="relative z-10">
-                  <h3 className={`text-xl font-bold mb-2 ${f.text}`}>{f.title}</h3>
-                  <p className={`font-medium ${f.text} opacity-70 leading-relaxed text-[14px]`}>{f.desc}</p>
+                  <h3 className={`text-2xl font-bold mb-2 tracking-tight ${f.text}`}>{f.title}</h3>
+                  <p className={`font-medium ${f.text} opacity-70 leading-relaxed text-[13px]`}>{f.desc}</p>
                 </div>
               </motion.div>
             ))}
