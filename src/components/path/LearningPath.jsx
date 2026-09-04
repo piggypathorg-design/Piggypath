@@ -1,5 +1,6 @@
 import React from 'react';
 import { Check, Lock, Play, CircleDot } from 'lucide-react';
+import useProgress from '../../hooks/useProgress';
 
 const pathData = [
   { type: 'milestone', id: 'm1', number: 1, title: 'Understanding Money', subtitle: 'The Penny Drops', reward: 'Gem Shard' },
@@ -245,6 +246,8 @@ const pathData = [
 ];
 
 const LearningPath = () => {
+  const { completedNodes, markNodeCompleted } = useProgress();
+
   return (
     <div className="bg-white dark:bg-zinc-900 rounded-[2.5rem] shadow-sm border border-zinc-200 dark:border-zinc-800 p-6 md:p-10 mb-24 overflow-hidden relative">
       
@@ -313,33 +316,58 @@ const LearningPath = () => {
           }
 
           if (item.type === 'node') {
-            const isCompleted = item.status === 'completed';
+            const isCompleted = completedNodes.has(item.id) || item.status === 'completed';
             const isPractice = item.status === 'practice';
-            const isCurrent = item.status === 'current';
-            const isLockedPractice = item.status === 'locked_practice';
-            const isLocked = item.status === 'locked';
+            const isCurrent = item.status === 'current' && !isCompleted;
+            const isLockedPractice = item.status === 'locked_practice' && !isCompleted;
+            const isLocked = item.status === 'locked' && !isCompleted;
 
             // Determine if label should be on left or right
             const isLabelLeft = i % 2 === 0;
 
+            const handleNodeClick = () => {
+              if (!isLocked) {
+                markNodeCompleted(item.id);
+              }
+            };
+
+            const handleKeyDown = (e) => {
+              if ((e.key === 'Enter' || e.key === ' ') && !isLocked) {
+                e.preventDefault();
+                handleNodeClick();
+              }
+            };
+
             // Render node based on status
             return (
-              <div key={item.id} className="relative z-10 w-full flex justify-center my-6 group cursor-pointer">
-                <div className="flex flex-col items-center gap-3 transition-transform hover:scale-105 relative">
+              <div 
+                key={item.id} 
+                role="button"
+                tabIndex={isLocked ? -1 : 0}
+                aria-label={`Lesson ${item.id}: ${item.title}`}
+                aria-disabled={isLocked}
+                onClick={handleNodeClick}
+                onKeyDown={handleKeyDown}
+                className="relative z-10 w-full flex justify-center my-6 group cursor-pointer focus:outline-none"
+              >
+                <div className="flex flex-col items-center gap-3 transition-transform motion-safe:group-hover:scale-105 relative">
                   
                   <div className={`
-                    w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center border-[4px] shadow-sm relative z-10
+                    w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center border-[4px] shadow-sm relative z-10 focus-visible:ring-4 focus-visible:ring-[#00E599]
                     ${isCompleted ? 'bg-[#00E599] border-[#00D08A] text-white' : ''}
                     ${isCurrent ? 'bg-zinc-900 dark:bg-white border-zinc-800 dark:border-zinc-200 text-white dark:text-zinc-900 scale-110 shadow-lg' : ''}
                     ${isPractice ? 'bg-yellow-400 border-yellow-500 text-zinc-900' : ''}
                     ${isLockedPractice ? 'bg-yellow-100/50 dark:bg-yellow-900/20 border-yellow-200 dark:border-yellow-900/50 text-yellow-600 dark:text-yellow-700' : ''}
                     ${isLocked ? 'bg-zinc-100 dark:bg-zinc-800/50 border-zinc-200 dark:border-zinc-800 text-zinc-400 dark:text-zinc-600' : ''}
                   `}>
-                    {isCompleted && <Check size={28} strokeWidth={3} />}
-                    {isCurrent && <Play size={24} strokeWidth={3} className="ml-1" fill="currentColor" />}
-                    {isPractice && <CircleDot size={24} strokeWidth={2.5} />}
-                    {isLockedPractice && <CircleDot size={24} strokeWidth={2.5} />}
-                    {isLocked && <Lock size={20} strokeWidth={2.5} />}
+                    <span className="sr-only">
+                      Status: {isCompleted ? 'Completed' : isCurrent ? 'Available' : isLocked ? 'Locked' : 'Practice'}
+                    </span>
+                    {isCompleted && <Check size={28} strokeWidth={3} aria-hidden="true" />}
+                    {isCurrent && <Play size={24} strokeWidth={3} className="ml-1" fill="currentColor" aria-hidden="true" />}
+                    {isPractice && <CircleDot size={24} strokeWidth={2.5} aria-hidden="true" />}
+                    {isLockedPractice && <CircleDot size={24} strokeWidth={2.5} aria-hidden="true" />}
+                    {isLocked && <Lock size={20} strokeWidth={2.5} aria-hidden="true" />}
                   </div>
 
                   {/* Desktop alternating label */}
