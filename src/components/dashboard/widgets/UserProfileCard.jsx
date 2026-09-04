@@ -13,7 +13,7 @@ const UserProfileCard = () => {
             MVP
           </div>
           <div className="w-24 h-24 bg-red-50 dark:bg-red-900/10 rounded-2xl overflow-hidden border-2 border-transparent">
-            <img src="/images/avatars/aarav.png" alt="Avatar" className="w-full h-full object-cover scale-110 translate-y-2" />
+            <img src="/images/avatars/aarav.png" alt="Jatin's avatar" width={96} height={96} className="w-full h-full object-cover scale-110 translate-y-2" />
           </div>
         </div>
 
@@ -31,7 +31,14 @@ const UserProfileCard = () => {
 
           {/* Progress Bar */}
           <div className="mt-4">
-            <div className="h-2 w-full bg-zinc-100 dark:bg-zinc-800 rounded-full overflow-hidden">
+            <div 
+              className="h-2 w-full bg-zinc-100 dark:bg-zinc-800 rounded-full overflow-hidden"
+              role="progressbar"
+              aria-valuenow={80}
+              aria-valuemin={0}
+              aria-valuemax={100}
+              aria-label="Level progress"
+            >
               <div className="h-full bg-[#00E599] rounded-full" style={{ width: '80%' }} />
             </div>
             <div className="flex justify-between mt-1 text-[10px] text-zinc-400 font-bold uppercase tracking-wider">
@@ -45,9 +52,9 @@ const UserProfileCard = () => {
       {/* Badges & Actions */}
       <div className="mt-6">
         <div className="flex flex-wrap gap-2 text-[11px] font-bold text-zinc-500 dark:text-zinc-400 mb-4 uppercase tracking-wide">
-          <span className="flex items-center gap-1"><span className="text-purple-500 text-sm">🔮</span> Budget Master</span>
-          <span className="flex items-center gap-1"><span className="text-yellow-400 text-sm">⭐</span> Collector</span>
-          <span className="flex items-center gap-1"><span className="text-orange-500 text-sm">🔥</span> 7 Day Streak</span>
+          <span className="flex items-center gap-1"><span role="img" aria-label="Crystal ball" className="text-purple-500 text-sm">🔮</span> Budget Master</span>
+          <span className="flex items-center gap-1"><span role="img" aria-label="Star" className="text-yellow-400 text-sm">⭐</span> Collector</span>
+          <span className="flex items-center gap-1"><span role="img" aria-label="Fire" className="text-orange-500 text-sm">🔥</span> 7 Day Streak</span>
         </div>
 
         <div className="flex justify-between items-center pt-4 border-t border-zinc-100 dark:border-zinc-800">
@@ -56,14 +63,23 @@ const UserProfileCard = () => {
             Member since Feb 2026
           </div>
           <div className="flex gap-2">
-            <button className="w-7 h-7 rounded-full bg-[#18181B] dark:bg-zinc-800 hover:bg-zinc-700 flex items-center justify-center text-white transition-colors">
-              <Camera size={12} />
+            <button 
+              aria-label="Change avatar" 
+              className="w-11 h-11 rounded-full bg-[#18181B] dark:bg-zinc-800 hover:bg-zinc-700 flex items-center justify-center text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#00E599]"
+            >
+              <Camera size={16} />
             </button>
-            <button className="w-7 h-7 rounded-full bg-[#18181B] dark:bg-zinc-800 hover:bg-zinc-700 flex items-center justify-center text-white transition-colors">
-              <MessageSquare size={12} />
+            <button 
+              aria-label="Send message" 
+              className="w-11 h-11 rounded-full bg-[#18181B] dark:bg-zinc-800 hover:bg-zinc-700 flex items-center justify-center text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#00E599]"
+            >
+              <MessageSquare size={16} />
             </button>
-            <button className="w-7 h-7 rounded-full bg-[#18181B] dark:bg-zinc-800 hover:bg-zinc-700 flex items-center justify-center text-white transition-colors">
-              <Share2 size={12} />
+            <button 
+              aria-label="Share profile" 
+              className="w-11 h-11 rounded-full bg-[#18181B] dark:bg-zinc-800 hover:bg-zinc-700 flex items-center justify-center text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#00E599]"
+            >
+              <Share2 size={16} />
             </button>
           </div>
         </div>

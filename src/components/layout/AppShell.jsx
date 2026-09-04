@@ -32,7 +32,8 @@ const AppShell = () => {
 
       {/* ── Bottom Navigation Bar ──────────────────────────────────── */}
       <nav 
-        className="fixed bottom-0 left-0 w-full bg-white dark:bg-[#27272A] border-t-[3px] border-[#18181B] dark:border-[#F4F4F5] flex items-stretch z-50 h-[80px] transition-colors"
+        aria-label="Bottom Navigation"
+        className="fixed bottom-0 left-0 w-full bg-white dark:bg-[#27272A] border-t-[3px] border-[#18181B] dark:border-[#F4F4F5] flex items-stretch z-50 h-[80px] pb-[env(safe-area-inset-bottom)] transition-colors"
       >
         <NavItem to="/app" end label="DASHBOARD" icon={<LayoutDashboard size={24} strokeWidth={2.5} />} />
         <NavItem to="/app/path" label="PATH" icon={<Map size={24} strokeWidth={2.5} />} />
