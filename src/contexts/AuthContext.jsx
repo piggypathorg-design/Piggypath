@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState, useMemo } from 'react';
 import { supabase } from '../lib/supabaseClient';
 
 const AuthContext = createContext();
@@ -13,21 +13,35 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    let isMounted = true;
+
     // Get initial session
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-      setUser(session?.user ?? null);
-      setLoading(false);
-    });
+    supabase.auth.getSession()
+      .then(({ data: { session } }) => {
+        if (isMounted) {
+          setSession(session);
+          setUser(session?.user ?? null);
+          setLoading(false);
+        }
+      })
+      .catch((err) => {
+        console.error('Failed to retrieve auth session:', err);
+        if (isMounted) setLoading(false);
+      });
 
     // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-      setUser(session?.user ?? null);
-      setLoading(false);
+      if (isMounted) {
+        setSession(session);
+        setUser(session?.user ?? null);
+        setLoading(false);
+      }
     });
 
-    return () => subscription.unsubscribe();
+    return () => {
+      isMounted = false;
+      subscription?.unsubscribe();
+    };
   }, []);
 
   // Sign up
@@ -48,20 +62,23 @@ export const AuthProvider = ({ children }) => {
 
   // Sign out
   const signOut = async () => {
+    setUser(null);
+    setSession(null);
     return supabase.auth.signOut();
   };
 
-  const value = {
+  const value = useMemo(() => ({
     session,
     user,
+    loading,
     signUp,
     signIn,
     signOut,
-  };
+  }), [session, user, loading]);
 
   return (
     <AuthContext.Provider value={value}>
-      {!loading && children}
+      {children}
     </AuthContext.Provider>
   );
 };

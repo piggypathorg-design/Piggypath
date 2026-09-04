@@ -68,34 +68,58 @@ export default function SignInPage() {
     e.preventDefault();
     clearMessages();
 
-    if (password.length < 6 && mode !== 'forgot') {
-      setError('Password must be at least 6 characters.');
+    const cleanEmail = email.trim().toLowerCase();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(cleanEmail)) {
+      setError('Please enter a valid email address.');
       return;
+    }
+
+    if (mode !== 'forgot') {
+      if (password.length < 8) {
+        setError('Password must be at least 8 characters long.');
+        return;
+      }
+      if (mode === 'signup' && !/(?=.*[0-9]||.*[!@#$%^&*])/.test(password)) {
+        setError('Password must contain at least one number or special character.');
+        return;
+      }
     }
 
     setLoading(true);
     try {
       if (mode === 'signin') {
-        const { error } = await supabase.auth.signInWithPassword({ email, password });
+        const { error } = await supabase.auth.signInWithPassword({ email: cleanEmail, password });
         if (error) throw error;
         navigate('/app', { replace: true });
       } else if (mode === 'signup') {
         const { error } = await supabase.auth.signUp({
-          email,
+          email: cleanEmail,
           password,
           options: { emailRedirectTo: `${window.location.origin}/` },
         });
         if (error) throw error;
         setSuccess('Account created! Check your email to confirm your address.');
       } else if (mode === 'forgot') {
-        const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        const { error } = await supabase.auth.resetPasswordForEmail(cleanEmail, {
           redirectTo: `${window.location.origin}/`,
         });
         if (error) throw error;
         setSuccess('Password reset link sent! Check your inbox.');
       }
     } catch (err) {
-      setError(err.message || 'Something went wrong. Please try again.');
+      let friendlyMessage = 'Something went wrong. Please try again.';
+      if (err?.message?.includes('Invalid login credentials')) {
+        friendlyMessage = 'Invalid email or password. Please check your credentials.';
+      } else if (err?.message?.includes('User already registered')) {
+        friendlyMessage = 'An account with this email already exists. Try signing in instead.';
+      } else if (err?.message?.includes('Rate limit')) {
+        friendlyMessage = 'Too many attempts. Please wait a few minutes before trying again.';
+      } else if (err?.message) {
+        friendlyMessage = err.message;
+      }
+      setError(friendlyMessage);
     } finally {
       setLoading(false);
     }
