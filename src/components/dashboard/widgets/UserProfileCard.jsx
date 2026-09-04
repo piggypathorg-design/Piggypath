@@ -1,7 +1,10 @@
 import React from 'react';
 import { Camera, MessageSquare, Share2, Award, Calendar } from 'lucide-react';
+import useProfile from '../../../hooks/useProfile';
 
 const UserProfileCard = () => {
+  const profile = useProfile();
+
   return (
     <div className="bg-white dark:bg-zinc-900 rounded-3xl p-6 shadow-sm border border-zinc-100 dark:border-zinc-800 h-full flex flex-col justify-between">
       
@@ -13,7 +16,7 @@ const UserProfileCard = () => {
             MVP
           </div>
           <div className="w-24 h-24 bg-red-50 dark:bg-red-900/10 rounded-2xl overflow-hidden border-2 border-transparent">
-            <img src="/images/avatars/aarav.png" alt="Jatin's avatar" width={96} height={96} className="w-full h-full object-cover scale-110 translate-y-2" />
+            <img src={profile.avatarUrl} alt={`${profile.username}'s avatar`} width={96} height={96} className="w-full h-full object-cover scale-110 translate-y-2" />
           </div>
         </div>
 
@@ -21,11 +24,11 @@ const UserProfileCard = () => {
         <div className="flex-1">
           <div className="flex justify-between items-start mb-2">
             <div>
-              <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100 leading-tight">Jatin</h3>
-              <p className="text-zinc-400 text-sm">@jtn_ux</p>
+              <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100 leading-tight">{profile.username}</h3>
+              <p className="text-zinc-400 text-sm">{profile.handle}</p>
             </div>
             <div className="bg-[#18181B] dark:bg-zinc-800 text-white text-xs font-bold px-3 py-1.5 rounded-full">
-              Lvl 12
+              Lvl {profile.level}
             </div>
           </div>
 
@@ -34,16 +37,16 @@ const UserProfileCard = () => {
             <div 
               className="h-2 w-full bg-zinc-100 dark:bg-zinc-800 rounded-full overflow-hidden"
               role="progressbar"
-              aria-valuenow={80}
+              aria-valuenow={profile.progressPercentage}
               aria-valuemin={0}
               aria-valuemax={100}
               aria-label="Level progress"
             >
-              <div className="h-full bg-[#00E599] rounded-full" style={{ width: '80%' }} />
+              <div className="h-full bg-[#00E599] rounded-full" style={{ width: `${profile.progressPercentage}%` }} />
             </div>
             <div className="flex justify-between mt-1 text-[10px] text-zinc-400 font-bold uppercase tracking-wider">
-              <span>80%</span>
-              <span>429 XP to Level 13</span>
+              <span>{profile.progressPercentage}%</span>
+              <span>{profile.xp} XP to Level {profile.level + 1}</span>
             </div>
           </div>
         </div>
@@ -54,13 +57,13 @@ const UserProfileCard = () => {
         <div className="flex flex-wrap gap-2 text-[11px] font-bold text-zinc-500 dark:text-zinc-400 mb-4 uppercase tracking-wide">
           <span className="flex items-center gap-1"><span role="img" aria-label="Crystal ball" className="text-purple-500 text-sm">🔮</span> Budget Master</span>
           <span className="flex items-center gap-1"><span role="img" aria-label="Star" className="text-yellow-400 text-sm">⭐</span> Collector</span>
-          <span className="flex items-center gap-1"><span role="img" aria-label="Fire" className="text-orange-500 text-sm">🔥</span> 7 Day Streak</span>
+          <span className="flex items-center gap-1"><span role="img" aria-label="Fire" className="text-orange-500 text-sm">🔥</span> {profile.streak} Day Streak</span>
         </div>
 
         <div className="flex justify-between items-center pt-4 border-t border-zinc-100 dark:border-zinc-800">
           <div className="flex items-center gap-1.5 text-[11px] font-medium text-zinc-400">
             <Calendar size={12} />
-            Member since Feb 2026
+            Member since {profile.memberSince}
           </div>
           <div className="flex gap-2">
             <button 
