@@ -8,10 +8,13 @@ import MysteryBoxBanner from '../components/dashboard/widgets/MysteryBoxBanner';
 import ShopPreviewCard from '../components/dashboard/widgets/ShopPreviewCard';
 import CoachPennyCard from '../components/dashboard/widgets/CoachPennyCard';
 import NewLeaderboardCard from '../components/dashboard/widgets/NewLeaderboardCard';
+import OnboardingTour from '../components/common/OnboardingTour';
 
 const DashboardPage = () => {
   return (
     <div className="w-full min-h-screen bg-[#F8FAFC] dark:bg-zinc-950 font-sans">
+      <OnboardingTour />
+      <h1 className="sr-only">PiggyPath User Dashboard</h1>
       {/* Top Bar Area */}
       <DashboardTopBar />
 
